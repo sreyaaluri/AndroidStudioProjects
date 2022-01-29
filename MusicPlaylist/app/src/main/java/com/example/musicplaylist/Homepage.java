@@ -18,14 +18,14 @@ public class Homepage extends AppCompatActivity {
 
         Intent intent = getIntent();
         //keys coming from Extra
-        String strOne = intent.getStringExtra(MainActivity.USERID);
-        String strTwo = intent.getStringExtra(MainActivity.USERNAME);
+        String userID = intent.getStringExtra(MainActivity.USERID);
+        String userName = intent.getStringExtra(MainActivity.USERNAME);
 
-        TextView usridTxt = findViewById(R.id.signinMessage);
-        TextView unameTxt = findViewById(R.id.welcomeMessage);
+        TextView signInTxt = findViewById(R.id.signinMessage);
+        TextView welcomeTxt = findViewById(R.id.welcomeMessage);
 
-        usridTxt.setText("Signed in as "+ strOne);
-        unameTxt.setText("Hello "+ strTwo);
+        signInTxt.setText("Signed in as "+ userID);
+        welcomeTxt.setText("Hello "+ userName);
 
         //linking the listButton to the playlist page
 
@@ -33,8 +33,8 @@ public class Homepage extends AppCompatActivity {
         liButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent listIntent = new Intent(getApplicationContext(), Playlist.class);
-                startActivity(listIntent);
+                Intent playlistIntent = new Intent(getApplicationContext(), Playlist.class);
+                startActivity(playlistIntent);
             }
         });
     }

@@ -11,8 +11,8 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     public static String uname = "";
+    public static String userid = "";
     public static final String USERNAME = "none";
-    public static String usrid = "";
     public static final String USERID = "blank";
 
     @Override
@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if((!unameTxt.getText().equals("")) && (!usridTxt.getText().equals(""))) {
                     uname = unameTxt.getText().toString();
-                    usrid = usridTxt.getText().toString();
+                    userid = usridTxt.getText().toString();
 
                     Intent loginIntent = new Intent(getApplicationContext(), Homepage.class);
                     loginIntent.putExtra(USERNAME, uname);
-                    loginIntent.putExtra(USERID, usrid);
+                    loginIntent.putExtra(USERID, userid);
 
                     startActivity(loginIntent);
                 }

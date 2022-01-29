@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/deborahmaidoh/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
+            "outputFile": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ldltr-v21/values-ldltr-v21.xml",
             "map": [
                 {
-                    "source": "/Users/deborahmaidoh/.gradle/caches/transforms-3/19075c4677e37e538c54d7f745fc8af4/transformed/appcompat-1.4.1/res/values-ldltr-v21/values-ldltr-v21.xml",
+                    "source": "/Users/sreyaaluri/.gradle/caches/transforms-3/19075c4677e37e538c54d7f745fc8af4/transformed/appcompat-1.4.1/res/values-ldltr-v21/values-ldltr-v21.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

@@ -32,7 +32,7 @@
             android:layout_margin="28dp"
             android:fontFamily="sans-serif"
             android:backgroundTint="#8BC34A"
-            android:text=""
+            android:text="Art is Dead by Bo Burnham"
             android:textSize="20dp" />
 
         <!--song 2-->
@@ -68,7 +68,7 @@
             android:layout_margin="28dp"
             android:fontFamily="sans-serif"
             android:backgroundTint="#2196F3"
-            android:text=""
+            android:text="Tokyo Drift by Teriyaki Boyz"
             android:textSize="20dp" />
 
         <!--song 5-->
@@ -80,7 +80,7 @@
             android:layout_margin="28dp"
             android:fontFamily="sans-serif"
             android:backgroundTint="#673AB7"
-            android:text=""
+            android:text="Guī Qù Lái Xī by Huā Zhōu"
             android:textSize="20dp" />
 
         <!--song 6-->
