@@ -2,7 +2,7 @@
 #Sreya and Deborah's repository for our Android labs and projects!
 
 #Git commands for terminal
-cd/your project directory
+#cd/your project directory
  1) git init
  2) git add . or git add ['filename']
  3) git commit -m "My first File"
