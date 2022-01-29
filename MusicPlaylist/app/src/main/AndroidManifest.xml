@@ -10,9 +10,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MusicPlaylist">
         <activity
-            android:name=".yt_activity"
-            android:exported="false" />
-        <activity
             android:name=".Playlist"
             android:exported="false" />
         <activity

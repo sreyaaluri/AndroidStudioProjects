@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
         "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
         "source": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
         "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/mipmap-xxhdpi_ic_launcher.webp.flat",
@@ -38,10 +38,6 @@
     {
         "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/layout_activity_homepage.xml.flat",
         "source": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/src/main/res/layout/activity_homepage.xml"
-    },
-    {
-        "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/layout_activity_yt.xml.flat",
-        "source": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/src/main/res/layout/activity_yt.xml"
     },
     {
         "merged": "/Users/sreyaaluri/Desktop/Spring2022/AndroidProgramming/AndroidStudioProjects/MusicPlaylist/app/build/intermediates/merged_res/debug/mipmap-xhdpi_ic_launcher.webp.flat",

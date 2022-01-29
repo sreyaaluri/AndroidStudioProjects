@@ -19,9 +19,6 @@
         android:testOnly="true"
         android:theme="@style/Theme.MusicPlaylist" >
         <activity
-            android:name="com.example.musicplaylist.yt_activity"
-            android:exported="false" />
-        <activity
             android:name="com.example.musicplaylist.Playlist"
             android:exported="false" />
         <activity
