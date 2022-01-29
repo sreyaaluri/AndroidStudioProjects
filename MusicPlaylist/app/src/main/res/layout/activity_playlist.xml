@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--making the this screen scrollable-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:context=".Playlist">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:text="PLAYLIST"
+            android:fontFamily="sans-serif"
+            android:textSize="18dp"
+            android:textStyle="bold"/>
+
+        <!--song 1-->
+        <Button
+            android:id="@+id/songone"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="28dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#8BC34A"
+            android:text=""
+            android:textSize="20dp" />
+
+        <!--song 2-->
+        <Button
+            android:id="@+id/songtwo"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="28dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#00BCD4"
+            android:text="Yonaguni by Bad Bunny"
+            android:textSize="20dp" />
+
+        <!--song 3-->
+        <Button
+            android:id="@+id/songthree"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="28dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#009688"
+            android:text="Free Mind by Tems"
+            android:textSize="20dp" />
+
+        <!--song 4-->
+        <Button
+            android:id="@+id/songfour"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="28dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#2196F3"
+            android:text=""
+            android:textSize="20dp" />
+
+        <!--song 5-->
+        <Button
+            android:id="@+id/songfive"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:layout_margin="28dp"
+            android:fontFamily="sans-serif"
+            android:backgroundTint="#673AB7"
+            android:text=""
+            android:textSize="20dp" />
+
+        <!--song 6-->
+        <Button
+            android:id="@+id/songsix"
+            android:layout_width="350dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center"
+            android:backgroundTint="#184950"
+            android:text="Moon by Kanye West"
+            android:fontFamily="sans-serif"
+            android:layout_margin="28dp"
+            android:textSize="20dp" />
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,24 @@
+com/example/exercise1_week3/FirstFragment.java
+ com.example.exercise1_week3.FirstFragment
+ com.example.exercise1_week3.FirstFragment$1
+com/example/exercise1_week3/databinding/ContentScreen2Binding.java
+ com.example.exercise1_week3.databinding.ContentScreen2Binding
+com/example/exercise1_week3/databinding/ActivityScreen2Binding.java
+ com.example.exercise1_week3.databinding.ActivityScreen2Binding
+com/example/exercise1_week3/databinding/ActivityScreen3Binding.java
+ com.example.exercise1_week3.databinding.ActivityScreen3Binding
+com/example/exercise1_week3/BuildConfig.java
+ com.example.exercise1_week3.BuildConfig
+com/example/exercise1_week3/Screen2.java
+ com.example.exercise1_week3.Screen2
+com/example/exercise1_week3/databinding/FragmentFirstBinding.java
+ com.example.exercise1_week3.databinding.FragmentFirstBinding
+com/example/exercise1_week3/databinding/FragmentSecondBinding.java
+ com.example.exercise1_week3.databinding.FragmentSecondBinding
+com/example/exercise1_week3/databinding/ActivityMainBinding.java
+ com.example.exercise1_week3.databinding.ActivityMainBinding
+com/example/exercise1_week3/SecondFragment.java
+ com.example.exercise1_week3.SecondFragment
+ com.example.exercise1_week3.SecondFragment$1
+com/example/exercise1_week3/MainActivity.java
+ com.example.exercise1_week3.MainActivity

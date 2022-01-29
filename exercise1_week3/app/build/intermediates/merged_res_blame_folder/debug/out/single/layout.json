@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_second.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/fragment_second.xml"
+    },
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_screen3.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/activity_screen3.xml"
+    },
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_screen2.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/activity_screen2.xml"
+    },
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/activity_main.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/activity_main.xml"
+    },
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/content_screen2.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/content_screen2.xml"
+    },
+    {
+        "merged": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/build/intermediates/incremental/mergeDebugResources/stripped.dir/layout/fragment_first.xml",
+        "source": "/Users/deborahmaidoh/AndroidStudioProjects/exercise1_week3/app/src/main/res/layout/fragment_first.xml"
+    }
+]

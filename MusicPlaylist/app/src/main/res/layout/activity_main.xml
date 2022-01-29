@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <!--username-->
+    <EditText
+        android:id="@+id/usernameTxt"
+        android:layout_width="300dp"
+        android:layout_marginTop="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:ems="10"
+        android:hint="Username"
+        android:fontFamily="sans-serif"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <!--user id-->
+    <EditText
+        android:id="@+id/useridTxt"
+        android:layout_width="300dp"
+        android:layout_marginTop="15dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif"
+        android:ems="10"
+        android:hint="User ID"
+        android:inputType="textPersonName"
+        android:text="" />
+
+    <!--login button-->
+    <Button
+        android:id="@+id/loginBtn"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center"
+        android:fontFamily="sans-serif"
+        android:layout_marginTop="25dp"
+        android:textStyle="bold"
+        android:backgroundTint="#009688"
+        android:text="LOGIN" />
+
+</LinearLayout>
