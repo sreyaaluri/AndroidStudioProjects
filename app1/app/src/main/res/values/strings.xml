@@ -1,0 +1,9 @@
+<!--string resources for activity_main.xml-->
+<resources>
+    <string name="app_name">app1</string>
+    <string name="login_image">Login image</string>
+    <string name="email_or_username">Email or Username</string>
+    <string name="login">Login</string>
+    <string name="remember_password">Remember password</string>
+    <string name="password">Password</string>
+</resources>

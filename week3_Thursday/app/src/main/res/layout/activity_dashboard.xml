@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".Dashboard">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/usertxt"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textSize="34sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/profiletxt"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="Choose your Profile"
+        android:textSize="34sp" />
+
+    <Button
+        android:id="@+id/swbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User1"
+        app:shapeAppearance="@style/TextAppearance.AppCompat.Button" />
+
+    <Button
+        android:id="@+id/atbtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="User2" />
+
+</LinearLayout>
