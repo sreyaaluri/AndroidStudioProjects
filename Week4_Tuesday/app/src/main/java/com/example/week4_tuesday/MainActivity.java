@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,13 +46,20 @@ public class MainActivity extends AppCompatActivity {
 
     public void printYear(View view){
         String classYear = ""; // to store value that should be printed
-        RadioButton selected = (RadioButton) view;
-        if(selected.isChecked()){
-            classYear = selected.getText().toString();
-        }
+
+//        RadioButton selected = (RadioButton) view;
+//        if(selected.isChecked()){
+//            classYear = selected.getText().toString();
+//        }
+
+        // or
+        RadioGroup year = findViewById(R.id.yearBtnGroup);
+        RadioButton selectedYear = findViewById(year.getCheckedRadioButtonId());
+        classYear = selectedYear.getText().toString();
 
         TextView yearMsg = findViewById(R.id.collegeYearMsgTxt);
         yearMsg.setText("You're a cool " + classYear);
+
     }
 
     public void logClick(View view){
