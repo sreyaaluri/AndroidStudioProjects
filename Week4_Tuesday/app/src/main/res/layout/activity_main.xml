@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="39dp"
+        android:text="Please provide your information below:" />
+
+    <TextView
+        android:id="@+id/courseListInfoTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Course List" />
+
+    <CheckBox
+        android:id="@+id/coursePLCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Programming Languages"
+        android:onClick="logClick"/>
+
+    <CheckBox
+        android:id="@+id/courseAPCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Android Programming"
+        android:onClick="logClick" />
+
+    <CheckBox
+        android:id="@+id/courseCombCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Combinatorics"
+        android:onClick="logClick" />
+
+    <CheckBox
+        android:id="@+id/courseGTCB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Game Theory"
+        android:onClick="logClick" />
+
+    <TextView
+        android:id="@+id/collegeYearTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="College Year:" />
+
+    <RadioGroup
+        android:id="@+id/yearBtnGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/freshmanBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Freshman"
+            android:onClick="printYear"/>
+
+        <RadioButton
+            android:id="@+id/sophomoreBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sophomore"
+            android:onClick="printYear"/>
+
+        <RadioButton
+            android:id="@+id/juniorBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Junior"
+            android:onClick="printYear"/>
+
+        <RadioButton
+            android:id="@+id/seniorBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Senior"
+            android:onClick="printYear"/>
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/collegeYearMsgTxt"
+        android:layout_width="match_parent"
+        android:layout_height="38dp" />
+
+    <Button
+        android:id="@+id/submitBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit" />
+
+</LinearLayout>

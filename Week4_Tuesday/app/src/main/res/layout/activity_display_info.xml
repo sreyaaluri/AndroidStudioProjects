@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".DisplayInfo">
+
+    <TextView
+        android:id="@+id/titleTxt"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:text="Your Information" />
+
+    <TextView
+        android:id="@+id/courseListInfoTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Course List:" />
+
+    <TextView
+        android:id="@+id/courseListDispTxt"
+        android:layout_width="match_parent"
+        android:layout_height="95dp" />
+
+    <TextView
+        android:id="@+id/collegeYearInfoTxt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="College Year: " />
+</LinearLayout>
