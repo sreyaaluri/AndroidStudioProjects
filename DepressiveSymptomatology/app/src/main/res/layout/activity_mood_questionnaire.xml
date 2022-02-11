@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".mood_questionnaire">
+
+    <TextView
+        android:id="@+id/titleLbl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Mood"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/subsectionLbl1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="During the past seven days..." />
+
+    <RadioGroup
+        android:id="@+id/moodBtnGrp"
+        android:layout_width="match_parent"
+        android:layout_height="182dp">
+
+        <RadioButton
+            android:id="@+id/zeroMoodRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I do not feel sad." />
+
+        <RadioButton
+            android:id="@+id/oneMoodRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I feel sad less than half the time." />
+
+        <RadioButton
+            android:id="@+id/twoMoodRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I feel sad more than half the time." />
+
+        <RadioButton
+            android:id="@+id/threeMoodRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I feel sad nearly all the time." />
+
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/msgLbl"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+</LinearLayout>

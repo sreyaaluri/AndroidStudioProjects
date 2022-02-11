@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.14387031408308004" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_mood_questionnaire.xml" value="0.17032477773843638" />
         <entry key="app/src/main/res/layout/activity_sleep_questionnaire.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.14130434782608695" />
       </map>

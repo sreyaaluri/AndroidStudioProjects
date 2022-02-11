@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class sleep_questionnaire extends AppCompatActivity {
+public class appetite_questionnaire extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sleep_questionnaire);
+        setContentView(R.layout.activity_appetite_questionnaire);
     }
 }
