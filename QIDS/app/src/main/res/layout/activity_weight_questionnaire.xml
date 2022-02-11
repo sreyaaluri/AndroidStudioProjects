@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--PAGE 7-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".weight_questionnaire">
+
+        <!--instruction-->
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Please complete the section below" />
+
+        <TextView
+            android:id="@+id/duringthepastsevdays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Within the Last Two Weeks, have you experienced..." />
+
+        <!--decreased or increased weight-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            tools:context=".weight_questionnaire">
+
+            <RadioGroup
+                android:id="@+id/weightchoiceRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RadioButton
+                    android:id="@+id/decreasedweightRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Decreased Weight" />
+
+                <RadioButton
+                    android:id="@+id/increasedweightRB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Increased Weight" />
+            </RadioGroup>
+        </LinearLayout>
+        <!--display questionnaire based on choice above-->
+        <!--decreased weight questionnaire-->
+        <RadioGroup
+            android:id="@+id/decrweightgroupRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/zerodecrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have not had a change in my weight." />
+
+            <RadioButton
+                android:id="@+id/onedecrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I feel as if I have had a slight weight loss." />
+
+            <RadioButton
+                android:id="@+id/twodecrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have lost 2 pounds or more." />
+
+            <RadioButton
+                android:id="@+id/threedecrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have lost 5 pounds or more." />
+        </RadioGroup>
+
+        <!--increased weight questionnaire-->
+        <RadioGroup
+            android:id="@+id/incrweightgroupRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/zeroincrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have not had a change in my weight" />
+
+            <RadioButton
+                android:id="@+id/oneincrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I feel as if I have had a slight weight gain." />
+
+            <RadioButton
+                android:id="@+id/twoincrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have gained 2 pounds or more." />
+
+            <RadioButton
+                android:id="@+id/threeincrweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have gained 5 pounds or more." />
+        </RadioGroup>
+    </LinearLayout>
+</ScrollView>

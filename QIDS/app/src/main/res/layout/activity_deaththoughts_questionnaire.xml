@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--PAGE 7-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".deaththoughts_questionnaire">
+
+        <!--instruction-->
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Please complete the section below" />
+
+        <TextView
+            android:id="@+id/duringthepastsevdays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="During the past seven days..." />
+
+        <!--Thoughts of Death or Suicide-->
+        <TextView
+            android:id="@+id/deathcategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="12. Thoughts of Death or Suicide:" />
+
+        <RadioGroup
+            android:id="@+id/deathgroupRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zerodeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I do not think of suicide or death." />
+
+            <RadioButton
+                android:id="@+id/onedeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I feel that life is empty or wonder if it's worth living." />
+
+            <RadioButton
+                android:id="@+id/twodeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I think of suicide or death several times a week for several minutes." />
+
+            <RadioButton
+                android:id="@+id/threedeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I think of suicide or death several times a day in some detail, or I have made specific plans for suicide or have actually tried to take my life." />
+        </RadioGroup>
+
+            <!--error message-->
+            <TextView
+                android:id="@+id/errormsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:layout_gravity="center"/>
+
+            <!--next button-->
+            <Button
+                android:id="@+id/pgsevennextbtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="35dp"
+                android:backgroundTint="#9C27B0"
+                android:text="Next" />
+    </LinearLayout>
+</ScrollView>

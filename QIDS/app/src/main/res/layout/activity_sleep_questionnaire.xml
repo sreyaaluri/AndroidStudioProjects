@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--PAGE 1-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".sleep_questionnaire">
+
+        <!--Hello "user's name"-->
+        <TextView
+            android:id="@+id/hellomsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Hello" />
+
+        <!--instruction-->
+        <TextView
+            android:id="@+id/instruction"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="Please complete each section below" />
+
+        <TextView
+            android:id="@+id/duringthepastsevdays"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textStyle="bold"
+            android:text="During the past seven days..." />
+
+        <!--Falling Asleep-->
+        <TextView
+            android:id="@+id/fallasleepcategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="1. Falling Asleep" />
+
+        <RadioGroup
+            android:id="@+id/sleepgroupRBone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zerosleepRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I never take longer than 30 minutes to fall asleep" />
+
+            <RadioButton
+                android:id="@+id/onesleepRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I take at least 30 minutes to fall asleep, less than half the time." />
+
+            <RadioButton
+                android:id="@+id/twosleepRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I take at least 30 minutes to fall asleep, more than half the time." />
+
+            <RadioButton
+                android:id="@+id/threesleepRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I take more than 60 minutes to fall asleep, more than half the time." />
+        </RadioGroup>
+
+        <!--Sleep During the Night-->
+        <TextView
+            android:id="@+id/sleepduringnightcategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="2. Sleep During the Night:" />
+
+        <RadioGroup
+            android:id="@+id/sleepgroupRBtwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zerosleepatnightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I do not wake up at night." />
+
+            <RadioButton
+                android:id="@+id/onesleepatnightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I have a restless, light sleep with a few brief awakenings each night." />
+
+            <RadioButton
+                android:id="@+id/twosleepatnightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I wake up at least once a night, but I got back to sleep easily." />
+
+            <RadioButton
+                android:id="@+id/threesleepatnightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I awaken more than once a night and stay awake for 20 minutes or more, more than half the time." />
+        </RadioGroup>
+
+        <!--Waking Up Too Early-->
+        <TextView
+            android:id="@+id/wakeearlycategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="3. Waking Up Too Early:" />
+
+        <RadioGroup
+            android:id="@+id/sleepgroupRBthree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zerowakeearlyRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most of the time, I awaken no more than 30 minutes before I need to get up." />
+
+            <RadioButton
+                android:id="@+id/onewakeearlyRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="More than half the time, I awaken more than 30 minutes before I need to get up." />
+
+            <RadioButton
+                android:id="@+id/twowakeearlyRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I almost always awaken at least one hour or so before I need to, but I go back to sleep eventually." />
+
+            <RadioButton
+                android:id="@+id/threewakeearlyRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I awaken at least one hour before I need to, and can't go back to sleep." />
+        </RadioGroup>
+
+        <!--Sleeping Too Much-->
+        <TextView
+            android:id="@+id/sleepmuchcategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:text="4. Sleeping Too Much:" />
+
+        <RadioGroup
+            android:id="@+id/sleepgroupRBfour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zerosleepmuchRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I sleep no longer than 7-8 hours/night, without napping during the day." />
+
+            <RadioButton
+                android:id="@+id/onesleepmuchRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I sleep no longer than 10 hours in a 24-hour period including naps." />
+
+            <RadioButton
+                android:id="@+id/twosleepmuchRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I sleep no longer than 12 hours in a 24-hour period including hours" />
+
+            <RadioButton
+                android:id="@+id/threesleepmuchRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I sleep longer than 12 hours in a 24-hour period including hours"/>
+        </RadioGroup>
+
+        <!--error message-->
+        <TextView
+            android:id="@+id/errormsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <!--next button-->
+        <Button
+            android:id="@+id/pgonenextbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="#9C27B0"
+            android:text="Next" />
+
+    </LinearLayout>
+</ScrollView>
