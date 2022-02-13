@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -90,10 +88,16 @@ public class appetite_questionnaire extends AppCompatActivity {
     // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered(){
         RadioGroup apptGrp = findViewById(R.id.appetiteBtnGrp);
-        RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
-        RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
-        return(apptGrp.getCheckedRadioButtonId() != -1
-                && (incrapptGrp.getCheckedRadioButtonId() != -1 || decrapptGrp.getCheckedRadioButtonId() != -1));
+        if(increased){
+            RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
+            return(apptGrp.getCheckedRadioButtonId() != -1
+                    && incrapptGrp.getCheckedRadioButtonId() != -1);
+        }
+        else{
+            RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
+            return(apptGrp.getCheckedRadioButtonId() != -1
+                    && decrapptGrp.getCheckedRadioButtonId() != -1);
+        }
     }
 
     // updating variables and display if user appetite increased

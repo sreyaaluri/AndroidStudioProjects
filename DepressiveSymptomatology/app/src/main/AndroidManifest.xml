@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DepressiveSymptomatologyResearch">
         <activity
+            android:name=".Information"
+            android:exported="false" />
+        <activity
             android:name=".End"
             android:exported="false" />
         <activity

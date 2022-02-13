@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--first page-->
+<!--home page-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,24 +8,37 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-  <EditText
-        android:id="@+id/myname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="200dp"
-        android:ems="10"
-        android:hint="Enter your name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        android:text="" />
+  <!--title-->
+  <TextView
+      android:id="@+id/titleLbl"
+      android:layout_width="match_parent"
+      android:layout_height="56dp"
+      android:background="#009688"
+      android:gravity="center"
+      android:text="Home"
+      android:textColor="#FFFFFF"
+      android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/startbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#6F00F8"
-        android:text="Start" />
+  <!--input name-->
+  <EditText
+      android:id="@+id/myname"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="250dp"
+      android:ems="10"
+      android:hint="Enter your name"
+      android:inputType="textPersonName"
+      android:minHeight="48dp"
+      android:text="" />
+
+  <!--next button-->
+  <Button
+      android:id="@+id/startbutton"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_gravity="center"
+      android:layout_marginTop="50dp"
+      android:backgroundTint="#6F00F8"
+      android:text="Next" />
 </LinearLayout>

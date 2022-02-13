@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -89,10 +88,16 @@ public class weight_questionnaire extends AppCompatActivity {
     // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup weightGrp = findViewById(R.id.weightchoiceRB);
-        RadioGroup incrweightGrp = findViewById(R.id.incrweightgroupRB);
-        RadioGroup decrweightGrp = findViewById(R.id.decrweightgroupRB);
-        return (weightGrp.getCheckedRadioButtonId() != -1
-                && (incrweightGrp.getCheckedRadioButtonId() != -1 || decrweightGrp.getCheckedRadioButtonId() != -1));
+        if(increased){
+            RadioGroup incrweightGrp = findViewById(R.id.incrweightgroupRB);
+            return(weightGrp.getCheckedRadioButtonId() != -1
+                    && incrweightGrp.getCheckedRadioButtonId() != -1);
+        }
+        else{
+            RadioGroup decrweightGrp = findViewById(R.id.decrweightgroupRB);
+            return(weightGrp.getCheckedRadioButtonId() != -1
+                    && decrweightGrp.getCheckedRadioButtonId() != -1);
+        }
     }
 
     // updating variables and display if user weight increased
