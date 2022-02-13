@@ -18,16 +18,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        EditText mynameTxt = findViewById(R.id.myname);
+        EditText mynameTxt = findViewById(R.id.myname); // TODO get name
 
         Button startbutton = findViewById(R.id.startbutton);
-
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!mynameTxt.getText().equals("")){
                     myname = mynameTxt.getText().toString();
 
+                    // testing
                     Intent startIntent = new Intent(getApplicationContext(), sleep_questionnaire.class);
                     startIntent.putExtra(MYNAME, myname);
                     startIntent.putExtra("SCORE", "0");

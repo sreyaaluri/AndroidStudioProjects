@@ -10,13 +10,12 @@ import android.widget.Button;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class mood_questionnaire extends AppCompatActivity {
+public class interest_questionnaire extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mood_questionnaire);
-        Log.d("LAUNCH_CHECK", "mood activity launched"); // testing
+        setContentView(R.layout.activity_interest_questionnaire);
 
         // setting click listener on submit button
         Button nextBtn = findViewById(R.id.nextBtn);
@@ -24,14 +23,14 @@ public class mood_questionnaire extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 boolean answered = checkAnswered();
-                if(answered) { // navigate to next step
-                    // update score
-                    int moodScore = getMoodScore(); // get score
-                    int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE")); // get total score
-                    total_score += moodScore; // add to total score
+                if(answered) { // navigate to next page
+                    // get scores (no update in this page)
+                    int interestScore = getInterestScore(); // getScore
+                    int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
+                    total_score += interestScore; // add to total score
 
                     // launch next page
-                    Intent next = new Intent(getApplicationContext(), appetite_questionnaire.class);
+                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
@@ -44,29 +43,28 @@ public class mood_questionnaire extends AppCompatActivity {
         });
     }
 
-    private int getMoodScore() {
-        RadioGroup moodGrp = findViewById(R.id.moodBtnGrp);
-        int moodValue = 0;
-        switch(moodGrp.getCheckedRadioButtonId()) {
-            case R.id.zeroMoodRB:
-                moodValue = 0;
+    private int getInterestScore() {
+        RadioGroup interestGrp = findViewById(R.id.interestBtnGrp);
+        int interestValue = 0;
+        switch(interestGrp.getCheckedRadioButtonId()) {
+            case R.id.zeroInterestRB:
+                interestValue = 0;
                 break;
-            case R.id.oneMoodRB:
-                moodValue = 1;
+            case R.id.oneInterestRB:
+                interestValue = 1;
                 break;
-            case R.id.twoMoodRB:
-                moodValue = 2;
+            case R.id.twoInterestRB:
+                interestValue = 2;
                 break;
-            case R.id.threeMoodRB:
-                moodValue = 3;
+            case R.id.threeInterestRB:
+                interestValue = 3;
                 break;
         }
-        return moodValue;
+        return interestValue;
     }
 
     private boolean checkAnswered() {
-        RadioGroup moodGrp = findViewById(R.id.moodBtnGrp);
-        return(moodGrp.getCheckedRadioButtonId() != -1);
+        RadioGroup interestGrp = findViewById(R.id.interestBtnGrp);
+        return(interestGrp.getCheckedRadioButtonId() != -1);
     }
-
 }

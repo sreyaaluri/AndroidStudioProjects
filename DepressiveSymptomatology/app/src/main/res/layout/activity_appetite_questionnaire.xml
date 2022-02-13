@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".appetite_questionnaire">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/titleLbl"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:gravity="center"
+        android:text="Appetite"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/subsectionLbl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="During the past seven days my appetite has..." />
+
+    <RadioGroup
+        android:id="@+id/appetiteBtnGrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/decreasedRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Decreased"
+            android:onClick="setDecreased" />
+
+        <RadioButton
+            android:id="@+id/increasedRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Increased"
+            android:onClick="setIncreased" />
+
+        <TextView
+            android:id="@+id/msgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+
+</LinearLayout>

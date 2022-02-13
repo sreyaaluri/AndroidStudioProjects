@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".psychomotorchanges_questionnaire">
+
+    <TextView
+        android:id="@+id/titleLbl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:gravity="center"
+        android:text="Psychomotor Changes"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/subsectionLbl"
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+        android:text="During the past seven days..." />
+
+    <TextView
+        android:id="@+id/subsectionLbl1"
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:gravity="bottom"
+        android:text="Feeling Slowed Down:" />
+
+    <RadioGroup
+        android:id="@+id/slowedBtnGrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/zeroSlowRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="There is no from usual in how interested I am in other people or activities." />
+
+        <RadioButton
+            android:id="@+id/oneSlowRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I notice that I am less interested in people or activities." />
+
+        <RadioButton
+            android:id="@+id/twoSlowRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I find I have interest in only one or two of my formerly pursued activities." />
+
+        <RadioButton
+            android:id="@+id/threeSlowRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I have virtually no interest in formerly pursued activities." />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/subsectionLbl2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="bottom"
+        android:text="Feeling Restless:" />
+
+    <RadioGroup
+        android:id="@+id/restlessBtnGrp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/zeroRestlessRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="There is no from usual in how interested I am in other people or activities." />
+
+        <RadioButton
+            android:id="@+id/oneRestlessRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I notice that I am less interested in people or activities." />
+
+        <RadioButton
+            android:id="@+id/twoRestlessRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I find I have interest in only one or two of my formerly pursued activities." />
+
+        <RadioButton
+            android:id="@+id/threeRestlessRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="I have virtually no interest in formerly pursued activities." />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/msgLbl"
+        android:layout_width="match_parent"
+        android:layout_height="40dp" />
+
+    <Button
+        android:id="@+id/nextBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next" />
+
+</LinearLayout>

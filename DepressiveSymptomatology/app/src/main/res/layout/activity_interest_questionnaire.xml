@@ -5,51 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mood_questionnaire">
+    tools:context=".interest_questionnaire">
 
     <TextView
         android:id="@+id/titleLbl"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
-        android:text="Mood"
+        android:text="Interest"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/subsectionLbl1"
+        android:id="@+id/subsectionLbl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="During the past seven days..." />
 
     <RadioGroup
-        android:id="@+id/moodBtnGrp"
+        android:id="@+id/interestBtnGrp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/zeroMoodRB"
+            android:id="@+id/zeroInterestRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I do not feel sad." />
+            android:text="There is no from usual in how interested I am in other people or activities." />
 
         <RadioButton
-            android:id="@+id/oneMoodRB"
+            android:id="@+id/oneInterestRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad less than half the time." />
+            android:text="I notice that I am less interested in people or activities." />
 
         <RadioButton
-            android:id="@+id/twoMoodRB"
+            android:id="@+id/twoInterestRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad more than half the time." />
+            android:text="I find I have interest in only one or two of my formerly pursued activities." />
 
         <RadioButton
-            android:id="@+id/threeMoodRB"
+            android:id="@+id/threeInterestRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad nearly all the time." />
-
+            android:text="I have virtually no interest in formerly pursued activities." />
     </RadioGroup>
 
     <TextView

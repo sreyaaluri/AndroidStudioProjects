@@ -5,51 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mood_questionnaire">
+    tools:context=".decreased_appetite_questionnaire">
 
     <TextView
         android:id="@+id/titleLbl"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
-        android:text="Mood"
+        android:text="Decreased Appetite"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/subsectionLbl1"
+        android:id="@+id/subsectionLbl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="During the past seven days..." />
 
     <RadioGroup
-        android:id="@+id/moodBtnGrp"
+        android:id="@+id/appetiteBtnGrp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/zeroMoodRB"
+            android:id="@+id/zeroApptRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I do not feel sad." />
+            android:text="There is no change in my usual appetite." />
 
         <RadioButton
-            android:id="@+id/oneMoodRB"
+            android:id="@+id/oneApptRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad less than half the time." />
+            android:text="I eat somewhat less often or lesser amounts of food than usual." />
 
         <RadioButton
-            android:id="@+id/twoMoodRB"
+            android:id="@+id/twoApptRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad more than half the time." />
+            android:text="I eat much less than usual and only with personal effort." />
 
         <RadioButton
-            android:id="@+id/threeMoodRB"
+            android:id="@+id/threeApptRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad nearly all the time." />
-
+            android:text="I rarely eat within a 24-hour period, and only with extreme personal effort or when others persuade me to." />
     </RadioGroup>
 
     <TextView

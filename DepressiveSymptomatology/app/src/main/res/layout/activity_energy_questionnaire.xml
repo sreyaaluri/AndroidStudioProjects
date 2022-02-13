@@ -5,51 +5,50 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".mood_questionnaire">
+    tools:context=".energy_questionnaire">
 
     <TextView
         android:id="@+id/titleLbl"
         android:layout_width="match_parent"
         android:layout_height="45dp"
         android:gravity="center"
-        android:text="Mood"
+        android:text="Energy"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/subsectionLbl1"
+        android:id="@+id/subsectionLbl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="During the past seven days..." />
 
     <RadioGroup
-        android:id="@+id/moodBtnGrp"
+        android:id="@+id/energyBtnGrp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <RadioButton
-            android:id="@+id/zeroMoodRB"
+            android:id="@+id/zeroEnergyRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I do not feel sad." />
+            android:text="There is no change in my usual level of energy." />
 
         <RadioButton
-            android:id="@+id/oneMoodRB"
+            android:id="@+id/oneEnergyRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad less than half the time." />
+            android:text="I get tired more easily than usual." />
 
         <RadioButton
-            android:id="@+id/twoMoodRB"
+            android:id="@+id/twoEnergyRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad more than half the time." />
+            android:text="I have to make a big effort to start or finish my usual daily activities (for example, shopping, homework, cooking, or going to work)." />
 
         <RadioButton
-            android:id="@+id/threeMoodRB"
+            android:id="@+id/threeEnergyRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="I feel sad nearly all the time." />
-
+            android:text="I really cannot carry out most of my usual daily activities because I just don't have the energy." />
     </RadioGroup>
 
     <TextView

@@ -10,6 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DepressiveSymptomatologyResearch">
         <activity
+            android:name=".End"
+            android:exported="false" />
+        <activity
+            android:name=".psychomotorchanges_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".energy_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".interest_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".weight_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".decreased_appetite_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".increased_appetite_questionnaire"
+            android:exported="false" />
+        <activity
             android:name=".appetite_questionnaire"
             android:exported="false" />
         <activity
