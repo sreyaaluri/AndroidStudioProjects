@@ -33,7 +33,7 @@ public class sleep_questionnaire extends AppCompatActivity {
                     total_score += Math.max(Math.max(Math.max(fallingScore, nightScore), wakingScore), overScore); // add to total score
 
                     // launch next page
-                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
+                    Intent next = new Intent(getApplicationContext(), mood_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
@@ -48,7 +48,7 @@ public class sleep_questionnaire extends AppCompatActivity {
 
     private int getFallingScore() {
         RadioGroup sleepGrp = findViewById(R.id.fallingSleepBtnGrp);
-        int sleepValue = 0;
+        int sleepValue = -1;
         switch(sleepGrp.getCheckedRadioButtonId()) {
             case R.id.zerofallsleepRB:
                 sleepValue = 0;
@@ -68,7 +68,7 @@ public class sleep_questionnaire extends AppCompatActivity {
 
     private int getNightScore() {
         RadioGroup sleepGrp = findViewById(R.id.nightSleepBtnGrp);
-        int sleepValue = 0;
+        int sleepValue = -1;
         switch(sleepGrp.getCheckedRadioButtonId()) {
             case R.id.zeronightsleepRB:
                 sleepValue = 0;
@@ -88,7 +88,7 @@ public class sleep_questionnaire extends AppCompatActivity {
 
     private int getWakingScore() {
         RadioGroup sleepGrp = findViewById(R.id.wakeupBtnGrp);
-        int sleepValue = 0;
+        int sleepValue = -1;
         switch(sleepGrp.getCheckedRadioButtonId()) {
             case R.id.zerowakeearlyRB:
                 sleepValue = 0;
@@ -108,7 +108,7 @@ public class sleep_questionnaire extends AppCompatActivity {
 
     private int getOversleepScore() {
         RadioGroup sleepGrp = findViewById(R.id.sleepTooMuchBtnGrp);
-        int sleepValue = 0;
+        int sleepValue = -1;
         switch(sleepGrp.getCheckedRadioButtonId()) {
             case R.id.zeromuchsleepRB:
                 sleepValue = 0;

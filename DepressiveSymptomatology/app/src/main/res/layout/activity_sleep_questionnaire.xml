@@ -203,7 +203,7 @@
             android:id="@+id/msgLbl"
             android:layout_width="match_parent"
             android:layout_height="33dp"
-            android:layout_gravity="center"
+            android:gravity="center"
             android:textStyle="bold" />
 
         <!--next button-->

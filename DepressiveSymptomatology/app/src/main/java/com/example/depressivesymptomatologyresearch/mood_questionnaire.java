@@ -46,7 +46,7 @@ public class mood_questionnaire extends AppCompatActivity {
 
     private int getMoodScore() {
         RadioGroup moodGrp = findViewById(R.id.moodBtnGrp);
-        int moodValue = 0;
+        int moodValue = -1;
         switch(moodGrp.getCheckedRadioButtonId()) {
             case R.id.zeroMoodRB:
                 moodValue = 0;

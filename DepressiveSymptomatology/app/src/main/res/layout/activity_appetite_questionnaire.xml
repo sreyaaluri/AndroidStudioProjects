@@ -127,7 +127,7 @@
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:textStyle="bold"
-            android:layout_gravity="center" />
+            android:gravity="center" />
 
         <!--next button-->
         <Button

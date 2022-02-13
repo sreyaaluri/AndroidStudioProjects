@@ -45,9 +45,9 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
     }
 
     private int getSlowedScore() {
-        RadioGroup interestGrp = findViewById(R.id.slowedBtnGrp);
-        int slowedValue = 0;
-        switch(interestGrp.getCheckedRadioButtonId()) {
+        RadioGroup pmGrp = findViewById(R.id.slowedBtnGrp);
+        int slowedValue = -1;
+        switch(pmGrp.getCheckedRadioButtonId()) {
             case R.id.zeroSlowRB:
                 slowedValue = 0;
                 break;
@@ -65,9 +65,9 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
     }
 
     private int getRestlessScore() {
-        RadioGroup interestGrp = findViewById(R.id.restlessBtnGrp);
-        int restlessValue = 0;
-        switch(interestGrp.getCheckedRadioButtonId()) {
+        RadioGroup pmGrp = findViewById(R.id.restlessBtnGrp);
+        int restlessValue = -1;
+        switch(pmGrp.getCheckedRadioButtonId()) {
             case R.id.zeroRestlessRB:
                 restlessValue = 0;
                 break;

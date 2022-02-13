@@ -45,7 +45,7 @@ public class interest_questionnaire extends AppCompatActivity {
 
     private int getInterestScore() {
         RadioGroup interestGrp = findViewById(R.id.interestBtnGrp);
-        int interestValue = 0;
+        int interestValue = -1;
         switch(interestGrp.getCheckedRadioButtonId()) {
             case R.id.zeroInterestRB:
                 interestValue = 0;

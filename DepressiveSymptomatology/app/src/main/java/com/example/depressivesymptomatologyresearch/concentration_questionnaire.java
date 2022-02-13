@@ -30,7 +30,7 @@ public class concentration_questionnaire extends AppCompatActivity {
                     total_score += concentrationScore; // add to total score
 
                     // launch next page
-                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
+                    Intent next = new Intent(getApplicationContext(), selfview_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
@@ -45,7 +45,7 @@ public class concentration_questionnaire extends AppCompatActivity {
 
     private int getConcentrationScore() {
         RadioGroup interestGrp = findViewById(R.id.concentrationgroupRB);
-        int concentrationValue = 0;
+        int concentrationValue = -1;
         switch(interestGrp.getCheckedRadioButtonId()) {
             case R.id.zeroconcentrationRB:
                 concentrationValue = 0;

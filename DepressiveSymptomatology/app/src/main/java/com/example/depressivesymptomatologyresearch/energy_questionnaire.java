@@ -45,7 +45,7 @@ public class energy_questionnaire extends AppCompatActivity {
 
     private int getEnergyScore() {
         RadioGroup energyGrp = findViewById(R.id.energyBtnGrp);
-        int energyValue = 0;
+        int energyValue = -1;
         switch(energyGrp.getCheckedRadioButtonId()) {
             case R.id.zeroEnergyRB:
                 energyValue = 0;

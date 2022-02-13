@@ -30,7 +30,7 @@ public class selfview_questionnaire extends AppCompatActivity {
                     total_score += selfScore; // add to total score
 
                     // launch next page
-                    Intent next = new Intent(getApplicationContext(), End.class);
+                    Intent next = new Intent(getApplicationContext(), deaththoughts_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
@@ -45,7 +45,7 @@ public class selfview_questionnaire extends AppCompatActivity {
 
     private int getSelfViewScore() {
         RadioGroup selfviewGrp = findViewById(R.id.viewmyselfgroupRB);
-        int viewValue = 0;
+        int viewValue = -1;
         switch(selfviewGrp.getCheckedRadioButtonId()) {
             case R.id.zeroviewmyselfRB:
                 viewValue = 0;

@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
                     myname = mynameTxt.getText().toString();
 
                     // testing
-                    Intent startIntent = new Intent(getApplicationContext(), appetite_questionnaire.class);
+                    Intent startIntent = new Intent(getApplicationContext(), sleep_questionnaire.class);
                     startIntent.putExtra(MYNAME, myname);
                     startIntent.putExtra("SCORE", "0");
 

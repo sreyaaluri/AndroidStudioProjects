@@ -30,7 +30,7 @@ public class deaththoughts_questionnaire extends AppCompatActivity {
                     total_score += thoughtsScore; // add to total score
 
                     // launch next page
-                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
+                    Intent next = new Intent(getApplicationContext(), interest_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
@@ -45,7 +45,7 @@ public class deaththoughts_questionnaire extends AppCompatActivity {
 
     private int getThoughtsScore() {
         RadioGroup interestGrp = findViewById(R.id.deathgroupRB);
-        int thoughtsValue = 0;
+        int thoughtsValue = -1;
         switch(interestGrp.getCheckedRadioButtonId()) {
             case R.id.zerodeathRB:
                 thoughtsValue = 0;

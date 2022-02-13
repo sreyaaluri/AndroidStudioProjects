@@ -5,7 +5,7 @@
       <map>
         <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_concentration_questionnaire.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_deaththoughts_questionnaire.xml" value="0.2688129982302598" />
+        <entry key="app/src/main/res/layout/activity_deaththoughts_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_decreased_appetite_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_end.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_energy_questionnaire.xml" value="0.1" />
@@ -15,7 +15,7 @@
         <entry key="app/src/main/res/layout/activity_mood_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_psychomotorchanges_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_selfview_questionnaire.xml" value="0.1617675592489269" />
-        <entry key="app/src/main/res/layout/activity_sleep_questionnaire.xml" value="0.26309794410696463" />
+        <entry key="app/src/main/res/layout/activity_sleep_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_weight_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.14130434782608695" />
       </map>
