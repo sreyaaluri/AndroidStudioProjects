@@ -43,6 +43,7 @@ public class deaththoughts_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getThoughtsScore() {
         RadioGroup interestGrp = findViewById(R.id.deathgroupRB);
         int thoughtsValue = -1;
@@ -63,6 +64,7 @@ public class deaththoughts_questionnaire extends AppCompatActivity {
         return thoughtsValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup deathGrp = findViewById(R.id.deathgroupRB);
         return(deathGrp.getCheckedRadioButtonId() != -1);

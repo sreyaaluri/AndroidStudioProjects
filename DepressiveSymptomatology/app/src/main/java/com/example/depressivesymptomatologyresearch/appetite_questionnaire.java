@@ -48,6 +48,7 @@ public class appetite_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getAppetiteScore() {
         int apptValue = -1;
         if(increased){
@@ -86,6 +87,7 @@ public class appetite_questionnaire extends AppCompatActivity {
         return apptValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered(){
         RadioGroup apptGrp = findViewById(R.id.appetiteBtnGrp);
         RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
@@ -94,6 +96,7 @@ public class appetite_questionnaire extends AppCompatActivity {
                 && (incrapptGrp.getCheckedRadioButtonId() != -1 || decrapptGrp.getCheckedRadioButtonId() != -1));
     }
 
+    // updating variables and display if user appetite increased
     public void setIncreased(View view) {
         increased = true;
         RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
@@ -102,6 +105,7 @@ public class appetite_questionnaire extends AppCompatActivity {
         incrapptGrp.setVisibility(incrapptGrp.VISIBLE);
     }
 
+    // updating variables and display if user appetite decreased
     public void setDecreased(View view) {
         increased = false;
         RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);

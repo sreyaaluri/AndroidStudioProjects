@@ -43,6 +43,7 @@ public class selfview_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getSelfViewScore() {
         RadioGroup selfviewGrp = findViewById(R.id.viewmyselfgroupRB);
         int viewValue = -1;
@@ -63,6 +64,7 @@ public class selfview_questionnaire extends AppCompatActivity {
         return viewValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup selfviewGrp = findViewById(R.id.viewmyselfgroupRB);
         return(selfviewGrp.getCheckedRadioButtonId() != -1);

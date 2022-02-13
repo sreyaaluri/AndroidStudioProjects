@@ -12,6 +12,7 @@ public class End extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end);
 
+        // display total QIDS score
         int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
         TextView scoreLbl = findViewById(R.id.scoreLbl);
         scoreLbl.setText(""+total_score);

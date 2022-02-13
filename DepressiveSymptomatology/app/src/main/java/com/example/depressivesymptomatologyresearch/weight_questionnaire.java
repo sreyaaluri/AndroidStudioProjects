@@ -47,6 +47,7 @@ public class weight_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getWeightScore() {
         int weightValue = -1;
         if(increased){
@@ -85,6 +86,7 @@ public class weight_questionnaire extends AppCompatActivity {
         return weightValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup weightGrp = findViewById(R.id.weightchoiceRB);
         RadioGroup incrweightGrp = findViewById(R.id.incrweightgroupRB);
@@ -93,6 +95,7 @@ public class weight_questionnaire extends AppCompatActivity {
                 && (incrweightGrp.getCheckedRadioButtonId() != -1 || decrweightGrp.getCheckedRadioButtonId() != -1));
     }
 
+    // updating variables and display if user weight increased
     public void setIncreased(View view) {
         increased = true;
         RadioGroup decrweightGroup = findViewById(R.id.decrweightgroupRB);
@@ -101,6 +104,7 @@ public class weight_questionnaire extends AppCompatActivity {
         decrweightGroup.setVisibility(decrweightGroup.INVISIBLE);
     }
 
+    // updating variables and display if user weight decreased
     public void setDecreased(View view) {
         increased = false;
         RadioGroup decrweightGroup = findViewById(R.id.decrweightgroupRB);

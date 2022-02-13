@@ -44,6 +44,7 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getSlowedScore() {
         RadioGroup pmGrp = findViewById(R.id.slowedBtnGrp);
         int slowedValue = -1;
@@ -64,6 +65,7 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
         return slowedValue;
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getRestlessScore() {
         RadioGroup pmGrp = findViewById(R.id.restlessBtnGrp);
         int restlessValue = -1;
@@ -84,6 +86,7 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
         return restlessValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup slowedGrp = findViewById(R.id.slowedBtnGrp);
         RadioGroup restlessGrp = findViewById(R.id.restlessBtnGrp);

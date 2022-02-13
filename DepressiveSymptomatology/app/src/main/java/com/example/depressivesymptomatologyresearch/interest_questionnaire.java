@@ -43,6 +43,7 @@ public class interest_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getInterestScore() {
         RadioGroup interestGrp = findViewById(R.id.interestBtnGrp);
         int interestValue = -1;
@@ -63,6 +64,7 @@ public class interest_questionnaire extends AppCompatActivity {
         return interestValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup interestGrp = findViewById(R.id.interestBtnGrp);
         return(interestGrp.getCheckedRadioButtonId() != -1);

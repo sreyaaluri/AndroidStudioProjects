@@ -46,6 +46,7 @@ public class sleep_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getFallingScore() {
         RadioGroup sleepGrp = findViewById(R.id.fallingSleepBtnGrp);
         int sleepValue = -1;
@@ -66,6 +67,7 @@ public class sleep_questionnaire extends AppCompatActivity {
         return sleepValue;
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getNightScore() {
         RadioGroup sleepGrp = findViewById(R.id.nightSleepBtnGrp);
         int sleepValue = -1;
@@ -86,6 +88,7 @@ public class sleep_questionnaire extends AppCompatActivity {
         return sleepValue;
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getWakingScore() {
         RadioGroup sleepGrp = findViewById(R.id.wakeupBtnGrp);
         int sleepValue = -1;
@@ -106,6 +109,7 @@ public class sleep_questionnaire extends AppCompatActivity {
         return sleepValue;
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getOversleepScore() {
         RadioGroup sleepGrp = findViewById(R.id.sleepTooMuchBtnGrp);
         int sleepValue = -1;
@@ -126,6 +130,7 @@ public class sleep_questionnaire extends AppCompatActivity {
         return sleepValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup fallingSleepGrp = findViewById(R.id.fallingSleepBtnGrp);
         RadioGroup nightSleepGrp = findViewById(R.id.nightSleepBtnGrp);

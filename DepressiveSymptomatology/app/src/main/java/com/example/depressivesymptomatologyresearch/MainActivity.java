@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         EditText mynameTxt = findViewById(R.id.myname);
 
+        // adding on click listener to start button
         Button startbutton = findViewById(R.id.startbutton);
         startbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -29,11 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 if(!mynameTxt.getText().equals("")){
                     myname = mynameTxt.getText().toString();
 
-                    // testing
+                    // launching start of survey
                     Intent startIntent = new Intent(getApplicationContext(), sleep_questionnaire.class);
                     startIntent.putExtra(MYNAME, myname);
                     startIntent.putExtra("SCORE", "0");
-
                     startActivity(startIntent);
                 }
             }

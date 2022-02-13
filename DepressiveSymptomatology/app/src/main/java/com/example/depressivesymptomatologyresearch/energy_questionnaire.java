@@ -43,6 +43,7 @@ public class energy_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getEnergyScore() {
         RadioGroup energyGrp = findViewById(R.id.energyBtnGrp);
         int energyValue = -1;
@@ -63,6 +64,7 @@ public class energy_questionnaire extends AppCompatActivity {
         return energyValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup energyGrp = findViewById(R.id.energyBtnGrp);
         return(energyGrp.getCheckedRadioButtonId() != -1);

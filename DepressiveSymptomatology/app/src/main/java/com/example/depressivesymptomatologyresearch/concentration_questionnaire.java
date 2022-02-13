@@ -43,6 +43,7 @@ public class concentration_questionnaire extends AppCompatActivity {
         });
     }
 
+    // returns the QIDS score for this section based on user's selection
     private int getConcentrationScore() {
         RadioGroup interestGrp = findViewById(R.id.concentrationgroupRB);
         int concentrationValue = -1;
@@ -63,6 +64,7 @@ public class concentration_questionnaire extends AppCompatActivity {
         return concentrationValue;
     }
 
+    // returns True if all questions on current page have been answered; else returns False
     private boolean checkAnswered() {
         RadioGroup concentrationGrp = findViewById(R.id.concentrationgroupRB);
         return(concentrationGrp.getCheckedRadioButtonId() != -1);
