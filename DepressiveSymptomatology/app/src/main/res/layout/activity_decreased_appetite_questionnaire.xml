@@ -1,65 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--PAGE 3-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".decreased_appetite_questionnaire">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <TextView
-        android:id="@+id/titleLbl"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="Decreased Appetite"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".decreased_appetite_questionnaire">
 
-    <TextView
-        android:id="@+id/subsectionLbl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="During the past seven days..." />
+        <TextView
+            android:id="@+id/titleLbl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:gravity="center"
+            android:text="Decreased Appetite"
+            android:background="#009688"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
-    <RadioGroup
-        android:id="@+id/appetiteBtnGrp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/subsectionLbl"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12sp"
+            android:text=" During the past seven days..."
+            android:textColor="#4B4F51"
+            android:textSize="16sp" />
 
-        <RadioButton
-            android:id="@+id/zeroApptRB"
+        <!--Interest Options-->
+        <RadioGroup
+            android:id="@+id/appetiteBtnGrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zeroApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There is no change in my usual appetite." />
+
+            <RadioButton
+                android:id="@+id/oneApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I eat somewhat less often or lesser amounts of food than usual." />
+
+            <RadioButton
+                android:id="@+id/twoApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I eat much less than usual and only with personal effort." />
+
+            <RadioButton
+                android:id="@+id/threeApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I rarely eat within a 24-hour period, and only with extreme personal effort or when others persuade me to." />
+        </RadioGroup>
+
+        <!--error message-->
+        <TextView
+            android:id="@+id/msgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+        <!--next button-->
+        <Button
+            android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="There is no change in my usual appetite." />
+            android:text="Next" />
 
-        <RadioButton
-            android:id="@+id/oneApptRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I eat somewhat less often or lesser amounts of food than usual." />
-
-        <RadioButton
-            android:id="@+id/twoApptRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I eat much less than usual and only with personal effort." />
-
-        <RadioButton
-            android:id="@+id/threeApptRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I rarely eat within a 24-hour period, and only with extreme personal effort or when others persuade me to." />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/msgLbl"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
-
-    <Button
-        android:id="@+id/nextBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

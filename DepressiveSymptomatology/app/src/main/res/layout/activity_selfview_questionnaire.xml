@@ -13,31 +13,28 @@
         android:orientation="vertical"
         tools:context=".selfview_questionnaire">
 
-        <!--instruction-->
+        <!--title-->
         <TextView
-            android:id="@+id/instruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="Please complete the section below" />
+            android:id="@+id/titleLbl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#009688"
+            android:gravity="center"
+            android:text="Self-View"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/duringthepastsevdays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="During the past seven days..." />
+            android:id="@+id/subsectionLbl"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12sp"
+            android:text=" During the past seven days..."
+            android:textColor="#4B4F51"
+            android:textSize="16sp" />
 
         <!--View of Myself-->
-        <TextView
-            android:id="@+id/viewmyselfcategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="11. View of Myself:" />
-
         <RadioGroup
             android:id="@+id/viewmyselfgroupRB"
             android:layout_width="match_parent"
@@ -68,22 +65,21 @@
                 android:text="I think almost constantly about major and minor defects in myself." />
         </RadioGroup>
 
-            <!--error message-->
-            <TextView
-                android:id="@+id/errormsg"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:layout_gravity="center"/>
+        <!--error message-->
+        <TextView
+            android:id="@+id/errormsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
 
-            <!--next button-->
-            <Button
-                android:id="@+id/pgsixnextbtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="35dp"
-                android:backgroundTint="#9C27B0"
-                android:text="Next" />
+        <!--next button-->
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#6F00F8"
+            android:text="Next" />
+
     </LinearLayout>
 </ScrollView>

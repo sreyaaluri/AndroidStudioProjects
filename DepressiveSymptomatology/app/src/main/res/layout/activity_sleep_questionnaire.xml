@@ -13,38 +13,37 @@
         android:orientation="vertical"
         tools:context=".sleep_questionnaire">
 
-        <!--Hello "user's name"-->
+        <!--title-->
         <TextView
-            android:id="@+id/hellomsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Hello" />
-
-        <!--instruction-->
-        <TextView
-            android:id="@+id/instruction"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="Please complete each section below" />
+            android:id="@+id/titleLbl"
+            android:layout_width="match_parent"
+            android:layout_height="39dp"
+            android:background="#009688"
+            android:gravity="center"
+            android:text="Sleep"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/duringthepastsevdays"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:text="During the past seven days..." />
+            android:id="@+id/subsectionLbl"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12sp"
+            android:text=" During the past seven days..."
+            android:textColor="#4B4F51"
+            android:textSize="16sp" />
 
         <!--Falling Asleep-->
         <TextView
-            android:id="@+id/fallasleepcategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="1. Falling Asleep" />
+            android:id="@+id/subsectionLbl1"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="bottom"
+            android:paddingLeft="12sp"
+            android:text="1. Falling Asleep:"
+            android:textColor="#009988"
+            android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/sleepgroupRBone"
@@ -78,11 +77,14 @@
 
         <!--Sleep During the Night-->
         <TextView
-            android:id="@+id/sleepduringnightcategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="2. Sleep During the Night:" />
+            android:id="@+id/subsectionLbl2"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="bottom"
+            android:paddingLeft="12sp"
+            android:text="2. Sleep During the Night:"
+            android:textColor="#009988"
+            android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/sleepgroupRBtwo"
@@ -116,11 +118,14 @@
 
         <!--Waking Up Too Early-->
         <TextView
-            android:id="@+id/wakeearlycategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="3. Waking Up Too Early:" />
+            android:id="@+id/subsectionLbl3"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="bottom"
+            android:paddingLeft="12sp"
+            android:text="3. Waking Up Too Early:"
+            android:textColor="#009988"
+            android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/sleepgroupRBthree"
@@ -154,11 +159,14 @@
 
         <!--Sleeping Too Much-->
         <TextView
-            android:id="@+id/sleepmuchcategory"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:text="4. Sleeping Too Much:" />
+            android:id="@+id/subsectionLbl4"
+            android:layout_width="match_parent"
+            android:layout_height="37dp"
+            android:gravity="bottom"
+            android:paddingLeft="12sp"
+            android:text="4. Sleeping Too Much:"
+            android:textColor="#009988"
+            android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/sleepgroupRBfour"
@@ -192,20 +200,17 @@
 
         <!--error message-->
         <TextView
-            android:id="@+id/errormsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textStyle="bold"
-            android:layout_gravity="center"/>
+            android:id="@+id/msgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
 
         <!--next button-->
         <Button
-            android:id="@+id/pgonenextbtn"
-            android:layout_width="wrap_content"
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:backgroundTint="#9C27B0"
             android:text="Next" />
 
     </LinearLayout>
