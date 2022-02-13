@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--PAGE 2.5-->
+<!--PAGE 7-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,16 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".appetite_questionnaire">
+        tools:context=".deaththoughts_questionnaire">
 
         <!--title-->
         <TextView
             android:id="@+id/titleLbl"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="45dp"
             android:background="#009688"
             android:gravity="center"
-            android:text="Appetite"
+            android:text="Thoughts"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -34,24 +34,35 @@
             android:textColor="#4B4F51"
             android:textSize="16sp" />
 
+        <!--Thoughts of Death or Suicide-->
         <RadioGroup
-            android:id="@+id/appetiteBtnGrp"
+            android:id="@+id/deathgroupRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/decreasedRB"
-                android:layout_width="match_parent"
+                android:id="@+id/zerodeathRB"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Decreased"
-                android:onClick="setDecreased" />
+                android:text="I do not think of suicide or death." />
 
             <RadioButton
-                android:id="@+id/increasedRB"
-                android:layout_width="match_parent"
+                android:id="@+id/onedeathRB"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Increased"
-                android:onClick="setIncreased" />
+                android:text="I feel that life is empty or wonder if it's worth living." />
+
+            <RadioButton
+                android:id="@+id/twodeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I think of suicide or death several times a week for several minutes." />
+
+            <RadioButton
+                android:id="@+id/threedeathRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I think of suicide or death several times a day in some detail, or I have made specific plans for suicide or have actually tried to take my life." />
         </RadioGroup>
 
         <!--error message-->
@@ -60,13 +71,14 @@
             android:layout_width="match_parent"
             android:layout_height="33dp"
             android:textStyle="bold"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"/>
 
         <!--next button-->
         <Button
             android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#6F00F8"
             android:text="Next" />
 
     </LinearLayout>

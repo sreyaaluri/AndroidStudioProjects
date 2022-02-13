@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.14387031408308004" />
+        <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_concentration_questionnaire.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_deaththoughts_questionnaire.xml" value="0.2688129982302598" />
         <entry key="app/src/main/res/layout/activity_decreased_appetite_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_end.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_energy_questionnaire.xml" value="0.24273504273504273" />
         <entry key="app/src/main/res/layout/activity_increased_appetite_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_interest_questionnaire.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_mood_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_psychomotorchanges_questionnaire.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/activity_selfview_questionnaire.xml" value="0.11452991452991453" />
         <entry key="app/src/main/res/layout/activity_sleep_questionnaire.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_weight_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.14130434782608695" />
@@ -27,7 +30,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.4131521402839592" />
       </ProjectState>
     </option>
   </component>

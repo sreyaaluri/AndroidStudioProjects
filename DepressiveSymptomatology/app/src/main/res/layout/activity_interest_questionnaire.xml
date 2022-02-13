@@ -1,65 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--PAGE 8-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".interest_questionnaire">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
 
-    <TextView
-        android:id="@+id/titleLbl"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:gravity="center"
-        android:text="Interest"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".interest_questionnaire">
 
-    <TextView
-        android:id="@+id/subsectionLbl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="During the past seven days..." />
+        <!--title-->
+        <TextView
+            android:id="@+id/titleLbl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#009688"
+            android:gravity="center"
+            android:text="Interest"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
 
-    <RadioGroup
-        android:id="@+id/interestBtnGrp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/subsectionLbl"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12sp"
+            android:text=" During the past seven days..."
+            android:textColor="#4B4F51"
+            android:textSize="16sp" />
 
-        <RadioButton
-            android:id="@+id/zeroInterestRB"
+        <!--Interest Options-->
+        <RadioGroup
+            android:id="@+id/interestBtnGrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/zeroInterestRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There is no from usual in how interested I am in other people or activities." />
+
+            <RadioButton
+                android:id="@+id/oneInterestRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I notice that I am less interested in people or activities." />
+
+            <RadioButton
+                android:id="@+id/twoInterestRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I find I have interest in only one or two of my formerly pursued activities." />
+
+            <RadioButton
+                android:id="@+id/threeInterestRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I have virtually no interest in formerly pursued activities." />
+        </RadioGroup>
+
+        <!--error message-->
+        <TextView
+            android:id="@+id/msgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:textStyle="bold"
+            android:layout_gravity="center" />
+
+        <!--next button-->
+        <Button
+            android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="There is no from usual in how interested I am in other people or activities." />
+            android:backgroundTint="#6F00F8"
+            android:text="Next" />
 
-        <RadioButton
-            android:id="@+id/oneInterestRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I notice that I am less interested in people or activities." />
-
-        <RadioButton
-            android:id="@+id/twoInterestRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I find I have interest in only one or two of my formerly pursued activities." />
-
-        <RadioButton
-            android:id="@+id/threeInterestRB"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="I have virtually no interest in formerly pursued activities." />
-    </RadioGroup>
-
-    <TextView
-        android:id="@+id/msgLbl"
-        android:layout_width="match_parent"
-        android:layout_height="40dp" />
-
-    <Button
-        android:id="@+id/nextBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Next" />
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>

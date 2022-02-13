@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--PAGE 2.5-->
+<!--PAGE 5-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,16 +11,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:context=".appetite_questionnaire">
+        tools:context=".concentration_questionnaire">
 
         <!--title-->
         <TextView
             android:id="@+id/titleLbl"
             android:layout_width="match_parent"
-            android:layout_height="56dp"
+            android:layout_height="45dp"
             android:background="#009688"
             android:gravity="center"
-            android:text="Appetite"
+            android:text="Concentration"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -34,24 +34,35 @@
             android:textColor="#4B4F51"
             android:textSize="16sp" />
 
+        <!--Concentration  / Decision Making Options-->
         <RadioGroup
-            android:id="@+id/appetiteBtnGrp"
+            android:id="@+id/concentrationgroupRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/decreasedRB"
-                android:layout_width="match_parent"
+                android:id="@+id/zeroconcentrationRB"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Decreased"
-                android:onClick="setDecreased" />
+                android:text="There is no change in my usual capacity to concentrate or make decisions." />
 
             <RadioButton
-                android:id="@+id/increasedRB"
-                android:layout_width="match_parent"
+                android:id="@+id/oneconcentrationRB"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Increased"
-                android:onClick="setIncreased" />
+                android:text="I occasionally feel indecisive or find that my attention wanders." />
+
+            <RadioButton
+                android:id="@+id/twoconcentrationRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Most of the time, I struggle to focus my attention or to make decisions." />
+
+            <RadioButton
+                android:id="@+id/threeconcentrationRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="I cannot concentrate well enough to read or cannot make even minor decisions." />
         </RadioGroup>
 
         <!--error message-->
@@ -67,6 +78,7 @@
             android:id="@+id/nextBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#6F00F8"
             android:text="Next" />
 
     </LinearLayout>
