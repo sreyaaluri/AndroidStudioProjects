@@ -22,13 +22,16 @@
             android:name=".interest_questionnaire"
             android:exported="false" />
         <activity
+            android:name=".deaththoughts_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".selfview_questionnaire"
+            android:exported="false" />
+        <activity
+            android:name=".concentration_questionnaire"
+            android:exported="false" />
+        <activity
             android:name=".weight_questionnaire"
-            android:exported="false" />
-        <activity
-            android:name=".decreased_appetite_questionnaire"
-            android:exported="false" />
-        <activity
-            android:name=".increased_appetite_questionnaire"
             android:exported="false" />
         <activity
             android:name=".appetite_questionnaire"

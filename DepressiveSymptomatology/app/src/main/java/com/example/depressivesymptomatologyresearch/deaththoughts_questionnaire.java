@@ -2,6 +2,7 @@ package com.example.depressivesymptomatologyresearch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -16,24 +17,54 @@ public class deaththoughts_questionnaire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_deaththoughts_questionnaire);
 
-        //questionnaire section
-        RadioGroup deathGroup = findViewById(R.id.deathgroupRB);
-        TextView errorMsg = findViewById(R.id.errormsg);
-        Button nxtbtn = findViewById(R.id.pgsevennextbtn);
-
-        nxtbtn.setOnClickListener(new View.OnClickListener(){
+        // setting click listener on submit button
+        Button nextBtn = findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if all sections have been answered the "next" button should work
-                if (deathGroup.getCheckedRadioButtonId() > -1){
-                    Intent pgsevenIntent = new Intent(getApplicationContext(), weight_questionnaire.class);
-                    startActivity(pgsevenIntent);
+                boolean answered = checkAnswered();
+                if(answered) { // navigate to next page
+                    // get scores (no update in this page)
+                    int thoughtsScore = getThoughtsScore(); // getScore
+                    int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
+                    total_score += thoughtsScore; // add to total score
+
+                    // launch next page
+                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
+                    next.putExtra("SCORE", ""+total_score);
+                    Log.d("SCORE_CHECK", "--- "+total_score); // testing
+                    startActivity(next);
                 }
-                //display error message in textview "please fill out each section"
-                else{
-                    errorMsg.setText("PLEASE FILL SECTION");
+                else { // display helpful message if question(s) remain unanswered
+                    TextView msg = findViewById(R.id.msgLbl);
+                    msg.setText("Please answer all questions to continue.");
                 }
             }
         });
+    }
+
+    private int getThoughtsScore() {
+        RadioGroup interestGrp = findViewById(R.id.deathgroupRB);
+        int thoughtsValue = 0;
+        switch(interestGrp.getCheckedRadioButtonId()) {
+            case R.id.zerodeathRB:
+                thoughtsValue = 0;
+                break;
+            case R.id.onedeathRB:
+                thoughtsValue = 1;
+                break;
+            case R.id.twodeathRB:
+                thoughtsValue = 2;
+                break;
+            case R.id.threedeathRB:
+                thoughtsValue = 3;
+                break;
+        }
+        return thoughtsValue;
+    }
+
+    private boolean checkAnswered() {
+        RadioGroup deathGrp = findViewById(R.id.deathgroupRB);
+        return(deathGrp.getCheckedRadioButtonId() != -1);
     }
 }

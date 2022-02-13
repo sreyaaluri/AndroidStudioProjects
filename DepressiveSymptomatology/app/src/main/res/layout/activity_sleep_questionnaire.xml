@@ -46,30 +46,30 @@
             android:textSize="16sp" />
 
         <RadioGroup
-            android:id="@+id/sleepgroupRBone"
+            android:id="@+id/fallingSleepBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/zerosleepRB"
+                android:id="@+id/zerofallsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I never take longer than 30 minutes to fall asleep" />
 
             <RadioButton
-                android:id="@+id/onesleepRB"
+                android:id="@+id/onefallsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I take at least 30 minutes to fall asleep, less than half the time." />
 
             <RadioButton
-                android:id="@+id/twosleepRB"
+                android:id="@+id/twofallsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I take at least 30 minutes to fall asleep, more than half the time." />
 
             <RadioButton
-                android:id="@+id/threesleepRB"
+                android:id="@+id/threefallsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I take more than 60 minutes to fall asleep, more than half the time." />
@@ -87,30 +87,30 @@
             android:textSize="16sp" />
 
         <RadioGroup
-            android:id="@+id/sleepgroupRBtwo"
+            android:id="@+id/nightSleepBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/zerosleepatnightRB"
-                android:layout_width="wrap_content"
+                android:id="@+id/zeronightsleepRB"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="I do not wake up at night." />
 
             <RadioButton
-                android:id="@+id/onesleepatnightRB"
+                android:id="@+id/onenightsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I have a restless, light sleep with a few brief awakenings each night." />
 
             <RadioButton
-                android:id="@+id/twosleepatnightRB"
+                android:id="@+id/twonightsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I wake up at least once a night, but I got back to sleep easily." />
 
             <RadioButton
-                android:id="@+id/threesleepatnightRB"
+                android:id="@+id/threenightsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I awaken more than once a night and stay awake for 20 minutes or more, more than half the time." />
@@ -128,7 +128,7 @@
             android:textSize="16sp" />
 
         <RadioGroup
-            android:id="@+id/sleepgroupRBthree"
+            android:id="@+id/wakeupBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -169,30 +169,30 @@
             android:textSize="16sp" />
 
         <RadioGroup
-            android:id="@+id/sleepgroupRBfour"
+            android:id="@+id/sleepTooMuchBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/zerosleepmuchRB"
+                android:id="@+id/zeromuchsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I sleep no longer than 7-8 hours/night, without napping during the day." />
 
             <RadioButton
-                android:id="@+id/onesleepmuchRB"
+                android:id="@+id/onemuchsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I sleep no longer than 10 hours in a 24-hour period including naps." />
 
             <RadioButton
-                android:id="@+id/twosleepmuchRB"
+                android:id="@+id/twomuchsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I sleep no longer than 12 hours in a 24-hour period including hours" />
 
             <RadioButton
-                android:id="@+id/threesleepmuchRB"
+                android:id="@+id/threemuchsleepRB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="I sleep longer than 12 hours in a 24-hour period including hours"/>

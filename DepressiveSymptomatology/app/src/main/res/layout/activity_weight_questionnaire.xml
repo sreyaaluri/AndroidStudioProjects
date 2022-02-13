@@ -35,30 +35,25 @@
             android:textSize="16sp" />
 
         <!--decreased or increased weight-->
-        <LinearLayout
+        <RadioGroup
+            android:id="@+id/weightchoiceRB"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal"
-            tools:context=".weight_questionnaire">
+            android:layout_height="wrap_content">
 
-            <RadioGroup
-                android:id="@+id/weightchoiceRB"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+            <RadioButton
+                android:id="@+id/decreasedweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Decreased Weight"
+                android:onClick="setDecreased" />
 
-                <RadioButton
-                    android:id="@+id/decreasedweightRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Decreased Weight" />
-
-                <RadioButton
-                    android:id="@+id/increasedweightRB"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Increased Weight" />
-            </RadioGroup>
-        </LinearLayout>
+            <RadioButton
+                android:id="@+id/increasedweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Increased Weight"
+                android:onClick="setIncreased" />
+        </RadioGroup>
 
         <!--display questionnaire based on choice above-->
         <!--decreased weight questionnaire-->
@@ -66,7 +61,7 @@
             android:id="@+id/decrweightgroupRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:visibility="gone" >
 
             <RadioButton
                 android:id="@+id/zerodecrweightRB"
@@ -98,8 +93,8 @@
             android:id="@+id/incrweightgroupRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-190dp"
-            android:visibility="gone">
+            android:layout_marginTop="-192dp"
+            android:visibility="gone" >
 
             <RadioButton
                 android:id="@+id/zeroincrweightRB"
@@ -125,5 +120,20 @@
                 android:layout_height="wrap_content"
                 android:text="I have gained 5 pounds or more." />
         </RadioGroup>
+
+        <!--error message-->
+        <TextView
+            android:id="@+id/msgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <!--next button-->
+        <Button
+            android:id="@+id/nextBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Next" />
     </LinearLayout>
 </ScrollView>

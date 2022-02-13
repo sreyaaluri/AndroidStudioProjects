@@ -2,6 +2,7 @@ package com.example.depressivesymptomatologyresearch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -16,24 +17,54 @@ public class selfview_questionnaire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selfview_questionnaire);
 
-        //questionnaire section
-        RadioGroup viewmyselfGoup = findViewById(R.id.viewmyselfgroupRB);
-        TextView errorMsg = findViewById(R.id.errormsg);
-        Button nxtbtn = findViewById(R.id.pgsixnextbtn);
-
-        nxtbtn.setOnClickListener(new View.OnClickListener(){
+        // setting click listener on submit button
+        Button nextBtn = findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //if all sections have been answered the "next" button should work
-                if (viewmyselfGoup.getCheckedRadioButtonId() > -1){
-                    Intent pgsixIntent = new Intent(getApplicationContext(), deaththoughts_questionnaire.class);
-                    startActivity(pgsixIntent);
+                boolean answered = checkAnswered();
+                if(answered) { // navigate to next page
+                    // get scores (no update in this page)
+                    int selfScore = getSelfViewScore(); // getScore
+                    int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
+                    total_score += selfScore; // add to total score
+
+                    // launch next page
+                    Intent next = new Intent(getApplicationContext(), End.class);
+                    next.putExtra("SCORE", ""+total_score);
+                    Log.d("SCORE_CHECK", "--- "+total_score); // testing
+                    startActivity(next);
                 }
-                //display error message in textview "please fill out each section"
-                else{
-                    errorMsg.setText("PLEASE FILL SECTION");
+                else { // display helpful message if question(s) remain unanswered
+                    TextView msg = findViewById(R.id.msgLbl);
+                    msg.setText("Please answer all questions to continue.");
                 }
             }
         });
+    }
+
+    private int getSelfViewScore() {
+        RadioGroup selfviewGrp = findViewById(R.id.viewmyselfgroupRB);
+        int viewValue = 0;
+        switch(selfviewGrp.getCheckedRadioButtonId()) {
+            case R.id.zeroviewmyselfRB:
+                viewValue = 0;
+                break;
+            case R.id.oneviewmyselfRB:
+                viewValue = 1;
+                break;
+            case R.id.twoviewmyselfRB:
+                viewValue = 2;
+                break;
+            case R.id.threeviewmyselfRB:
+                viewValue = 3;
+                break;
+        }
+        return viewValue;
+    }
+
+    private boolean checkAnswered() {
+        RadioGroup selfviewGrp = findViewById(R.id.viewmyselfgroupRB);
+        return(selfviewGrp.getCheckedRadioButtonId() != -1);
     }
 }

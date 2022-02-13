@@ -2,6 +2,7 @@ package com.example.depressivesymptomatologyresearch;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioGroup;
@@ -16,24 +17,54 @@ public class concentration_questionnaire extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_concentration_questionnaire);
 
-        //questionnaire section
-        RadioGroup concentrationGroup = findViewById(R.id.concentrationgroupRB);
-        TextView errorMsg = findViewById(R.id.errormsg);
-        Button nxtbtn = findViewById(R.id.pgfivenextbtn);
-
-        nxtbtn.setOnClickListener(new View.OnClickListener(){
+        // setting click listener on submit button
+        Button nextBtn = findViewById(R.id.nextBtn);
+        nextBtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                //if all sections have been answered the "next" button should work
-                if (concentrationGroup.getCheckedRadioButtonId() > -1){
-                    Intent pgfiveIntent = new Intent(getApplicationContext(), selfview_questionnaire.class);
-                    startActivity(pgfiveIntent);
+                boolean answered = checkAnswered();
+                if(answered) { // navigate to next page
+                    // get scores (no update in this page)
+                    int concentrationScore = getConcentrationScore(); // getScore
+                    int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
+                    total_score += concentrationScore; // add to total score
+
+                    // launch next page
+                    Intent next = new Intent(getApplicationContext(), energy_questionnaire.class);
+                    next.putExtra("SCORE", ""+total_score);
+                    Log.d("SCORE_CHECK", "--- "+total_score); // testing
+                    startActivity(next);
                 }
-                //display error message in textview "please fill out each section"
-                else{
-                    errorMsg.setText("PLEASE FILL SECTION");
+                else { // display helpful message if question(s) remain unanswered
+                    TextView msg = findViewById(R.id.msgLbl);
+                    msg.setText("Please answer all questions to continue.");
                 }
             }
         });
+    }
+
+    private int getConcentrationScore() {
+        RadioGroup interestGrp = findViewById(R.id.concentrationgroupRB);
+        int concentrationValue = 0;
+        switch(interestGrp.getCheckedRadioButtonId()) {
+            case R.id.zeroconcentrationRB:
+                concentrationValue = 0;
+                break;
+            case R.id.oneconcentrationRB:
+                concentrationValue = 1;
+                break;
+            case R.id.twoconcentrationRB:
+                concentrationValue = 2;
+                break;
+            case R.id.threeconcentrationRB:
+                concentrationValue = 3;
+                break;
+        }
+        return concentrationValue;
+    }
+
+    private boolean checkAnswered() {
+        RadioGroup concentrationGrp = findViewById(R.id.concentrationgroupRB);
+        return(concentrationGrp.getCheckedRadioButtonId() != -1);
     }
 }

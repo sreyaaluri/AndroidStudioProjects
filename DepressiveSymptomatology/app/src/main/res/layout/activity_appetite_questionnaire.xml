@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--PAGE 2.5-->
+<!--PAGE 3-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -34,6 +34,7 @@
             android:textColor="#4B4F51"
             android:textSize="16sp" />
 
+        <!--decreased or increased appetite-->
         <RadioGroup
             android:id="@+id/appetiteBtnGrp"
             android:layout_width="match_parent"
@@ -52,6 +53,72 @@
                 android:layout_height="wrap_content"
                 android:text="Increased"
                 android:onClick="setIncreased" />
+        </RadioGroup>
+
+        <!--display questionnaire based on choice above-->
+        <!--decreased appetite questionnaire-->
+        <RadioGroup
+            android:id="@+id/decrappetiteBtnGrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone" >
+
+            <RadioButton
+                android:id="@+id/zeroDecrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There is no change in my usual appetite." />
+
+            <RadioButton
+                android:id="@+id/oneDecrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I eat somewhat less often or lesser amounts of food than usual." />
+
+            <RadioButton
+                android:id="@+id/twoDecrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I eat much less than usual and only with personal effort." />
+
+            <RadioButton
+                android:id="@+id/threeDecrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I rarely eat within a 24-hour period, and only with extreme personal effort or when others persuade me to." />
+        </RadioGroup>
+
+        <!--increased appetite questionnaire-->
+        <RadioGroup
+            android:id="@+id/incrappetiteBtnGrp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-192dp"
+            android:visibility="gone" >
+
+            <RadioButton
+                android:id="@+id/zeroIncrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="There is no change in my usual appetite." />
+
+            <RadioButton
+                android:id="@+id/oneIncrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I feel a need to eat more frequently than usual." />
+
+            <RadioButton
+                android:id="@+id/twoIncrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I regularly eat more often and/or greater amounts of food than usual" />
+
+            <RadioButton
+                android:id="@+id/threeIncrApptRB"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I feel driven to overeat both at mealtime and between meals" />
         </RadioGroup>
 
         <!--error message-->

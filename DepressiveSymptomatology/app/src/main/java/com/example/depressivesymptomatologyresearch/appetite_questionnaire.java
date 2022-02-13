@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class appetite_questionnaire extends AppCompatActivity {
@@ -28,21 +29,16 @@ public class appetite_questionnaire extends AppCompatActivity {
                 boolean answered = checkAnswered();
                 if(answered){ // navigate to next step
                     // get total score
+                    int appetiteScore = getAppetiteScore(); // getScore
                     int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
 
                     // launch next page
-                    if(increased) { // go to questionnaire for increased appetite
-                        Intent next = new Intent(getApplicationContext(), increased_appetite_questionnaire.class);
-                        next.putExtra("SCORE", ""+total_score);
-                        Log.d("SCORE_CHECK", "--- "+total_score); // testing
-                        startActivity(next);
-                    }
-                    else { // go to questionnaire for decreased appetite
-                        Intent next = new Intent(getApplicationContext(), decreased_appetite_questionnaire.class);
-                        next.putExtra("SCORE", ""+total_score);
-                        Log.d("SCORE_CHECK", "--- "+total_score); // testing
-                        startActivity(next);
-                    }
+                    Intent next = new Intent(getApplicationContext(), weight_questionnaire.class);
+                    next.putExtra("SCORE", ""+total_score);
+                    next.putExtra("APPETITE_SCORE", ""+appetiteScore);
+                    Log.d("SCORE_CHECK", "--- " + total_score); // testing
+                    Log.d("APPETITE_SCORE_CHECK", "--- " + appetiteScore); // testing
+                    startActivity(next);
                 }
                 else { // display helpful message if question(s) remain unanswered
                     TextView msg = findViewById(R.id.msgLbl);
@@ -52,15 +48,66 @@ public class appetite_questionnaire extends AppCompatActivity {
         });
     }
 
-    public void setIncreased(View view) { increased = true; }
-
-    public void setDecreased(View view) { increased = false; }
+    private int getAppetiteScore() {
+        int apptValue = -1;
+        if(increased){
+            RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
+            switch(incrapptGrp.getCheckedRadioButtonId()) {
+                case R.id.zeroIncrApptRB:
+                    apptValue = 0;
+                    break;
+                case R.id.oneIncrApptRB:
+                    apptValue = 1;
+                    break;
+                case R.id.twoIncrApptRB:
+                    apptValue = 2;
+                    break;
+                case R.id.threeIncrApptRB:
+                    apptValue = 3;
+                    break;
+            }
+        } else {
+            RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
+            switch (decrapptGrp.getCheckedRadioButtonId()) {
+                case R.id.zeroDecrApptRB:
+                    apptValue = 0;
+                    break;
+                case R.id.oneDecrApptRB:
+                    apptValue = 1;
+                    break;
+                case R.id.twoDecrApptRB:
+                    apptValue = 2;
+                    break;
+                case R.id.threeDecrApptRB:
+                    apptValue = 3;
+                    break;
+            }
+        }
+        return apptValue;
+    }
 
     private boolean checkAnswered(){
-        RadioButton decreasedRB = findViewById(R.id.decreasedRB);
-        RadioButton increasedRB = findViewById(R.id.increasedRB);
-        if(decreasedRB.isChecked() || increasedRB.isChecked())
-            return true;
-        return false;
+        RadioGroup apptGrp = findViewById(R.id.appetiteBtnGrp);
+        RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
+        RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
+        return(apptGrp.getCheckedRadioButtonId() != -1
+                && (incrapptGrp.getCheckedRadioButtonId() != -1 || decrapptGrp.getCheckedRadioButtonId() != -1));
     }
+
+    public void setIncreased(View view) {
+        increased = true;
+        RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
+        RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
+        decrapptGrp.setVisibility(decrapptGrp.INVISIBLE);
+        incrapptGrp.setVisibility(incrapptGrp.VISIBLE);
+    }
+
+    public void setDecreased(View view) {
+        increased = false;
+        RadioGroup decrapptGrp = findViewById(R.id.decrappetiteBtnGrp);
+        RadioGroup incrapptGrp = findViewById(R.id.incrappetiteBtnGrp);
+        decrapptGrp.setVisibility(decrapptGrp.VISIBLE);
+        incrapptGrp.setVisibility(incrapptGrp.INVISIBLE);
+    }
+
 }
