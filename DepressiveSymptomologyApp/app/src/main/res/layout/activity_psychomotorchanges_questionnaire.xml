@@ -53,25 +53,25 @@
                 android:id="@+id/zeroSlowRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There is no from usual in how interested I am in other people or activities." />
+                android:text="I think, speak, and move at my usual rate of speed." />
 
             <RadioButton
                 android:id="@+id/oneSlowRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I notice that I am less interested in people or activities." />
+                android:text="I find that my thinking is slowed down or my voice sounds dull or flat." />
 
             <RadioButton
                 android:id="@+id/twoSlowRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I find I have interest in only one or two of my formerly pursued activities." />
+                android:text="It takes me several seconds to respond to most questions and I'm sure my thinking is slowed." />
 
             <RadioButton
                 android:id="@+id/threeSlowRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I have virtually no interest in formerly pursued activities." />
+                android:text="I am often unable to respond to questions without extreme effort." />
         </RadioGroup>
 
         <!--Restless-->
@@ -94,25 +94,25 @@
                 android:id="@+id/zeroRestlessRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There is no from usual in how interested I am in other people or activities." />
+                android:text="I do not feel restless." />
 
             <RadioButton
                 android:id="@+id/oneRestlessRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I notice that I am less interested in people or activities." />
+                android:text="I'm often fidgety, wringing my hands, or need to shift how I am sitting." />
 
             <RadioButton
                 android:id="@+id/twoRestlessRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I find I have interest in only one or two of my formerly pursued activities." />
+                android:text="I have impulses to move about and am quite restless." />
 
             <RadioButton
                 android:id="@+id/threeRestlessRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="I have virtually no interest in formerly pursued activities." />
+                android:text="At times, I an unable to stay seated and need to pace around." />
         </RadioGroup>
 
         <!--error message-->

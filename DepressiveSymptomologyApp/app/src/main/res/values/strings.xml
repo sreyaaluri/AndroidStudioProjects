@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Depressive Symptomatology Research</string>
+    <string name="app_name">QIDS</string>
     <string name="title_activity_sleep_section">sleep_section</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
