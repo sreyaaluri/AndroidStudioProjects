@@ -61,7 +61,9 @@
             android:id="@+id/decrappetiteBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone" >
+            android:paddingLeft="24sp"
+            android:paddingRight="24sp"
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/zeroDecrApptRB"
@@ -94,7 +96,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-192dp"
-            android:visibility="gone" >
+            android:paddingLeft="24sp"
+            android:paddingRight="24sp"
+            android:visibility="gone">
 
             <RadioButton
                 android:id="@+id/zeroIncrApptRB"

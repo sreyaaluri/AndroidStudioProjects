@@ -20,7 +20,7 @@
             android:layout_height="45dp"
             android:background="#009688"
             android:gravity="center"
-            android:text="Psychomotor Changes"
+            android:text="Weight"
             android:textColor="#FFFFFF"
             android:textSize="20sp" />
 
@@ -61,6 +61,8 @@
             android:id="@+id/decrweightgroupRB"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="24sp"
+            android:paddingRight="24sp"
             android:visibility="gone" >
 
             <RadioButton
@@ -94,6 +96,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="-192dp"
+            android:paddingLeft="24sp"
+            android:paddingRight="24sp"
             android:visibility="gone" >
 
             <RadioButton

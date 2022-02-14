@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".End">
 
+    <!--title-->
+    <TextView
+        android:id="@+id/titleLbl"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#009688"
+        android:gravity="center"
+        android:text="End"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
     <TextView
         android:id="@+id/msgLbl"
         android:layout_width="wrap_content"
@@ -19,19 +30,77 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.438" />
+        app:layout_constraintVertical_bias="0.398" />
 
     <TextView
         android:id="@+id/scoreLbl"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:foregroundGravity="center"
         android:gravity="center"
         android:textSize="24sp"
+        app:flow_verticalAlign="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.471" />
+
+    <LinearLayout
+        android:layout_width="392dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="100dp"
+        android:orientation="vertical"
+        android:padding="12sp"
+        app:layout_constraintBaseline_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/scoreLbl"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="0dp">
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Score Interpretation:"
+            android:textColor="#009688" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The higher the score the more severe the depression." />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Scores ≤5 indicate no depression." />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Scores of 6-10 indicate mild depression." />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Scores of 11-15 indicate moderate depression." />
+
+        <TextView
+            android:id="@+id/textView17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Scores of 16-20 indicate severe depression." />
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="- Scores ≥21 indicate very severe depression." />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

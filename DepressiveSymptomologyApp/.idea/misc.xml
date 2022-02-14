@@ -3,11 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.23661963468617656" />
         <entry key="app/src/main/res/layout/activity_concentration_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deaththoughts_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_decreased_appetite_questionnaire.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_end.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_end.xml" value="0.21169579533264107" />
         <entry key="app/src/main/res/layout/activity_energy_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_increased_appetite_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_information.xml" value="0.375" />
@@ -33,7 +33,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.1" />
+        <option name="scale" value="0.23661963468617656" />
       </ProjectState>
     </option>
   </component>

@@ -44,7 +44,7 @@
                 android:id="@+id/zeroInterestRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="There is no from usual in how interested I am in other people or activities." />
+                android:text="There is no change from usual in how interested I am in other people or activities." />
 
             <RadioButton
                 android:id="@+id/oneInterestRB"
