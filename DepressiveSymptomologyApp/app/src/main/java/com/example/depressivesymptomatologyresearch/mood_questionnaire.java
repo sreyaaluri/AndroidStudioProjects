@@ -16,7 +16,6 @@ public class mood_questionnaire extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mood_questionnaire);
-        Log.d("LAUNCH_CHECK", "mood activity launched"); // testing
 
         // setting click listener on submit button
         Button nextBtn = findViewById(R.id.nextBtn);
@@ -33,7 +32,6 @@ public class mood_questionnaire extends AppCompatActivity {
                     // launch next page
                     Intent next = new Intent(getApplicationContext(), appetite_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
-                    Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
                 }
                 else { // display helpful message if question(s) remain unanswered
