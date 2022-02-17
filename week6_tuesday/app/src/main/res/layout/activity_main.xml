@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--PAGE 4-->
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".weight_questionnaire">
+
+        <!--title-->
+        <TextView
+            android:id="@+id/titleLbl"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:background="#009688"
+            android:gravity="center"
+            android:text="Psychomotor Changes"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/subsectionLbl"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="12sp"
+            android:text="Within the past two weeks..."
+            android:textColor="#4B4F51"
+            android:textSize="16sp" />
+
+        <!--decreased or increased weight-->
+        <RadioGroup
+            android:id="@+id/weightchoiceRB"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RadioButton
+                android:id="@+id/decreasedweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Decreased Weight"
+                android:onClick="setDecreased" />
+
+            <RadioButton
+                android:id="@+id/increasedweightRB"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Increased Weight"
+                android:onClick="setIncreased" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider" />
+        </RadioGroup>
+
+        <!--decreased weight frame layout-->
+        <FrameLayout
+            android:id="@+id/framelayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+    </LinearLayout>
+</ScrollView>

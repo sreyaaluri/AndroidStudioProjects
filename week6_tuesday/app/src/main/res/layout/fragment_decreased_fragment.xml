@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".decreased_fragment">
+
+    <!--decreased weight fragment-->
+    <RadioGroup
+        android:id="@+id/decrweightgroupRB"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RadioButton
+            android:id="@+id/zerodecrweightRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I have not had a change in my weight." />
+
+        <RadioButton
+            android:id="@+id/onedecrweightRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I feel as if I have had a slight weight loss." />
+
+        <RadioButton
+            android:id="@+id/twodecrweightRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I have lost 2 pounds or more." />
+
+        <RadioButton
+            android:id="@+id/threedecrweightRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="I have lost 5 pounds or more." />
+    </RadioGroup>
+
+</FrameLayout>
