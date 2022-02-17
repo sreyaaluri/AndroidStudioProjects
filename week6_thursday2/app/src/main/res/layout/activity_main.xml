@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="334dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/displayNameNAgeFragBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter name and age" />
+
+        <Button
+            android:id="@+id/displayAddressFragBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter Address" />
+
+        <TextView
+            android:id="@+id/nameMsgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The username you entered is:" />
+
+        <TextView
+            android:id="@+id/nameLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/ageMsgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The age you entered is:" />
+
+        <TextView
+            android:id="@+id/ageLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/addressMsgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="The address you entered is:" />
+
+        <TextView
+            android:id="@+id/addressLbl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</LinearLayout>
