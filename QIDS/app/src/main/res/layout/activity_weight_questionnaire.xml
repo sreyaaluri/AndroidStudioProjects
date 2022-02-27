@@ -55,6 +55,7 @@
                     android:text="Increased Weight" />
             </RadioGroup>
         </LinearLayout>
+
         <!--display questionnaire based on choice above-->
         <!--decreased weight questionnaire-->
         <RadioGroup
@@ -120,5 +121,23 @@
                 android:layout_height="wrap_content"
                 android:text="I have gained 5 pounds or more." />
         </RadioGroup>
+
+        <!--error message-->
+        <TextView
+            android:id="@+id/errormsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center"/>
+
+        <!--next button-->
+        <Button
+            android:id="@+id/pgfournextbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:backgroundTint="#9C27B0"
+            android:text="Next" />
     </LinearLayout>
 </ScrollView>

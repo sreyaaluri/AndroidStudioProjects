@@ -10,6 +10,7 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 
 public class concentration_questionnaire extends AppCompatActivity {
+    //int totalScore = Integer.parseInt(getIntent().getStringExtra(name: "SCORE"));
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

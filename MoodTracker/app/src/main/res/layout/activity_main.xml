@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--LOGIN PAGE-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <!--app intro-->
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:text="Login or Signup to track your daily moods!"
+        android:textSize="14sp"
+        android:textStyle="italic" />
+
+    <!--username-->
+    <EditText
+        android:id="@+id/loginuname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:inputType="textPersonName"
+        android:hint="Username"/>
+
+    <!--password-->
+    <EditText
+        android:id="@+id/loginpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center"
+        android:hint="Password" />
+
+    <!--login button-->
+    <Button
+        android:id="@+id/loginbutton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#00BCD4"
+        android:text="Login" />
+
+    <!--horizontal line-->
+    <View
+        android:id="@+id/divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="#090909" />
+
+    <!--create an account button-->
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:backgroundTint="#009688"
+        android:text="Create an account" />
+</LinearLayout>

@@ -12,13 +12,22 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e8d18d56-7dc8-4154-83be-f129e7e67552" name="Default Changelist" comment="" />
+    <list default="true" id="e8d18d56-7dc8-4154-83be-f129e7e67552" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/concentration_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/concentration_questionnaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/sleep_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/sleep_questionnaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/weight_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/weight_questionnaire.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/res/layout/activity_weight_questionnaire.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/res/layout/activity_weight_questionnaire.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Week4_Tuesday/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4_Tuesday/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Week4_Tuesday/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4_Tuesday/.idea/misc.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/sreyaaluri/.android/avd/Pixel_5_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/deborahmaidoh/.android/avd/Pixel_5_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
