@@ -15,6 +15,6 @@ public class End extends AppCompatActivity {
         // display total QIDS score
         int total_score = Integer.parseInt(getIntent().getStringExtra("SCORE"));
         TextView scoreLbl = findViewById(R.id.scoreLbl);
-        scoreLbl.setText(""+total_score);
+        scoreLbl.setText(""+total_score+" / 27");
     }
 }

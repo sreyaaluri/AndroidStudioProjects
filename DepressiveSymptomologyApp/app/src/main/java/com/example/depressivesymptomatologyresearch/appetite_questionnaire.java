@@ -34,8 +34,6 @@ public class appetite_questionnaire extends AppCompatActivity {
                     Intent next = new Intent(getApplicationContext(), weight_questionnaire.class);
                     next.putExtra("SCORE", ""+total_score);
                     next.putExtra("APPETITE_SCORE", ""+appetiteScore);
-                    Log.d("SCORE_CHECK", "--- " + total_score); // testing
-                    Log.d("APPETITE_SCORE_CHECK", "--- " + appetiteScore); // testing
                     startActivity(next);
                 }
                 else { // display helpful message if question(s) remain unanswered

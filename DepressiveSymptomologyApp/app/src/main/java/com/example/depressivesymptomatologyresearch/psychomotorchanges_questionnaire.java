@@ -33,7 +33,6 @@ public class psychomotorchanges_questionnaire extends AppCompatActivity {
                     // launch next page
                     Intent next = new Intent(getApplicationContext(), End.class);
                     next.putExtra("SCORE", ""+total_score);
-                    Log.d("SCORE_CHECK", "--- "+total_score); // testing
                     startActivity(next);
                 }
                 else { // display helpful message if question(s) remain unanswered

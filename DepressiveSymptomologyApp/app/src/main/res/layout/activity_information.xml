@@ -52,14 +52,15 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="12sp"
                 android:text="What is it?"
-                android:textColor="#009688" />
+                android:textColor="#757575"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12sp"
-                android:text="The QIDS questionnaire is a Quick Inventory of Depressive Symptomatology" />
+                android:text="The QIDS questionnaire is a Quick Inventory of Depressive Symptomatology." />
 
             <TextView
                 android:id="@+id/textView12"
@@ -67,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="12sp"
                 android:text="Why use it?"
-                android:textColor="#009688" />
+                android:textColor="#757575"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -82,7 +84,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="12sp"
                 android:text="When to use it?"
-                android:textColor="#009688" />
+                android:textColor="#757575"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView9"
@@ -104,7 +107,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="24sp"
                 android:text="Terms of Usage"
-                android:textColor="#757575"
+                android:textColor="#009688"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -113,14 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="12sp"
-                android:text="This piece of software was made purely for the purposes of practicing designing and implementing a basic android application. None of the information that you provide is recorded in anyway." />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="12sp"
-                android:text="Thank you for using our application." />
+                android:text="This piece of software was made purely for the purposes of practicing designing and implementing a basic android application. None of the information that you provide is recorded in anyway. By clicking next you are denoting that you have read and understood this." />
 
         </LinearLayout>
     </ScrollView>
