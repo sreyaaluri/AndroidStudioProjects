@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         agetxt.setText(age);
         nametxt.setClickable(true);
         agetxt.setClickable(true);
-        loaded=true;
+        loaded = true;
                Button edit=findViewById(R.id.editbtn);
         edit.setVisibility(View.VISIBLE);
         edit.setOnClickListener(new View.OnClickListener() {
