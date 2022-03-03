@@ -45,11 +45,15 @@
         android:inputType="textPersonName"
         android:hint="Age" />
 
-    <!--gender dropdown list-->
-    <Spinner
-        android:id="@+id/genderspinner"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <!--gender-->
+    <EditText
+        android:id="@+id/editTextTextPersonName4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_gravity="center"
+        android:inputType="textPersonName"
+        android:hint="Gender" />
 
     <!--create username-->
     <EditText
@@ -70,6 +74,14 @@
         android:layout_gravity="center"
         android:hint="Password" />
 
+    <!--error message-->
+    <TextView
+        android:id="@+id/signuperrormsg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_gravity="center"/>
+
     <!--sign up button-->
     <Button
         android:id="@+id/signupbtn"
@@ -77,6 +89,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:backgroundTint="#009688"
+        android:layout_marginTop="10dp"
         android:text="Sign Up" />
 
     <!--horizontal line-->
