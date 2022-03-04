@@ -44,6 +44,7 @@ public class DBClass extends SQLiteOpenHelper {
     // variables for table and column names in diaryQuery
     private String TABLE_TRACKER="Tracker";
     // private static final String UNAME_COL = "username";
+    // private static final String DATE_COL = "date";
     private static final String MOOD_COL = "mood";
     private static final String ANXIETY_COL = "anxiety";
     private static final String MEDICATION_COL = "medication";
@@ -86,6 +87,7 @@ public class DBClass extends SQLiteOpenHelper {
 
         String trackerQuery = "CREATE TABLE " + TABLE_TRACKER + "("
                 + UNAME_COL + " TEXT, "
+                + DATE_COL + " TEXT, "
                 + MOOD_COL + " INTEGER, " // value 1-5
                 + ANXIETY_COL + " INTEGER, " // value 0-5
                 + MEDICATION_COL + " INTEGER, " // boolean
@@ -101,11 +103,10 @@ public class DBClass extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // dropping all tables that exist in schema old version and recreate new empty ones
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIARY);
-//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRACKER);
-//        onCreate(db);
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_DIARY);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRACKER);
+        onCreate(db);
     }
 
     // called to log user in TODO check password datatype
@@ -161,7 +162,7 @@ public class DBClass extends SQLiteOpenHelper {
     }
 
     //called to add wellness tracker data to tracker table
-    public void addTrackerData(String username, int mood, int anxiety, int medication, int medTime) {
+    public void addTrackerData(String username, String date, int mood, int anxiety, int medication, int medTime) {
         // open the database for writing
         SQLiteDatabase db = getWritableDatabase();
 
@@ -171,6 +172,7 @@ public class DBClass extends SQLiteOpenHelper {
             // including user's entries as field values
             ContentValues values = new ContentValues();
             values.put(UNAME_COL, username);
+            values.put(DATE_COL, date);
             values.put(MOOD_COL, mood);
             values.put(ANXIETY_COL, anxiety);
             values.put(MEDICATION_COL, medication);
@@ -196,7 +198,7 @@ public class DBClass extends SQLiteOpenHelper {
 
         // select * from diary table for entries of specific user
         String ALL_ENTRIES_SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_DIARY, UNAME_COL, username);
+                String.format("SELECT * FROM %s WHERE %s = \'%s\' ORDER BY %s DESC", TABLE_DIARY, UNAME_COL, username, DATE_COL);
 
         // open the database for reading
         SQLiteDatabase db = getReadableDatabase();

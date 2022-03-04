@@ -28,19 +28,22 @@
                 android:id="@+id/yesTimeRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yes" />
+                android:text="Yes"
+                android:onClick="toggleMedTime" />
 
             <RadioButton
                 android:id="@+id/noTimeRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No" />
+                android:text="No"
+                android:onClick="toggleMedTime"/>
 
             <RadioButton
                 android:id="@+id/naTimeRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="N/A" />
+                android:text="N/A"
+                android:onClick="toggleMedTime"/>
 
         </RadioGroup>
 
