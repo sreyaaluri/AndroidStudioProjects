@@ -3,9 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.46770833333333334" />
+        <entry key="app/src/main/res/drawable/happy_selector.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.46770833333333334" />
+        <entry key="app/src/main/res/drawable/netural_selector.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/drawable/sad_selector.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/drawable/vhappy_selector.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/drawable/vsad_selector.xml" value="0.28854166666666664" />
+        <entry key="app/src/main/res/layout/activity_daily_diary.xml" value="0.23905013720146814" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_tracker.xml" value="0.37230375473085103" />
         <entry key="app/src/main/res/layout/activity_user_registration.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/activity_view_notes.xml" value="0.1947463768115942" />
+        <entry key="app/src/main/res/layout/fragment_medication.xml" value="0.36186594202898553" />
+        <entry key="app/src/main/res/layout/fragment_note.xml" value="0.4121376811594203" />
       </map>
     </option>
   </component>
@@ -14,5 +26,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.1" />
+      </ProjectState>
+    </option>
   </component>
 </project>
