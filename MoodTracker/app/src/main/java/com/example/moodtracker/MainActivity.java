@@ -11,4 +11,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+
+    //validate user's credentials
+
+    //if username and password field is empty
+
+    //validate info
+    public class validated(){
+        DBClass db = new DBClass(this, "")
+    }
 }
