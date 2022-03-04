@@ -22,8 +22,8 @@ public class user_registration extends AppCompatActivity {
         TextView errorMsg = findViewById(R.id.signuperrormsg);
         Button signupBtn = findViewById(R.id.signupbtn);
 
-        DBClass db = new DBClass(this, "Users");
-        String uname = db.selectQuery("username");
+        DBClass db = DBClass.getDBInstance(this);
+//        String uname = db.selectQuery("username");
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,9 +33,9 @@ public class user_registration extends AppCompatActivity {
                     errorMsg.setText("username must have length of at least 5");
                 }
 
-                if(){
-
-                }
+//                if(){
+//
+//                }
             }//end onclick method
 
         });//end sign up button on click listener method

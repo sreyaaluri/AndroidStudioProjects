@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     //if username and password field is empty
 
     //validate info
-    public class validated(){
-        DBClass db = new DBClass(this, "")
-    }
+//    public class validated(){
+//        DBClass db = new DBClass(this, "");
+//    }
 }
