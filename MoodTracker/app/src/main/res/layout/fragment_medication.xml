@@ -15,18 +15,14 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="24sp"
-            android:layout_marginTop="12sp"
-            android:layout_marginRight="24sp"
+            android:layout_marginTop="4sp"
             android:text="Did you take your medication on time today?"
             android:textSize="16sp" />
 
         <RadioGroup
             android:id="@+id/medTimeBtnGrp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24sp"
-            android:layout_marginRight="24sp">
+            android:layout_height="wrap_content">
 
             <RadioButton
                 android:id="@+id/yesTimeRB"

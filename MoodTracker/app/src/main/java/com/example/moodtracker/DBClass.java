@@ -1,5 +1,6 @@
 package com.example.moodtracker;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -94,7 +95,6 @@ public class DBClass extends SQLiteOpenHelper {
 //        db.execSQL(loginQuery);
         db.execSQL(diaryQuery);
         db.execSQL(trackerQuery);
-        db.close();
     }
 
     // called when the database needs to be upgraded.
@@ -106,6 +106,27 @@ public class DBClass extends SQLiteOpenHelper {
 //        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRACKER);
 //        onCreate(db);
 
+    }
+
+    // called to log user in TODO check password datatype
+    public void authenticateUser(String username, String password) {
+        // get user info
+        // if no user, prompt signup
+        // else compare passwords
+        // show error message
+    }
+
+    // called to register a new user TODO check password datatype
+    public void addUser(String username, String password, String name, String age, String gender) {
+        // check if username exists -> return false if exist
+        // else continue registration
+        // return true so you can redirect to login
+    }
+
+    // retrieve current user name
+    public void getCurrUserName() {
+        // get user's name w/ select query using username
+        // to be used in homepage welcome message
     }
 
     // called to add a new note to table with diary entries
@@ -168,13 +189,14 @@ public class DBClass extends SQLiteOpenHelper {
     }
 
     // called to retrieve notes of a specific user from diary table
+    @SuppressLint("Range")
     public List<DiaryEntry> retrieveAllDiaryEntries(String username) {
         // initialize list of diary entries
         List<DiaryEntry> entries = new ArrayList<DiaryEntry>();
 
         // select * from diary table for entries of specific user
         String ALL_ENTRIES_SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = %s", TABLE_DIARY, UNAME_COL, username);
+                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_DIARY, UNAME_COL, username);
 
         // open the database for reading
         SQLiteDatabase db = getReadableDatabase();
@@ -204,88 +226,10 @@ public class DBClass extends SQLiteOpenHelper {
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
             }
-            db.close();
         }
 
         // returning a list of diary entries related to given user
         return entries;
     }
 
-
-
-    // TODO NOTE: everything after this point has not been adapted for this project
-//
-//    public void deletetable(String table_name){
-//        SQLiteDatabase db = this.getWritableDatabase();
-//        String qry="DELETE FROM "+table_name;
-//        db.execSQL(qry);
-//        db.close();
-//    }
-//    public void addInfo(Integer i,String name, String age) {
-//
-//        ContentValues values = new ContentValues(); //used to store set of values.
-//        SQLiteDatabase db = this.getWritableDatabase(); //Opensource db
-//
-//        values.put(NAME_COL, name);
-//        values.put(AGE_COL, Integer.parseInt(age));
-//        db.insert(TABLE_NAME, null, values);
-//        db.close();
-//    }
-//      public String selectQuery(String fieldname){
-//          String fieldvalue;
-//          String query="SELECT "+fieldname+" FROM "+TABLE_USER_INFO;
-//          SQLiteDatabase db = this.getReadableDatabase();
-//          Cursor cur=db.rawQuery(query,null); //Runs the provided SQL and returns a Cursor over the result set.
-//
-//
-//          //  extract.moveToLast();
-//          cur.moveToFirst();
-//          String val="";
-//          while (cur.moveToNext()) {  //contains all rows. traversing
-//              // if (cur.getInt(1)) {
-//              String title = cur.getString(0);
-//              Log.d("Check cursor","====="+title);
-//              if(cur.getPosition()==cur.getCount()-1){  //getting last row.
-//                  val=cur.getString(0);
-//              }
-//          }
-//          cur.close();
-//
-//          db.close();
-//          return val;
-//
-//      }
-//
-//    public String selectConditionQuery(String fieldname,String condition){
-//        String fieldvalue;
-//        String query="SELECT "+fieldname+" FROM "+TABLE_NAME+" WHERE "+condition;
-//        Log.d("==SelectCondition===","====="+query);
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cur=db.rawQuery(query,null); //Runs the provided SQL and returns a Cursor over the result set.
-//
-//
-//        //  extract.moveToLast();
-//        cur.moveToFirst();
-//        Log.d("==SelectCondition===","====="+cur.getString(0));
-//
-//        String val=cur.getString(0)+" ";  //first record
-//        while (cur.moveToNext()) {  //contains all rows. traversing
-//            // if (cur.getInt(1)) {
-//            val+= cur.getString(0)+" ";
-//            Log.d("==SelectCondition===","====="+val);
-//        }
-//
-//        cur.close();
-//
-//        db.close();
-//        return val;
-//
-//    }
-//
-//      public void updateTable(String field1,String fieldvalue1,String field2,String fieldvalue2){
-//          SQLiteDatabase db = this.getReadableDatabase();
-//          db.execSQL("UPDATE "+TABLE_USER_INFO+" SET"+" "+field1 +"="+"'"+fieldvalue1+"',"+field2+"="+"'"+fieldvalue2+"'"); //special character.
-//          db.close();
-//      }
 }

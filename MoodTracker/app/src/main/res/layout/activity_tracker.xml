@@ -74,7 +74,7 @@ tools:context=".Tracker">
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTintMode="add"
-                android:onClick="toggleMood"
+                android:onClick="setVSadMood"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/vsad_selector" />
@@ -86,7 +86,7 @@ tools:context=".Tracker">
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTintMode="add"
-                android:onClick="toggleMood"
+                android:onClick="setSadMood"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/sad_selector" />
@@ -98,7 +98,7 @@ tools:context=".Tracker">
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTintMode="add"
-                android:onClick="toggleMood"
+                android:onClick="setNeutralMood"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/netural_selector" />
@@ -110,7 +110,7 @@ tools:context=".Tracker">
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTintMode="add"
-                android:onClick="toggleMood"
+                android:onClick="setHappyMood"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/happy_selector" />
@@ -122,7 +122,7 @@ tools:context=".Tracker">
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:backgroundTintMode="add"
-                android:onClick="toggleMood"
+                android:onClick="setVHappyMood"
                 android:padding="2dp"
                 android:scaleType="fitCenter"
                 app:srcCompat="@drawable/vhappy_selector" />
@@ -161,22 +161,20 @@ tools:context=".Tracker">
             android:textColor="#009688"
             android:textSize="20sp" />
 
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="24sp"
-            android:layout_marginTop="12sp"
-            android:layout_marginRight="24sp"
-            android:text="Are you currently taking medication?"
-            android:textSize="16sp" />
-
         <RadioGroup
             android:id="@+id/medBtnGrp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="24sp"
             android:layout_marginRight="24sp">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:text="Are you currently taking medication?"
+                android:textSize="16sp" />
 
             <RadioButton
                 android:id="@+id/yesRB"
@@ -191,6 +189,24 @@ tools:context=".Tracker">
                 android:text="No" />
 
         </RadioGroup>
+
+        <TextView
+            android:id="@+id/errorMsgLbl"
+            android:layout_width="match_parent"
+            android:layout_height="16sp"
+            android:layout_marginLeft="24sp"
+            android:layout_marginRight="24sp"
+            android:gravity="center"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24sp"
+            android:layout_marginRight="24sp"
+            android:backgroundTint="#009688"
+            android:text="Submit" />
 
     </LinearLayout>
 </ScrollView>

@@ -3,13 +3,13 @@ package com.example.moodtracker;
 public class DiaryEntry {
 
     // instance variables
-    public String date ="";
-    public String notes ="";
-    public int exercise = 0;
-    public int outside =0;
-    public int socialize = 0;
-    public int meditate = 0;
-    public int read = 0;
+    private String date ="";
+    private String notes ="";
+    private int exercise = 0;
+    private int outside =0;
+    private int socialize = 0;
+    private int meditate = 0;
+    private int read = 0;
 
     // default constructor
     public DiaryEntry() {}

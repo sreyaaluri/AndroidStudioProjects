@@ -58,9 +58,9 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextMultiLine"
+            android:id="@+id/diaryEntryTxt"
             android:layout_width="match_parent"
-            android:layout_height="258dp"
+            android:layout_height="171dp"
             android:layout_marginLeft="24sp"
             android:layout_marginRight="24sp"
             android:ems="10"
@@ -119,6 +119,16 @@
             android:text="Socialized"
             android:layout_marginLeft="24sp"
             android:layout_marginRight="24sp" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24sp"
+            android:layout_marginRight="24sp"
+            android:layout_marginTop="20sp"
+            android:backgroundTint="#009688"
+            android:text="Submit" />
 
     </LinearLayout>
 </ScrollView>
