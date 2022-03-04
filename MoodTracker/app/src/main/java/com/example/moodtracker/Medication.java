@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import android.view.ViewGroup;
  * A simple {@link Fragment} subclass.
  */
 public class Medication extends Fragment {
+
+    public int medication = -2;
 
     public Medication() {
         // Required empty public constructor
@@ -29,5 +32,4 @@ public class Medication extends Fragment {
         return inflater.inflate(R.layout.fragment_medication, container, false);
     }
 
-    // TODO add code to save medication answers
 }

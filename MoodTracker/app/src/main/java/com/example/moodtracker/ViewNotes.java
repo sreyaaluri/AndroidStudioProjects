@@ -21,12 +21,10 @@ public class ViewNotes extends AppCompatActivity {
         setContentView(R.layout.activity_view_notes);
         username = getIntent().getStringExtra("UNAME");
 
-        TextView notesView = findViewById(R.id.notesView);
         DBClass db = DBClass.getDBInstance(this);
         List<DiaryEntry> entryList = db.retrieveAllDiaryEntries(username);
         for(DiaryEntry de : entryList) {
             addFragment(Note.newInstance(de.getDate(), de.getNotes()));
-            notesView.setText(notesView.getText().toString()+"\nDate: "+de.getDate()+"\n"+de.getNotes());
         }
     }
 

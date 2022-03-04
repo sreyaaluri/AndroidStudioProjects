@@ -140,7 +140,7 @@ tools:context=".Tracker">
             android:textSize="20sp" />
 
         <SeekBar
-            android:id="@+id/seekBar"
+            android:id="@+id/anxietyBar"
             style="@style/Widget.AppCompat.SeekBar.Discrete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -180,20 +180,22 @@ tools:context=".Tracker">
                 android:id="@+id/yesRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Yes" />
+                android:text="Yes"
+                android:onClick="toggleMed"/>
 
             <RadioButton
                 android:id="@+id/noRB"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="No" />
+                android:text="No"
+                android:onClick="toggleMed"/>
 
         </RadioGroup>
 
         <TextView
             android:id="@+id/errorMsgLbl"
             android:layout_width="match_parent"
-            android:layout_height="16sp"
+            android:layout_height="20sp"
             android:layout_marginLeft="24sp"
             android:layout_marginRight="24sp"
             android:gravity="center"
