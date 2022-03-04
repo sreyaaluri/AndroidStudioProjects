@@ -108,26 +108,105 @@ public class DBClass extends SQLiteOpenHelper {
 
     }
 
-    // called to log user in TODO check password datatype
-    public void authenticateUser(String username, String password) {
-        // get user info
-        // if no user, prompt signup
-        // else compare passwords
-        // show error message
-    }
+    // called to check if username and password match
+    public boolean authenticateUser(String username, String password) {
+        //array of column to get
+       // String [] usernameCol = {UNAME_COL};
+        SQLiteDatabase db = getReadableDatabase();
 
-    // called to register a new user TODO check password datatype
+        String SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\' AND WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username, PASSWORD_COL, password);
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        int cursorCount  = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if(cursorCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }//end authenticateUser() method
+
+    // called to add a new user
     public void addUser(String username, String password, String name, String age, String gender) {
-        // check if username exists -> return false if exist
-        // else continue registration
-        // return true so you can redirect to login
-    }
+        SQLiteDatabase db = getWritableDatabase();
+
+        // starting transaction
+        db.beginTransaction();
+        try {// adding row to table
+            //including user's info as field values
+            ContentValues values = new ContentValues();
+            values.put(UNAME_COL, username);
+            values.put(PASSWORD_COL, password);
+            values.put(NAME_COL, name);
+            values.put(AGE_COL, age);
+            values.put(GENDER_COL, gender);
+
+            // adding values to table
+            db.insertOrThrow(TABLE_USER_INFO, null, values);
+            db.setTransactionSuccessful();
+        } catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to add using data to database");
+        } finally { // closing the database
+            db.endTransaction();
+        }
+    }//end addUser() method
+
+    //called to check if a username is taken
+    public boolean isTaken(String username){
+        //array of column to get
+        //String [] usernameCol = {UNAME_COL};
+        SQLiteDatabase db = getReadableDatabase();
+
+        String SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        int cursorCount  = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if(cursorCount > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }//end isTaken method
 
     // retrieve current user name
-    public void getCurrUserName() {
-        // get user's name w/ select query using username
-        // to be used in homepage welcome message
-    }
+    /*public void getCurrName(String username) {
+        //String [] usernameCol = {NAME_COL};
+
+        String SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
+
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) {
+                do {
+                    String displayName;
+                    displayName.setText(cursor.getString(cursor.getColumnIndex(DATE_COL)));
+                } while(cursor.moveToNext());
+            }
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to get name entry from database");
+        }
+        finally { // closing the cursor and the database
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+
+    }//end getCurrName() method
+    */
 
     // called to add a new note to table with diary entries
     public void addDiaryEntry(String username, DiaryEntry de) {
