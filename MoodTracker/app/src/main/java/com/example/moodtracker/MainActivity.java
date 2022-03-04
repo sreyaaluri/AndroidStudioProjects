@@ -16,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        DBClass db = DBClass.getDBInstance(this);
+
 
         //create account button
         Button createaccntBtn = findViewById(R.id.createaccntbtn);
@@ -28,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        DBClass db = DBClass.getDBInstance(this);
         EditText loginUname = findViewById(R.id.loginuname);
         EditText loginPassword = findViewById(R.id.loginpassword);
         TextView lgnerrorMsg= findViewById(R.id.lgnerrormsg);
@@ -38,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //check if username exists
-                if(){
-                    lgnerrorMsg.setText()
-                }
+//                if(){
+//                    lgnerrorMsg.setText()
+//                }
                 //validate user credentials
 
             }

@@ -61,7 +61,7 @@ public class DBClass extends SQLiteOpenHelper {
 
     // private constructor to support use of one database across entire application
     private DBClass(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     // called when db is created for the first time
@@ -94,7 +94,7 @@ public class DBClass extends SQLiteOpenHelper {
                 + MEDICATION_TIME_COL + " INTEGER)"; // 0 - No, 1 - Yes, -1 - N/A
 
         // running the queries
-//        db.execSQL(loginQuery);
+        db.execSQL(loginQuery);
         db.execSQL(diaryQuery);
         db.execSQL(trackerQuery);
     }
@@ -109,30 +109,44 @@ public class DBClass extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // called to check if username and password match
-    public boolean authenticateUser(String username, String password) {
-        //array of column to get
-       // String [] usernameCol = {UNAME_COL};
+    // TODO check password datatype
+    // called to check if username and password match, -1 if user doesn't exists, 0 if wrong pass, 1 if success
+    public int authenticateUser(String username, String password) {
+        // open the database for reading
         SQLiteDatabase db = getReadableDatabase();
 
+        // select * from diary table for entries of specific user
         String SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = \'%s\' AND WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username, PASSWORD_COL, password);
+                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
+
+        // run query and get cursor object
         Cursor cursor = db.rawQuery(SELECT_QUERY, null);
 
-        int cursorCount  = cursor.getCount();
-        cursor.close();
-        db.close();
-
-        if(cursorCount > 0){
-            return true;
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) { // user exists
+                String savedPassword = cursor.getString(cursor.getColumnIndex(PASSWORD_COL));
+                if(password.equals(savedPassword))
+                    return 1; // success
+                else
+                    return 0; // wrong password
+            }
+            else { // user doesn't exist
+                return -1; //user doesn't exist
+            }
         }
-        else{
-            return false;
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to get diary entry from database");
+        }
+        finally { // closing the cursor and the database
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+            return -1;
         }
     }//end authenticateUser() method
 
-    // called to add a new user
-    public void addUser(String username, String password, String name, String age, String gender) {
+    // called to add a new user TODO check password type
+    public void addUser(String username, String password, String name, int age, String gender) {
         SQLiteDatabase db = getWritableDatabase();
 
         // starting transaction
@@ -150,33 +164,33 @@ public class DBClass extends SQLiteOpenHelper {
             db.insertOrThrow(TABLE_USER_INFO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) { // printing error in logcat
-            Log.d(ERROR_TAG, "Error while trying to add using data to database");
+            Log.d(ERROR_TAG, "Error while trying to add user data to database");
         } finally { // closing the database
             db.endTransaction();
         }
     }//end addUser() method
 
-    //called to check if a username is taken
-    public boolean isTaken(String username){
-        //array of column to get
-        //String [] usernameCol = {UNAME_COL};
-        SQLiteDatabase db = getReadableDatabase();
-
-        String SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
-        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-
-        int cursorCount  = cursor.getCount();
-        cursor.close();
-        db.close();
-
-        if(cursorCount > 0){
-            return true;
-        }
-        else{
-            return false;
-        }
-    }//end isTaken method
+//    //called to check if a username is taken
+//    public boolean isTaken(String username){
+//        //array of column to get
+//        //String [] usernameCol = {UNAME_COL};
+//        SQLiteDatabase db = getReadableDatabase();
+//
+//        String SELECT_QUERY =
+//                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
+//        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+//
+//        int cursorCount  = cursor.getCount();
+//        cursor.close();
+//        db.close();
+//
+//        if(cursorCount > 0){
+//            return true;
+//        }
+//        else{
+//            return false;
+//        }
+//    }//end isTaken method
 
     // retrieve current user name
     /*public void getCurrName(String username) {

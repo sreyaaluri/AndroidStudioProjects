@@ -16,7 +16,6 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        DBClass db = DBClass.getDBInstance(this);
 
         // TODO add code for logout btn here and everywhere
 
