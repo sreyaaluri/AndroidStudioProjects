@@ -110,7 +110,7 @@ public class DBClass extends SQLiteOpenHelper {
     }
 
     // TODO check password datatype
-    // called to check if username and password match, -1 if user doesn't exists, 0 if wrong pass, 1 if success
+    // called to check if username and password match, -1 if user doesn't exists, 0 if wrong password, 1 if success
     public int authenticateUser(String username, String password) {
         // open the database for reading
         SQLiteDatabase db = getReadableDatabase();

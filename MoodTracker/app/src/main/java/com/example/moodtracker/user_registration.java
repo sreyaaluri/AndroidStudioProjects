@@ -108,7 +108,7 @@ public class user_registration extends AppCompatActivity {
             }
         });
     }
-    //helper method to check if username is password starts with an uppercase
+    //helper method to check if password starts with an uppercase
     public boolean startUppercase(String s){
         for(int i = 0; i < s.length(); i++){
             if(Character.isUpperCase(s.charAt(0))) {

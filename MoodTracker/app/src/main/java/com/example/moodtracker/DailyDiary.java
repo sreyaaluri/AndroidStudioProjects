@@ -24,6 +24,17 @@ public class DailyDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_diary);
+
+        //logout button
+        Button logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loggedoutIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(loggedoutIntent);
+            }
+        });
+
         username = getIntent().getStringExtra("UNAME");
 
         // adding on click listener to submit button

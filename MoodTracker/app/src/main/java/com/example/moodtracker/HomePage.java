@@ -10,14 +10,22 @@ import android.widget.Button;
 public class HomePage extends AppCompatActivity {
 
     // TODO remove hardcoded username
-    public static final String uname = "sa8un";
+    public static final String uname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
 
-        // TODO add code for logout btn here and everywhere
+        //logout button
+        Button logoutBtn = findViewById(R.id.logoutBtn);
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent loggedoutIntent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(loggedoutIntent);
+            }
+        });
 
         // adding on click listener to daily diary button
         Button diaryBtn = findViewById(R.id.diaryBtn);
@@ -55,4 +63,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+    //disable back button
+    @Override
+    public void onBackPressed() {}
 }
