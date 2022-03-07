@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class user_registration extends AppCompatActivity {
 
@@ -52,7 +54,7 @@ public class user_registration extends AppCompatActivity {
                     // checking username conditions
                     if(signupUname.length() != 5)                               // has length 5
                         signuperrorMsg.setText("username must be of length 5");
-                    else if(!signupUname.matches("^[a-zA-Z0-9]*$"))       // is alphanumeric
+                    else if(isAlphaNumeric(signupUname) == false)       // is alphanumeric
                         signuperrorMsg.setText("username must be alphanumeric");
                     else if(!db.unameIsAvailable(signupUname))                  // not taken
                         signuperrorMsg.setText("username already exists, must be unique");
@@ -70,6 +72,7 @@ public class user_registration extends AppCompatActivity {
                         }
 
                         //take user back to login page to sign in
+
                         Intent nextIntent = new Intent(getApplicationContext(), MainActivity.class);
                         startActivity(nextIntent);
                     }
@@ -79,6 +82,22 @@ public class user_registration extends AppCompatActivity {
                 }
             }
         });
-
     }
+
+    //helper method to check if password is alphanumeric
+    public static boolean isAlphaNumeric(String str) {
+        // Regex to check string is alphanumeric or not.
+        String regex = "^(?=.*[a-zA-Z])(?=.*[0-9])[A-Za-z0-9]+$";
+
+        // Compile the ReGex
+        Pattern p = Pattern.compile(regex);
+
+        if (str == null) {
+            return false;
+        }
+
+        Matcher m = p.matcher(str);
+        return m.matches();
+    }
+
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class HomePage extends AppCompatActivity {
 
@@ -15,6 +16,7 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        DBClass db = DBClass.getDBInstance(this);
         uname = getIntent().getStringExtra("UNAME");
 
         //logout button
@@ -26,6 +28,12 @@ public class HomePage extends AppCompatActivity {
                 startActivity(loggedoutIntent);
             }
         });
+
+        //retrieving user's name to greet user
+        String name = db.selectQuery("name");
+        TextView helloTxt = findViewById(R.id.hellotxt);
+        helloTxt.setText("Hello "+ name);
+
 
         // adding on click listener to daily diary button
         Button diaryBtn = findViewById(R.id.diaryBtn);
