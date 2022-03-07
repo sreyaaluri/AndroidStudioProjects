@@ -17,7 +17,6 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class MainActivity extends AppCompatActivity {
-    //public static final String uname = "dm9tb";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,65 +24,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         DBClass db = DBClass.getDBInstance(this);
 
+        // initializing error message view
+        TextView lgnerrorMsg= findViewById(R.id.lgnerrormsg);
 
-        //create account button
+        // create account button
         Button createaccntBtn = findViewById(R.id.createaccntbtn);
         createaccntBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //take user back to signup page to sign up
+                //take user to signup page
                 Intent signupIntent = new Intent(getApplicationContext(), user_registration.class);
                 startActivity(signupIntent);
             }
         });
 
-        EditText loginUname = findViewById(R.id.loginuname);
-        EditText loginPassword = findViewById(R.id.loginpassword);
-        TextView lgnerrorMsg= findViewById(R.id.lgnerrormsg);
-
+        // login button
         Button loginButton  =findViewById(R.id.loginbutton);
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean pass = true;
-                //check if username exists
-                if(db.authenticateUser(loginUname.getText().toString(), "") == -1){
+                String loginUname = ((EditText) findViewById(R.id.loginuname)).getText().toString();
+                String loginPassword = ((EditText) findViewById(R.id.loginpassword)).getText().toString();
+                String hashedPwd = db.hashPassword(loginPassword);
+
+                // authenticating user
+                int loginToken = db.authenticateUser(loginUname, hashedPwd);
+                if(loginToken == -1) // -1 means user does not exist
                     lgnerrorMsg.setText("username does not exist");
-                    pass = false;
+                else if(loginToken == 0) // 0 means user exists but password doesn't match
+                    lgnerrorMsg.setText("incorrect password");
+                else if(loginToken == 1) { // successful login!
+                    Intent homepgIntent = new Intent(getApplicationContext(), HomePage.class);
+                    homepgIntent.putExtra("UNAME", loginUname);
+                    startActivity(homepgIntent);
                 }
-
-                //first hash the password entered
-                if(pass) {
-                    String hashPwd = "";
-                    //hash password
-                    try {
-                        byte[] hashedPwd = messageDigest(loginPassword.getText().toString());
-                        hashPwd = Base64.encodeToString(hashedPwd, 0);
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
-
-                    if (!hashPwd.equals("")) { // successfully hashed!
-                        //check if password matches username
-                        if (db.authenticateUser(loginUname.getText().toString(), hashPwd) == 1) {
-                            Log.d("YAYYYY:", "it matches!");
-                            Intent homepgIntent = new Intent(getApplicationContext(), HomePage.class);
-                            homepgIntent.putExtra("UNAME", loginUname.getText().toString());
-                            startActivity(homepgIntent);
-                        }
-                        else if(db.authenticateUser(loginUname.getText().toString(), hashPwd) == 0) {
-                            lgnerrorMsg.setText("Incorrect password");
-                            pass = false;
-                        }
-
-                    }
-                }
-
-                //wrong password
-                /*else {
-                    lgnerrorMsg.setText("Incorrect password");
-                    pass = false;
-                }*/
+                else Log.d("FIX:", "Unhandled error in login");
             }
         });
 

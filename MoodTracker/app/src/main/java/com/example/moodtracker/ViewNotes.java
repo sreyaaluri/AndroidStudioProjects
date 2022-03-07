@@ -23,6 +23,13 @@ public class ViewNotes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_notes);
 
+        username = getIntent().getStringExtra("UNAME");
+        DBClass db = DBClass.getDBInstance(this);
+        List<DiaryEntry> entryList = db.retrieveAllDiaryEntries(username);
+        for(DiaryEntry de : entryList) {
+            addFragment(Note.newInstance(de.getDate(), de.getNotes()));
+        }
+
         //logout button
         Button logoutBtn = findViewById(R.id.logoutBtn);
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -32,14 +39,6 @@ public class ViewNotes extends AppCompatActivity {
                 startActivity(loggedoutIntent);
             }
         });
-
-        username = getIntent().getStringExtra("UNAME");
-
-        DBClass db = DBClass.getDBInstance(this);
-        List<DiaryEntry> entryList = db.retrieveAllDiaryEntries(username);
-        for(DiaryEntry de : entryList) {
-            addFragment(Note.newInstance(de.getDate(), de.getNotes()));
-        }
     }
 
     // method to add a fragement

@@ -24,6 +24,7 @@ public class DailyDiary extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_daily_diary);
+        username = getIntent().getStringExtra("UNAME");
 
         //logout button
         Button logoutBtn = findViewById(R.id.logoutBtn);
@@ -34,8 +35,6 @@ public class DailyDiary extends AppCompatActivity {
                 startActivity(loggedoutIntent);
             }
         });
-
-        username = getIntent().getStringExtra("UNAME");
 
         // adding on click listener to submit button
         Button submitBtn = findViewById(R.id.submitBtn);

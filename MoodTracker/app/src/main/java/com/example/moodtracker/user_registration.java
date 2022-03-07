@@ -21,6 +21,7 @@ public class user_registration extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_registration);
+        DBClass db = DBClass.getDBInstance(this);
 
         //login button that links back to login page
         Button gotolgnPage = findViewById(R.id.gotolgnpage);
@@ -32,98 +33,52 @@ public class user_registration extends AppCompatActivity {
             }
         });
 
-        //user info validation
-        DBClass db = DBClass.getDBInstance(this);
-        EditText enterName = findViewById(R.id.entername);
-        EditText enterAge = findViewById(R.id.enterage);
-        EditText enterGen = findViewById(R.id.entergender);
-        EditText signupUname = findViewById(R.id.signupuname);
-        EditText signupPwd = findViewById(R.id.signuppassword);
-        TextView signuperrorMsg= findViewById(R.id.signuperrormsg);
-
-        Button signupBtn = findViewById(R.id.signupbtn);
+        // sign up button to add new user to database
+        Button signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean pass = true;
+                //user info validation
+                String enterName = ((EditText) findViewById(R.id.entername)).getText().toString();
+                String enterAgeTxt = ((EditText) findViewById(R.id.enterage)).getText().toString();
+                String enterGen = ((EditText) findViewById(R.id.entergender)).getText().toString();
+                String signupUname = ((EditText) findViewById(R.id.signupuname)).getText().toString();
+                String signupPwd = ((EditText) findViewById(R.id.signuppassword)).getText().toString();
+                TextView signuperrorMsg= findViewById(R.id.signuperrormsg);
 
-                //check if name, age, gender field is not empty
-                if((enterName.getText().toString() == "") && (enterAge.getText().toString() == "")  && (enterGen.getText().toString() == "" )){
+                // checking if all information is provided
+                if(!enterName.equals("") && !enterAgeTxt.equals("") && !enterGen.equals("")
+                        && !signupUname.equals("") && !signupPwd.equals("")) {
+                    // checking username conditions
+                    if(signupUname.length() != 5)                               // has length 5
+                        signuperrorMsg.setText("username must be of length 5");
+                    else if(!signupUname.matches("^[a-zA-Z0-9]*$"))       // is alphanumeric
+                        signuperrorMsg.setText("username must be alphanumeric");
+                    else if(!db.unameIsAvailable(signupUname))                  // not taken
+                        signuperrorMsg.setText("username already exists, must be unique");
+                        // checking password conditions
+                    else if(signupPwd.length() != 8)                            // length 8
+                        signuperrorMsg.setText("password must be of length 8");
+                    else if(Character.isLowerCase(signupPwd.charAt(0)))         // start uppercase
+                        signuperrorMsg.setText("password must start Uppercase");
+                    else { // passed all checks
+                        // hash password
+                        String hashPwd = db.hashPassword(signupPwd);
+                        if(!hashPwd.equals("")) { // successfully hashed!
+                            // add new user info to database
+                            db.addUser(signupUname, hashPwd, enterName, Integer.parseInt(enterAgeTxt), enterGen);
+                        }
+
+                        //take user back to login page to sign in
+                        Intent nextIntent = new Intent(getApplicationContext(), MainActivity.class);
+                        startActivity(nextIntent);
+                    }
+                }
+                else { // missing information -> print helpful message
                     signuperrorMsg.setText("All fields must be completed");
-                    pass = false;
                 }
-
-                //check if username is exactly 5
-                if(signupUname.getText().length() != 5){
-                    signuperrorMsg.setText("username must be of length 5");
-                    pass = false;
-                }
-
-                //check if username is alphanumeric
-                if(!signupUname.getText().toString().matches("^[a-zA-Z0-9]*$")){
-                    signuperrorMsg.setText("username must be alphanumeric");
-                    pass = false;
-                }
-
-                //check if username is already taken
-                if(db.authenticateUser(signupUname.getText().toString(), "") == 0){
-                    signuperrorMsg.setText("username is taken");
-                    pass = false;
-                }
-
-                //check if password is exactly 8
-                if(signupPwd.getText().length() != 8){
-                    signuperrorMsg.setText("password must be of length 8");
-                    pass = false;
-                }
-
-                //check if password starts with uppercase
-                if(startUppercase(signupPwd.getText().toString()) == false){
-                    signuperrorMsg.setText("password must start Uppercase");
-                    pass = false;
-                }
-
-                if(pass) { //if info is valid, hash password and store info in db
-
-                    String hashPwd = "";
-                    //hash password
-                    try {
-                        byte [] hashedPwd = messageDigest(signupPwd.getText().toString());
-                        hashPwd = Base64.encodeToString(hashedPwd, 0);
-                    } catch (NoSuchAlgorithmException e) {
-                        e.printStackTrace();
-                    }
-
-                    if(!hashPwd.equals("")) { // successfully hashed!
-                        //add info to db
-                        db.addUser(signupUname.getText().toString(), hashPwd, enterName.getText().toString(), Integer.parseInt(enterAge.getText().toString()), enterGen.getText().toString());
-                        Log.d("YAYYYY:", "signed up!");
-                    }
-
-                    //take user back to login page to sign in
-                    Intent nextIntent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(nextIntent);
-                }
-
             }
         });
-    }
-    //helper method to check if password starts with an uppercase
-    public boolean startUppercase(String s){
-        for(int i = 0; i < s.length(); i++){
-            if(Character.isUpperCase(s.charAt(0))) {
-                return true;
-            }
-        }
-        return false;
-    }
 
-    //password hashing algorithm
-    public byte[] messageDigest(String s) throws NoSuchAlgorithmException {
-        // Static getInstance method is called with hashing SHA
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        // digest() method called to calculate message digest of an input and return array of byte
-        return md.digest(s.getBytes(StandardCharsets.UTF_8));
     }
-
 }

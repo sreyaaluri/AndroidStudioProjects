@@ -6,9 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Base64;
 import android.util.Log;
 
 import java.lang.reflect.Array;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,9 +113,39 @@ public class DBClass extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // TODO check password datatype
-    // called to check if username and password match, -1 if user doesn't exists, 0 if wrong password, 1 if success
-    public int authenticateUser(String username, String password) {
+    public boolean unameIsAvailable(String username){
+        // open the database for reading
+        SQLiteDatabase db = getReadableDatabase();
+
+        // select username from diary table for entries of specific user
+        String SELECT_QUERY =
+                String.format("SELECT %s FROM %s WHERE %s = \'%s\'", UNAME_COL, TABLE_USER_INFO, UNAME_COL, username);
+
+        // run query and get cursor object
+        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
+
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) { // username exists
+                return false;
+            }
+            else { // user doesn't exist
+                return true;
+            }
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to check if username exists");
+            return false;
+        }
+        finally { // closing the cursor
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+    }
+
+    // called to check if username and password match database records
+    // returns -1 if user doesn't exist, 1 if success, 0 if fail
+    public int authenticateUser(String username, String hashedPwd) {
         // open the database for reading
         SQLiteDatabase db = getReadableDatabase();
 
@@ -125,32 +159,34 @@ public class DBClass extends SQLiteOpenHelper {
         try { // reading data from cursor
             if (cursor.moveToFirst()) { // user exists
                 String savedPassword = cursor.getString(cursor.getColumnIndex(PASSWORD_COL));
-                if(password.equals(savedPassword))
+                if(hashedPwd.equals(savedPassword))
                     return 1; // success
                 else
                     return 0; // wrong password
             }
             else { // user doesn't exist
-                return -1; //user doesn't exist
+                return -1;    // user doesn't exist
             }
         }
         catch (Exception e) { // printing error in logcat
-            Log.d(ERROR_TAG, "Error while trying to get diary entry from database");
+            Log.d(ERROR_TAG, "Error while trying to read user info for authentication.");
+            return -1;
         }
         finally { // closing the cursor and the database
             if (cursor != null && !cursor.isClosed()) {
                 cursor.close();
             }
-            return -1;
         }
     }//end authenticateUser() method
 
-    // called to add a new user TODO check password type
+    // called to add new user to database
     public void addUser(String username, String password, String name, int age, String gender) {
+        // open the database for writing
         SQLiteDatabase db = getWritableDatabase();
 
         // starting transaction
         db.beginTransaction();
+
         try {// adding row to table
             //including user's info as field values
             ContentValues values = new ContentValues();
@@ -164,64 +200,11 @@ public class DBClass extends SQLiteOpenHelper {
             db.insertOrThrow(TABLE_USER_INFO, null, values);
             db.setTransactionSuccessful();
         } catch (Exception e) { // printing error in logcat
-            Log.d(ERROR_TAG, "Error while trying to add user data to database");
+            Log.d(ERROR_TAG, "Error while trying to add new user to database");
         } finally { // closing the database
             db.endTransaction();
         }
     }//end addUser() method
-
-//    //called to check if a username is taken
-//    public boolean isTaken(String username){
-//        //array of column to get
-//        //String [] usernameCol = {UNAME_COL};
-//        SQLiteDatabase db = getReadableDatabase();
-//
-//        String SELECT_QUERY =
-//                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
-//        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-//
-//        int cursorCount  = cursor.getCount();
-//        cursor.close();
-//        db.close();
-//
-//        if(cursorCount > 0){
-//            return true;
-//        }
-//        else{
-//            return false;
-//        }
-//    }//end isTaken method
-
-    // retrieve current user name
-    /*public void getCurrName(String username) {
-        //String [] usernameCol = {NAME_COL};
-
-        String SELECT_QUERY =
-                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_USER_INFO, UNAME_COL, username);
-
-        SQLiteDatabase db = getReadableDatabase();
-        Cursor cursor = db.rawQuery(SELECT_QUERY, null);
-
-        try { // reading data from cursor
-            if (cursor.moveToFirst()) {
-                do {
-                    String displayName;
-                    displayName.setText(cursor.getString(cursor.getColumnIndex(DATE_COL)));
-                } while(cursor.moveToNext());
-            }
-        }
-        catch (Exception e) { // printing error in logcat
-            Log.d(ERROR_TAG, "Error while trying to get name entry from database");
-        }
-        finally { // closing the cursor and the database
-            if (cursor != null && !cursor.isClosed()) {
-                cursor.close();
-            }
-        }
-
-
-    }//end getCurrName() method
-    */
 
     // called to add a new note to table with diary entries
     public void addDiaryEntry(String username, DiaryEntry de) {
@@ -247,7 +230,7 @@ public class DBClass extends SQLiteOpenHelper {
             db.setTransactionSuccessful();
         }
         catch (Exception e) { // printing error in logcat
-            Log.d(ERROR_TAG, "Error while trying to add dairy entry to database");
+            Log.d(ERROR_TAG, "Error while trying to add diary entry to database");
         }
         finally { // closing the database
             db.endTransaction();
@@ -325,6 +308,26 @@ public class DBClass extends SQLiteOpenHelper {
 
         // returning a list of diary entries related to given user
         return entries;
+    }
+
+    // method to hash a password
+    public String hashPassword(String password) {
+        String hashPwd = "";
+        try {
+            byte [] hashedPwd = messageDigest(password);
+            hashPwd = Base64.encodeToString(hashedPwd, 0);
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return hashPwd;
+    }
+
+    // helper for hashing a string
+    public byte[] messageDigest(String s) throws NoSuchAlgorithmException {
+        // Static getInstance method is called with hashing SHA
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        // digest() method called to calculate message digest of an input and return array of byte
+        return md.digest(s.getBytes(StandardCharsets.UTF_8));
     }
 
 }

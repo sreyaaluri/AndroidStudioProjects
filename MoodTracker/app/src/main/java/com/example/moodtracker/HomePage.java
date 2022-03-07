@@ -9,13 +9,13 @@ import android.widget.Button;
 
 public class HomePage extends AppCompatActivity {
 
-    // TODO remove hardcoded username
-    public static final String uname = "";
+    private String uname = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        uname = getIntent().getStringExtra("UNAME");
 
         //logout button
         Button logoutBtn = findViewById(R.id.logoutBtn);
@@ -63,6 +63,7 @@ public class HomePage extends AppCompatActivity {
             }
         });
     }
+
     //disable back button
     @Override
     public void onBackPressed() {}
