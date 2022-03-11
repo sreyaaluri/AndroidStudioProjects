@@ -169,7 +169,7 @@ tools:context=".Tracker">
             android:layout_marginRight="24sp">
 
             <TextView
-                android:id="@+id/textView5"
+                android:id="@+id/hellotxt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8sp"

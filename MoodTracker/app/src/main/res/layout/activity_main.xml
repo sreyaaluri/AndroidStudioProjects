@@ -40,7 +40,6 @@
         android:layout_gravity="center"
         android:hint="Password"
         android:inputType="textPassword" />
-
     <TextView
         android:id="@+id/lgnerrormsg"
         android:layout_width="wrap_content"

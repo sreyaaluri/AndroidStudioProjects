@@ -206,6 +206,31 @@ public class DBClass extends SQLiteOpenHelper {
         }
     }//end addUser() method
 
+    // we need this for the homepage, to extract user's preferred name from table
+    public String selectQuery(String fieldname){
+        String fieldvalue;
+        String query="SELECT "+fieldname+" FROM "+TABLE_USER_INFO;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cur=db.rawQuery(query,null); //Runs the provided SQL and returns a Cursor over the result set.
+        
+        //  extract.moveToLast();
+        cur.moveToFirst();
+        String val="";
+        while (cur.moveToNext()) {  //contains all rows. traversing
+            // if (cur.getInt(1)) {
+            String title = cur.getString(0);
+            Log.d("Check cursor","====="+title);
+            if(cur.getPosition()==cur.getCount()-1){  //getting last row.
+                val=cur.getString(0);
+            }
+        }
+        cur.close();
+
+        db.close();
+        return val;
+
+    }
+
     // called to add a new note to table with diary entries
     public void addDiaryEntry(String username, DiaryEntry de) {
         // open the database for writing
