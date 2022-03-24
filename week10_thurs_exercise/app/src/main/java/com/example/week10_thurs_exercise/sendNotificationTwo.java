@@ -1,2 +1,4 @@
-package com.example.week10_thurs_exercise;public class sendNotificationTwo {
+package com.example.week10_thurs_exercise;
+
+public class sendNotificationTwo {
 }

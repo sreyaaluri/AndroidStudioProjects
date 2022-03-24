@@ -49,6 +49,12 @@
         android:layout_marginTop="20dp"
         android:inputType="textPersonName" />
 
+    <TextView
+        android:id="@+id/errormsg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
