@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -18,8 +20,8 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity {
-
+public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    int freq=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         setupdButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                set_Alarm();
+                set_Alarm(getApplicationContext());
             }
         });
 
@@ -45,11 +47,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //set_alarm method
-    public void set_Alarm(){
+    public void set_Alarm(Context con){
         //retrieving time picked from timepicker widget and calendarView widget
         TimePicker tp = findViewById(R.id.timePicker1);
+        Calendar c=Calendar.getInstance();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-            Calendar c=Calendar.getInstance();
 
             int hr = tp.getHour();
             int m = tp.getMinute();
@@ -80,12 +82,11 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         //array adapter for spinner
-        int frequency[] = {5,10,15};
+        String frequency[] = {"5","10","15"};
         if (spinner != null) {
             spinner.setOnItemSelectedListener(this);
         }
-        ArrayAdapter<String> spinnerArrayAdapter = new
-                ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item, frequency);
+        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,frequency);
         spinner.setAdapter(spinnerArrayAdapter);
 
 
@@ -98,13 +99,25 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
 
         //this method creates a repeating, exactly timed alarm
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), Integer.parseInt(spinner.getValue()), pendingIntent); //1 minute apart
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), freq, pendingIntent);
         Log.d("===Sensing alarm===", "One time alert alarm has been created. This alarm will send to a broadcast sensing receiver.");
         //every 1 minute we pass that 'pending intent' which is the sending notification!
 
         Toast.makeText(this, "Alarm has been added", Toast.LENGTH_LONG).show();
-
     }//end set_alarm method
+
+    //spinner helper methods
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+        //when a value is added, set the value selected by spinner to the variable freq
+        int spinner_item = (int) adapterView.getItemAtPosition(i);
+        freq = spinner_item * 60 * 1000;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        // Auto-generated method stub
+    }
 
     //remove_alarm method
     public void remove_alarm(){
@@ -131,5 +144,4 @@ public class MainActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Alarm has been removed", Toast.LENGTH_LONG).show();
     }//end remove_alarm method
-
 }//end class
