@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         Spinner spinner = (Spinner) findViewById(R.id.spinner);
 
         //array adapter for spinner
-        String frequency[] = {"5 minutes","10 minutes","15 minutes"};
+        int frequency[] = {5,10,15};
         if (spinner != null) {
             spinner.setOnItemSelectedListener(this);
         }
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
 
         //this method creates a repeating, exactly timed alarm
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), 60*1000, pendingIntent); //1 minute apart
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), Integer.parseInt(spinner.getValue()), pendingIntent); //1 minute apart
         Log.d("===Sensing alarm===", "One time alert alarm has been created. This alarm will send to a broadcast sensing receiver.");
         //every 1 minute we pass that 'pending intent' which is the sending notification!
 
@@ -118,6 +118,16 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("===removing alarm===", "alarm removed.");
         //every 1 minute we pass that 'pending intent' which is the sending notification!
+
+        /*
+        * AlarmManager alarmManager =
+        (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
+    PendingIntent pendingIntent =
+        PendingIntent.getService(context, requestId, intent,
+                                PendingIntent.FLAG_NO_CREATE);
+    if (pendingIntent != null && alarmManager != null) {
+        alarmManager.cancel(pendingIntent);
+    }*/
 
         Toast.makeText(this, "Alarm has been removed", Toast.LENGTH_LONG).show();
     }//end remove_alarm method

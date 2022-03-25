@@ -44,6 +44,22 @@
             tools:layout_editor_absoluteX="10dp"
             tools:layout_editor_absoluteY="10dp" />
 
+        <!--repeat frequency-->
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Select the alarm repetition frequency in minutes" />
+
+        <!--pick alarm frequency-->
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp" />
+
         <!--set or update alarm button-->
         <Button
             android:id="@+id/setupdbtn"
@@ -51,6 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:backgroundTint="#009688"
+            android:layout_marginTop="25dp"
             android:text="Set or Update Alarm" />
 
         <!--remove button-->
@@ -61,11 +78,5 @@
             android:layout_gravity="center"
             android:backgroundTint="#2196F3"
             android:text="Remove Alarm" />
-
-        <!--pick alarm frequency-->
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 </ScrollView>
