@@ -1,12 +1,15 @@
 package com.example.alarm;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,128 +23,131 @@ import android.widget.Toast;
 
 import java.util.Calendar;
 
-public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    int freq=1;
+public class MainActivity extends AppCompatActivity {
+    long prevDate;
+    int freq = 0;  // to store user defined frequency
+    String frequency[] = {"select", "5", "10", "15"}; // frquencies for spinner
+    Calendar cal = Calendar.getInstance(); // our main way of storing alarm's date and time
+    int ALARM_ID = 0; // for request code (yes, I am a child... XD)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //onclick action of set/update alarm button
-        Button setupdButton = findViewById(R.id.setupdbtn);
-        setupdButton.setOnClickListener(new View.OnClickListener() {
+        // adding spinner options
+        Spinner spinner = findViewById(R.id.spinner);
+        ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_item, frequency);
+        ad.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(ad);
+
+        // adding selection change listener to spinner
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
+                // setting frequency based on selected value
+                if(pos==0) freq = 0;
+                else freq = Integer.parseInt(frequency[pos]) * 60 * 1000;
+            }
+            public void onNothingSelected(AdapterView<?> parent) {
+                // auto-generated method-stub - we do nothing
+            }
+        });
+
+        // adding date change listener for calendar
+        CalendarView calView = findViewById(R.id.calendarView);
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month,
+                                            int dayOfMonth) {
+                // TODO BONUS
+//                long prevTime = cal.getTimeInMillis();  // getting previous time in case invalid
+                cal.set(year, month, dayOfMonth);       // updating date in calendar
+//                long setTime = cal.getTimeInMillis();   // getting user defined time
+//                long currTime = Calendar.getInstance().getTimeInMillis();  // getting current time
+//                Log.d("-------SET_DATE", setTime+"");
+//                Log.d("-------PREV_DATE", prevTime+"");
+//
+//                // bonus: checking if new date is in the past
+//                if(setTime < currTime) {
+//                    // using toast to tell user that alarm needs to be in future
+//                    Toast.makeText(getApplicationContext(), "Alarm needs to be in the future", Toast.LENGTH_LONG).show();
+//                    cal.setTimeInMillis(prevTime);    // reverting calendar time
+//                    view.setDate(prevTime);           // reverting calendar view time
+//                }
+//                else {
+//                    view.setDate(setTime);            // setting time in calendar view
+//                }
+            }
+        });
+
+        // adding onclick listener for set alarm button
+        Button setBtn = findViewById(R.id.setBtn);
+        setBtn.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M) // to be compatible with method requirements
             @Override
             public void onClick(View view) {
                 set_Alarm(getApplicationContext());
             }
         });
 
-        //onclick action of remove alarm button
-        Button removeButton = findViewById(R.id.removebtn);
+        // adding onclick listener for remove alarm button
+        Button removeButton = findViewById(R.id.removeBtn);
         removeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 remove_alarm();
             }
         });
+
     }
 
-    //set_alarm method
+    //set_alarm method to add/update the one alarm
+    @RequiresApi(api = Build.VERSION_CODES.M) // Android Studio gave a warning so we added this
     public void set_Alarm(Context con){
-        //retrieving time picked from timepicker widget and calendarView widget
+        // getting time from time picker and setting it as time to calendar
         TimePicker tp = findViewById(R.id.timePicker1);
-        Calendar c=Calendar.getInstance();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
+        int hr = tp.getHour();
+        int m = tp.getMinute();
+        cal.set(Calendar.HOUR_OF_DAY,hr);
+        cal.set(Calendar.MINUTE,m);
+        // Note: now all alarm details are in cal and freq contains user selected frequnecy
 
-            int hr = tp.getHour();
-            int m = tp.getMinute();
-
-            c.set(Calendar.HOUR_OF_DAY,hr);
-            c.set(Calendar.MINUTE,m);
-
-            //Add logic to set date of the calendar object and get time in milliseconds like we did earlier for setting the alarm
-            //retrieving values selected from calendarView widget
-            Log.d("MyActivity", "Alarm On");
-            CalendarView selectDate = findViewById(R.id.calendarView);
-            selectDate.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month,
-                                                int dayOfMonth) {
-                    String curMonth = String.valueOf(month);
-                    String dayofMon = String.valueOf(dayOfMonth);
-                    String curYear = String.valueOf(year);
-                    c.set(Integer.parseInt(curMonth), Integer.parseInt(dayofMon), Integer.parseInt(curYear));
-                    Log.d("Date", curMonth+"/"+dayofMon+"/"+curYear);
-                    //long currentTime = System.currentTimeMillis();
-                    // c.setTimeInMillis(currentTime);
-                }//end onSelectedDayChange() method
-            });//end setOnDateChangeListener() method
-        }//end if statement
-
-        //read user's spinner selection
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
-
-        //array adapter for spinner
-        String frequency[] = {"5","10","15"};
-        if (spinner != null) {
-            spinner.setOnItemSelectedListener(this);
-        }
-        ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(this,R.layout.support_simple_spinner_dropdown_item,frequency);
-        spinner.setAdapter(spinnerArrayAdapter);
-
-
-        //Creating a pending intent for sendNotification class.
+        // creating a pending intent for the alarm
         Intent intent = new Intent(this, sendNotification.class);
-        PendingIntent pendingIntent = null;
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, ALARM_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        pendingIntent = PendingIntent.getBroadcast(this, 40, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        // using alarm manager to create an exactly timed real time wake-up alarm
+        AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), freq, pendingIntent);
 
-        AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
+        // using toast to show user a message that alarm has been added
+        Toast.makeText(this, "Alarm has been added/updated", Toast.LENGTH_LONG).show();
 
-        //this method creates a repeating, exactly timed alarm
-        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, c.getTimeInMillis(), freq, pendingIntent);
-        Log.d("===Sensing alarm===", "One time alert alarm has been created. This alarm will send to a broadcast sensing receiver.");
-        //every 1 minute we pass that 'pending intent' which is the sending notification!
-
-        Toast.makeText(this, "Alarm has been added", Toast.LENGTH_LONG).show();
-    }//end set_alarm method
-
-    //spinner helper methods
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-        //when a value is added, set the value selected by spinner to the variable freq
-        int spinner_item = (int) adapterView.getItemAtPosition(i);
-        freq = spinner_item * 60 * 1000;
+        // saving alarm information to shared preferences
+        SharedPreferences sharedpreferences = getSharedPreferences("AlarmInformation", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("AlarmTime", cal.getTime().toString());
+        Log.d("---------Time from cal", cal.getTime().toString());
+        editor.apply();
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
-        // Auto-generated method stub
-    }
-
-    //remove_alarm method
+    //remove_alarm method to remove the one alarm
     public void remove_alarm(){
+        // creating a pending intent identical to the one used to set alarm for cancellation
         Intent intent = new Intent(this, sendNotification.class);
-        PendingIntent cancelIntent = null;
+        PendingIntent cancelIntent = PendingIntent.getBroadcast(this, ALARM_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        cancelIntent = PendingIntent.getBroadcast(this, 40, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        AlarmManager alarmManager=(AlarmManager)getSystemService(ALARM_SERVICE);
+        // using alarm manager to cancel the alarm
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.cancel(cancelIntent);
 
-        Log.d("===removing alarm===", "alarm removed.");
-        //every 1 minute we pass that 'pending intent' which is the sending notification!
-
-        /*
-        * AlarmManager alarmManager =
-        (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-    PendingIntent pendingIntent =
-        PendingIntent.getService(context, requestId, intent,
-                                PendingIntent.FLAG_NO_CREATE);
-    if (pendingIntent != null && alarmManager != null) {
-        alarmManager.cancel(pendingIntent);
-    }*/
-
+        // using toast to show user a message that alarm has been deleted
         Toast.makeText(this, "Alarm has been removed", Toast.LENGTH_LONG).show();
-    }//end remove_alarm method
-}//end class
+
+        // removing alarm information from shared preferences
+        SharedPreferences sharedpreferences = getSharedPreferences("AlarmInformation", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("AlarmTime", "");
+        editor.apply();
+    }
+}

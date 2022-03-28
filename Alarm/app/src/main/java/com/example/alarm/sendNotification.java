@@ -35,15 +35,14 @@ public class sendNotification extends BroadcastReceiver { //makes it a broadcast
 
         //we add a constraint - the device running the app has Android SDK 26 or up
         if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES. O ) {
-            int importance = NotificationManager. IMPORTANCE_HIGH ;
-            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , importance) ;
+            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID , "NOTIFICATION_CHANNEL_NAME" , NotificationManager.IMPORTANCE_HIGH) ;
             notificationManager.createNotificationChannel(notificationChannel) ;
         }
         notificationManager.notify(0 , notification) ; //Here notification id is user-defined. deliver the notification
     }
 
     //User-defined method to create a notification and its contents, this is just specifying the content of the notification
-    private Notification getNotification (Context context,String content) {
+    private Notification getNotification (Context context, String content) {
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, default_notification_channel_id ) ;
         builder.setContentTitle( "Scheduled Alarm" ) ;
         builder.setContentText(content) ;

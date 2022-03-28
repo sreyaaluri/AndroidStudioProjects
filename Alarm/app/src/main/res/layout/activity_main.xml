@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -10,6 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
+        android:padding="24sp"
         tools:context=".MainActivity">
 
         <!--pick a date-->
@@ -24,7 +24,7 @@
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <!--pick a time-->
         <TextView
@@ -45,35 +45,42 @@
             tools:layout_editor_absoluteY="10dp" />
 
         <!--repeat frequency-->
+
+        <!--pick alarm frequency-->
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
-            android:text="Select the alarm repetition frequency in minutes" />
+            android:text="Select the alarm repetition interval in minutes." />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text= "Leave it on 'select' if no repetition." />
 
-        <!--pick alarm frequency-->
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="100dp"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:spinnerMode="dropdown"
             android:layout_gravity="center"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:spinnerMode="dropdown" />
 
         <!--set or update alarm button-->
         <Button
-            android:id="@+id/setupdbtn"
+            android:id="@+id/setBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:backgroundTint="#009688"
             android:layout_marginTop="50dp"
-            android:text="Set or Update Alarm" />
+            android:backgroundTint="#009688"
+            android:text="Set/Update Alarm" />
 
         <!--remove button-->
         <Button
-            android:id="@+id/removebtn"
+            android:id="@+id/removeBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
