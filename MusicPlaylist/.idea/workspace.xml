@@ -13,21 +13,56 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e8d18d56-7dc8-4154-83be-f129e7e67552" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/.name" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../DepressiveSymptomologyApp/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/concentration_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/concentration_questionnaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/sleep_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/sleep_questionnaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/weight_questionnaire.java" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/java/com/example/depressivesymptomatologyresearch/weight_questionnaire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QIDS/app/src/main/res/layout/activity_weight_questionnaire.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../QIDS/app/src/main/res/layout/activity_weight_questionnaire.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Week4_Tuesday/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4_Tuesday/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Week4_Tuesday/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Week4_Tuesday/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week10_thurs_exercise/app/src/main/java/com/example/week10_thurs_exercise/sendNotificationOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week10_thurs_exercise/app/src/main/java/com/example/week10_thurs_exercise/sendNotificationTwo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/proguard-rules.pro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/androidTest/java/com/example/week11_tuesday/ExampleInstrumentedTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/java/com/example/week11_tuesday/Display.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/java/com/example/week11_tuesday/MainActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/drawable/ic_launcher_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/layout/activity_display.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-hdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-hdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-mdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-mdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xxxhdpi/ic_launcher.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.webp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/values-night/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/main/res/values/themes.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/app/src/test/java/com/example/week11_tuesday/ExampleUnitTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../week11_tuesday/settings.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/deborahmaidoh/.android/avd/Pixel_5_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/deborahmaidoh/.android/avd/Nexus_S_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
