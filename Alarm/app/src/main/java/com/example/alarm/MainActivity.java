@@ -55,28 +55,23 @@ public class MainActivity extends AppCompatActivity {
 
         // adding date change listener for calendar
         CalendarView calView = findViewById(R.id.calendarView);
+        int currDay = cal.get(Calendar.DAY_OF_MONTH);     // initializing current day
+        int currYear = cal.get(Calendar.YEAR);            // initializing current year
+        int currMonth = cal.get(Calendar.MONTH);          // initializing current month
         calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month,
                                             int dayOfMonth) {
-                // TODO BONUS
-//                long prevTime = cal.getTimeInMillis();  // getting previous time in case invalid
-                cal.set(year, month, dayOfMonth);       // updating date in calendar
-//                long setTime = cal.getTimeInMillis();   // getting user defined time
-//                long currTime = Calendar.getInstance().getTimeInMillis();  // getting current time
-//                Log.d("-------SET_DATE", setTime+"");
-//                Log.d("-------PREV_DATE", prevTime+"");
-//
-//                // bonus: checking if new date is in the past
-//                if(setTime < currTime) {
-//                    // using toast to tell user that alarm needs to be in future
-//                    Toast.makeText(getApplicationContext(), "Alarm needs to be in the future", Toast.LENGTH_LONG).show();
-//                    cal.setTimeInMillis(prevTime);    // reverting calendar time
-//                    view.setDate(prevTime);           // reverting calendar view time
-//                }
-//                else {
-//                    view.setDate(setTime);            // setting time in calendar view
-//                }
+                // bonus: checking if user selected date is valid
+                if (dayOfMonth >= currDay && year >= currYear && month >= currMonth) { // valid
+                    cal.set(year, month, dayOfMonth);     // updating date in calendar
+                }
+                else {
+                    // setting focussed date on calendar to prev date
+                    view.setDate(cal.getTimeInMillis());
+                    // using toast to tell user that alarm needs to be in future
+                    Toast.makeText(getApplicationContext(), "Alarm needs to be in the future", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -108,9 +103,23 @@ public class MainActivity extends AppCompatActivity {
         TimePicker tp = findViewById(R.id.timePicker1);
         int hr = tp.getHour();
         int m = tp.getMinute();
-        cal.set(Calendar.HOUR_OF_DAY,hr);
-        cal.set(Calendar.MINUTE,m);
-        // Note: now all alarm details are in cal and freq contains user selected frequnecy
+
+        // bonus: checking if user entered time is valid
+        Calendar currCal = Calendar.getInstance();
+        int currHr = currCal.get(Calendar.HOUR_OF_DAY);
+        int currM = currCal.get(Calendar.MINUTE);
+        if(hr <= currHr && m <= currM) {
+            // using toast to tell user that alarm needs to be in future
+            Toast.makeText(getApplicationContext(), "Alarm needs to be in the future", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        /** the following part of the method only executes if user enters a valid time **/
+        // setting user entered time as time of calendar
+        cal.set(Calendar.HOUR_OF_DAY, hr);
+        cal.set(Calendar.MINUTE, m);
+
+         /** Note **/ //now all alarm details are in cal and 'freq' contains user selected frequency
 
         // creating a pending intent for the alarm
         Intent intent = new Intent(this, sendNotification.class);
@@ -127,8 +136,11 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedpreferences = getSharedPreferences("AlarmInformation", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putString("AlarmTime", cal.getTime().toString());
-        Log.d("---------Time from cal", cal.getTime().toString());
         editor.apply();
+
+        // testing
+        String alarmTime = sharedpreferences.getString("AlarmTime", "No Alarm");
+        Log.d("---Time from sharedpref", alarmTime);
     }
 
     //remove_alarm method to remove the one alarm
@@ -147,7 +159,11 @@ public class MainActivity extends AppCompatActivity {
         // removing alarm information from shared preferences
         SharedPreferences sharedpreferences = getSharedPreferences("AlarmInformation", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        editor.putString("AlarmTime", "");
+        editor.remove("AlarmTime");
         editor.apply();
+
+        // testing
+        String alarmTime = sharedpreferences.getString("AlarmTime", "No Alarm");
+        Log.d("---Time from sharedpref", alarmTime);
     }
 }
