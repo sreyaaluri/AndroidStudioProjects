@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     int freq = 0;  // to store user defined frequency
     String frequency[] = {"select", "5", "10", "15"}; // frquencies for spinner
     Calendar cal = Calendar.getInstance(); // our main way of storing alarm's date and time
-    int ALARM_ID = 0; // for request code (yes, I am a child... XD)
+    int ALARM_ID = 0; // for request code (yes, I am a child... XD (it was 69))
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

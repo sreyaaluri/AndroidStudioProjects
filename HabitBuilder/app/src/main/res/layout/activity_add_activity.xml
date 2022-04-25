@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--ADD ACTIVITY PAGE-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AddActivity">
+
+    <!--app header-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/headLbl"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_weight=".90"
+            android:background="#673AB7"
+            android:backgroundTint="#673AB7"
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:text="ADD ACTIVITY"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/settingsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight=".10"
+            android:backgroundTint="#673AB7"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:radius="0dp"
+            android:text="Settings"
+            android:textAlignment="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="48dp">
+
+        <!--activity-->
+        <EditText
+            android:id="@+id/activityTxt"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:ems="10"
+            android:hint="Activity"
+            android:inputType="textPersonName" />
+
+        <!--rating spinner-->
+        <Spinner
+            android:id="@+id/ratingSpinner"
+            android:layout_width="250dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="10dp" />
+
+        <!--add button-->
+        <Button
+            android:id="@+id/addActivityBtn"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#673AB7"
+            android:text="Add" />
+
+    </LinearLayout>
+</LinearLayout>

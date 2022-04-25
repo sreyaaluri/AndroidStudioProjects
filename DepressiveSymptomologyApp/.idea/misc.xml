@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout-w1240dp/content_scrolling.xml" value="0.1296875" />
+        <entry key="app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.10845447589900535" />
         <entry key="app/src/main/res/layout/activity_appetite_questionnaire.xml" value="0.23661963468617656" />
         <entry key="app/src/main/res/layout/activity_concentration_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_deaththoughts_questionnaire.xml" value="0.1" />
@@ -20,7 +22,7 @@
         <entry key="app/src/main/res/layout/activity_sleep_questionnaire.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_test.xml" value="0.16196581196581197" />
         <entry key="app/src/main/res/layout/activity_weight_questionnaire.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.14130434782608695" />
+        <entry key="app/src/main/res/layout/content_scrolling.xml" value="0.3162888650184186" />
       </map>
     </option>
   </component>

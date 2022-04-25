@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--IDENTITY PAGE-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Identity">
+
+    <!--app header-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="0dp">
+
+        <TextView
+            android:id="@+id/headLbl"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#673AB7"
+            android:backgroundTint="#673AB7"
+            android:gravity="center"
+            android:paddingLeft="24dp"
+            android:text="WHO AM I"
+            android:textAlignment="textStart"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listviewIdentity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ListView>
+
+</LinearLayout>
