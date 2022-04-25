@@ -310,6 +310,7 @@ public class HabitInformation extends AppCompatActivity {
             myOutWriter.append(habitJSON.toString() + "\n");  //write JSONObject to file
             myOutWriter.close();
             fOut.close();
+            Toast.makeText(getApplicationContext(), "Habit has been downloaded", Toast.LENGTH_LONG).show();
         }
         catch (Exception e){
             e.printStackTrace();  //to handle exceptions and errors.
