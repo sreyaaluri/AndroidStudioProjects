@@ -39,24 +39,30 @@ public class Login extends AppCompatActivity {
                 String loginPassword = ((EditText) findViewById(R.id.pwdTxt)).getText().toString();
                 String hashedPwd = db.hashPassword(loginPassword);
 
-                // authenticating user
-                int loginToken = db.authenticateUser(loginUname, hashedPwd);
-                if(loginToken == -1) // -1 means user does not exist
-                    Toast.makeText(getApplicationContext(), "username does not exist", Toast.LENGTH_LONG).show();
-                else if(loginToken == 0) // 0 means user exists but password doesn't match
-                    Toast.makeText(getApplicationContext(), "incorrect password", Toast.LENGTH_LONG).show();
-                else if(loginToken == 1) { // successful login!
-                    // storing user information in shared preferences
-                    SharedPreferences userPreferences = getSharedPreferences("UserPref", MODE_PRIVATE);
-                    SharedPreferences.Editor editor = userPreferences.edit();
-                    editor.putString("username", loginUname);
-                    editor.apply();
-
-                    // redirecting to homepage
-                    Intent homeIntent = new Intent(getApplicationContext(), Home.class);
-                    startActivity(homeIntent);
+                if(loginUname.equals("") || loginPassword.equals("")){ // missing information -> print helpful message
+                    Toast.makeText(getApplicationContext(), "All fields must be completed", Toast.LENGTH_LONG).show();
                 }
-                else Log.d("---FIX:", "Unhandled error in login");
+                else { // all fields filled in
+                    // authenticating user
+                    int loginToken = db.authenticateUser(loginUname, hashedPwd);
+                    if (loginToken == -1) // -1 means user does not exist
+                        Toast.makeText(getApplicationContext(), "username does not exist", Toast.LENGTH_LONG).show();
+                    else if (loginToken == 0) // 0 means user exists but password doesn't match
+                        Toast.makeText(getApplicationContext(), "incorrect password", Toast.LENGTH_LONG).show();
+                    else if (loginToken == 1) { // successful login!
+                        // storing user information in shared preferences
+                        SharedPreferences userPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
+                        SharedPreferences.Editor editor = userPreferences.edit();
+                        editor.putString("username", loginUname);
+                        // TODO put user's name in shared pref
+//                        editor.putString("name", name);
+                        editor.apply();
+
+                        // redirecting to homepage
+                        Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                        startActivity(homeIntent);
+                    } else Log.d("---FIX:", "Unhandled error in login");
+                }
             }
         });
     }
