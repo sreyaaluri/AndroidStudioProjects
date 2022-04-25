@@ -9,6 +9,7 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +19,13 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -57,11 +65,26 @@ public class HabitInformation extends AppCompatActivity {
         });
 
         // setting click listener on Download button
-        // TODO add code
+        Button saveBtn = findViewById(R.id.downloadHabitBtn);
+        saveBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(isAnswered()){
+                    try{
+                        writeFile();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
 
         // executing code based on purpose for the add/delete button
         purpose = getIntent().getStringExtra("PURPOSE");
-        if(purpose.equals("old")){          // old habit selected
+        if(purpose.equals("old")){          // old habit selected -> delete
             // changing "Add" to "Delete" everywhere
             ((Button) findViewById(R.id.addHabitBtn)).setText("DELETE HABIT");
 
@@ -77,15 +100,14 @@ public class HabitInformation extends AppCompatActivity {
             delBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    db.deleteHabitByName(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("username", "No User"), habitName);
-                    if(selectedHabit.reminder) removeNotif();
+                    db.deleteHabitByName(getSharedPreferences("UserInfo", MODE_PRIVATE).getString("username", "No User"), habitName); // delete habit from DB
+                    if(selectedHabit.reminder) removeNotif(habitName); // remove notifications associated with habit, if any
                     Toast.makeText(getApplicationContext(), "Habit has been deleted", Toast.LENGTH_LONG).show();
                     Intent habitsIntent = new Intent(getApplicationContext(), Habits.class);
                     startActivity(habitsIntent);
                 }
             });
-        }
-        else {                              // new habit being added
+        } else {                            // new habit being added -> add
             // set click listener which adds a habit
             Button addBtn = findViewById(R.id.addHabitBtn);
             addBtn.setOnClickListener(new View.OnClickListener() {
@@ -190,21 +212,24 @@ public class HabitInformation extends AppCompatActivity {
         );
         db.addHabit(uname, h);
 
+        // update global habits list
+        Home.userHabits = db.getHabits(uname);
+
         // adding notification if necessary
-//        if(h.reminder) setNotif(h);
+        if(h.reminder) setNotif(((EditText) findViewById(R.id.habitTxt)).getText().toString());
     }
 
     /**
      * Method to set reminder for newly added habit
      */
-    public void setNotif(Habit h){
-        Home.habitId += 1;
-        h.alarm_id = Home.habitId; // setting alarm_id
+    public void setNotif(String hname){
+        Habit h = getHabit(hname);
 
         // setting calendar to desired notif time
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.HOUR_OF_DAY, h.hr);
         cal.set(Calendar.MINUTE, h.min);
+        cal.set(Calendar.SECOND, 0);
 
         // creating a pending intent for the alarm
         Intent intent = new Intent(getApplicationContext(), sendNotification.class);
@@ -213,24 +238,32 @@ public class HabitInformation extends AppCompatActivity {
         // using alarm manager to create an exactly timed real time wake-up alarm
         AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY , pendingIntent);
+
+        // testing
+//        Log.d("---NOTIF FOR NEW","set notification for "+ h.hname+ " with id "+ h.alarm_id+" to go at "+cal.getTime().toString());
     }
 
     /**
      * Method to remove reminder for deleted habit
      */
-    public void removeNotif(){
+    public void removeNotif(String hname){
+        Habit h = getHabit(hname);
         // setting calendar to desired notif time
         Calendar cal = Calendar.getInstance();
-        cal.set(Calendar.HOUR_OF_DAY, selectedHabit.hr);
-        cal.set(Calendar.MINUTE, selectedHabit.min);
+        cal.set(Calendar.HOUR_OF_DAY, h.hr);
+        cal.set(Calendar.MINUTE, h.min);
+        cal.set(Calendar.SECOND,0);
 
         // creating a pending intent, identical to the one used to set alarm, for cancellation
         Intent intent = new Intent(getApplicationContext(), sendNotification.class);
-        PendingIntent cancelIntent = PendingIntent.getBroadcast(getApplicationContext(), selectedHabit.alarm_id, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent cancelIntent = PendingIntent.getBroadcast(getApplicationContext(), h.alarm_id, intent, PendingIntent.FLAG_NO_CREATE);
 
         // using alarm manager to cancel the alarm
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.cancel(cancelIntent);
+
+        // testing
+//        Log.d("---NOTIF FOR DELETE","old notification for "+ h.hname+ " with id "+ h.alarm_id+" to go at "+h.hr+":"+h.min);
     }
 
     /**
@@ -248,5 +281,38 @@ public class HabitInformation extends AppCompatActivity {
                 ((EditText) findViewById(R.id.rewardTxt)).getText().toString().equals("")
         ) return false;
         else return true;
+    }
+
+    /**
+     * method to download habit info
+     */
+    private void writeFile() throws JSONException, FileNotFoundException {
+        String hname = ((EditText) findViewById(R.id.habitTxt)).getText().toString();
+        String myDir = Environment.getExternalStorageDirectory() +"/Documents/"+hname+".txt"; //creating a file in the internal storage/Documents folder on phone.
+        Log.d("---PrintDir","====="+myDir);
+        File file = new File(myDir);    //creating a file object
+        JSONObject habitJSON = new JSONObject();   //create a JSONObject
+        habitJSON.put("Identity", ((EditText) findViewById(R.id.identityTxt)).getText().toString());
+        habitJSON.put("HabitName", hname);
+        habitJSON.put("Why", ((EditText) findViewById(R.id.connectionTxt)).getText().toString());
+        habitJSON.put("Frequency", ((EditText) findViewById(R.id.freqTxt)).getText().toString());
+        habitJSON.put("Reminder", ((CheckBox) findViewById(R.id.reminderCB)).isChecked() ? "on" : "off");
+        habitJSON.put("Time", hr+":"+min);
+        habitJSON.put("Cue", ((EditText) findViewById(R.id.cueTxt)).getText().toString());
+        habitJSON.put("Craving", ((EditText) findViewById(R.id.cravingTxt)).getText().toString());
+        habitJSON.put("Response", ((EditText) findViewById(R.id.responseTxt)).getText().toString());
+        habitJSON.put("Reward", ((EditText) findViewById(R.id.rewardTxt)).getText().toString());
+
+        //Write to the file and store in internal storage
+        FileOutputStream fOut = new FileOutputStream(file, true); //create a file output stream for writing data to file
+        OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);  //converts character stream into byte stream
+        try {
+            myOutWriter.append(habitJSON.toString() + "\n");  //write JSONObject to file
+            myOutWriter.close();
+            fOut.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();  //to handle exceptions and errors.
+        }
     }
 }

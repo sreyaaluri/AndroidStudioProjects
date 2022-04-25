@@ -42,7 +42,7 @@ public class Habits extends AppCompatActivity {
         }
 
         // displaying user's habit names
-        ListView habitsList = findViewById(R.id.listviewa);          // retrieving the corresponding list view
+        ListView habitsList = findViewById(R.id.listviewa); // retrieving the corresponding list view
         ArrayAdapter adapter = new ArrayAdapter<String>(    // creating an array adapter with simple view
                 this,
                 android.R.layout.simple_list_item_1,

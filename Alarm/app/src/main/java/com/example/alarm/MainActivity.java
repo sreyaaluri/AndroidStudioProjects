@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         // setting user entered time as time of calendar
         cal.set(Calendar.HOUR_OF_DAY, hr);
         cal.set(Calendar.MINUTE, m);
+        cal.set(Calendar.SECOND, 0);
 
          /** Note **/ //now all alarm details are in cal and 'freq' contains user selected frequency
 
@@ -129,6 +130,9 @@ public class MainActivity extends AppCompatActivity {
         // using alarm manager to create an exactly timed real time wake-up alarm
         AlarmManager alarmManager= (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), freq, pendingIntent);
+
+        Log.d("---NOTIF TESTING","set notification with id "+0+" to go at "+cal.getTime().toString());
+
 
         // using toast to show user a message that alarm has been added
         Toast.makeText(this, "Alarm has been added/updated", Toast.LENGTH_LONG).show();

@@ -310,6 +310,8 @@ public class DBClass extends SQLiteOpenHelper {
      * @return list of habits from database
      */
     public ArrayList<Habit> getHabits(String username){
+        int habitId = 0;
+
         // initialize list of habits =
         ArrayList<Habit> habits = new ArrayList<Habit>();
 
@@ -332,6 +334,10 @@ public class DBClass extends SQLiteOpenHelper {
                     h.why = cursor.getString(cursor.getColumnIndex(WHY_COL));
                     h.freq = cursor.getString(cursor.getColumnIndex(FREQ_COL));
                     h.reminder = cursor.getInt(cursor.getColumnIndex(REMIND_COL)) != 0;
+                    if(h.reminder){
+                        habitId += 1;
+                        h.alarm_id= habitId;
+                    }
                     h.hr = cursor.getInt(cursor.getColumnIndex(HR_COL));
                     h.min = cursor.getInt(cursor.getColumnIndex(MIN_COL));
                     h.cue = cursor.getString(cursor.getColumnIndex(CUE_COL));

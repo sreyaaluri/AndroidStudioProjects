@@ -23,9 +23,7 @@ public class sendNotification extends BroadcastReceiver { //makes it a broadcast
 
         //create an instance of NotificationManager, call getSystemService(), passing in the NOTIFICATION_SERVICE constant.
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context. NOTIFICATION_SERVICE ) ;
-
-        String identity = intent.getStringExtra("IDENTITY");
-        Notification notification = getNotification(context,"You are a "+identity+"! ^_^") ;
+        Notification notification = getNotification(context,"You are awesome! ^_^") ;
 
         //we add a constraint - the device running the app has Android SDK 26 or up
         if (android.os.Build.VERSION. SDK_INT >= android.os.Build.VERSION_CODES. O ) {
