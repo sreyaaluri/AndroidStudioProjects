@@ -103,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         TimePicker tp = findViewById(R.id.timePicker1);
         int hr = tp.getHour();
         int m = tp.getMinute();
+        Log.d("---EHEHEHSH", hr+", "+m);
 
         // bonus: checking if user entered time is valid
         Calendar currCal = Calendar.getInstance();
@@ -147,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
     public void remove_alarm(){
         // creating a pending intent identical to the one used to set alarm for cancellation
         Intent intent = new Intent(this, sendNotification.class);
-        PendingIntent cancelIntent = PendingIntent.getBroadcast(this, ALARM_ID, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent cancelIntent = PendingIntent.getBroadcast(this, ALARM_ID, intent, PendingIntent.FLAG_CANCEL_CURRENT);
 
         // using alarm manager to cancel the alarm
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);

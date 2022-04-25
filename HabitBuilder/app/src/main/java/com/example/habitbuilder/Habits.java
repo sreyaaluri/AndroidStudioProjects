@@ -3,37 +3,50 @@ package com.example.habitbuilder;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 public class Habits extends AppCompatActivity {
-
-    // ListView for Habits
-    ListView habitsList;
-
-    // data to be displayed into list TODO get from database
-    String[] mobileTypes = {
-            "Galaxy Note 8",
-            "kekekeke",
-            "shdfhsf"
-    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_habits);
+        DBClass db = DBClass.getDBInstance(this); // getting database instance
 
-        // displaying user's habits
-        habitsList = findViewById(R.id.listviewa);          // retrieving the corresponding list view
+        // setting listener on "Settings" button
+        Button settingsBtn = findViewById(R.id.settingsBtn);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to settings page
+                Intent nextIntent = new Intent(getApplicationContext(), Settings.class);
+                startActivity(nextIntent);
+            }
+        });
+
+        // retrieving user habits and names
+        SharedPreferences userPref = getSharedPreferences("UserInfo", MODE_PRIVATE);
+        Home.userHabits = db.getHabits(userPref.getString("username", "No User")); // Assuming username exists
+        ArrayList<String> habitNames = new ArrayList<>();
+        for(Habit h : Home.userHabits) {
+            habitNames.add(h.hname);
+        }
+
+        // displaying user's habit names
+        ListView habitsList = findViewById(R.id.listviewa);          // retrieving the corresponding list view
         ArrayAdapter adapter = new ArrayAdapter<String>(    // creating an array adapter with simple view
                 this,
                 android.R.layout.simple_list_item_1,
-                mobileTypes);
-
+                habitNames);
         habitsList.setAdapter(adapter);                     // attaching adapter to listview
 
         // adding click listeners to each habit in list

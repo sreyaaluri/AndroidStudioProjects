@@ -56,14 +56,6 @@
             android:hint="Password"
             android:inputType="textPassword" />
 
-        <!--error message view TODO remove and use pop-up-->
-        <TextView
-            android:id="@+id/errorMsg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:ems="10" />
-
         <!--login button-->
         <Button
             android:id="@+id/loginBtn"
@@ -74,7 +66,7 @@
             android:backgroundTint="#673AB7"
             android:text="Login" />
 
-        <!--create an account button-->
+        <!--singup button-->
         <Button
             android:id="@+id/signupBtn"
             android:layout_width="250dp"

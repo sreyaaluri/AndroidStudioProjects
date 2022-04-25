@@ -19,6 +19,7 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         DBClass db = DBClass.getDBInstance(this); // getting database instance
 
+
         // setting listener on singup button
         Button signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -54,8 +55,7 @@ public class Login extends AppCompatActivity {
                         SharedPreferences userPreferences = getSharedPreferences("UserInfo", MODE_PRIVATE);
                         SharedPreferences.Editor editor = userPreferences.edit();
                         editor.putString("username", loginUname);
-                        // TODO put user's name in shared pref
-//                        editor.putString("name", name);
+                        editor.putString("name", db.getName(loginUname));
                         editor.apply();
 
                         // redirecting to homepage

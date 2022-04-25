@@ -1,19 +1,24 @@
 package com.example.habitbuilder;
 
 import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Base64;
 import android.util.Log;
 
+import java.lang.ref.ReferenceQueue;
 import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class DBClass extends SQLiteOpenHelper {
@@ -38,6 +43,10 @@ public class DBClass extends SQLiteOpenHelper {
     private static final String IDENTITY_COL = "identity";
     private static final String HABIT_COL = "habit";
     private static final String WHY_COL = "why";
+    private static final String FREQ_COL = "frequency";
+    private static final String REMIND_COL = "reminder";
+    private static final String HR_COL = "hour";
+    private static final String MIN_COL = "min";
     private static final String CUE_COL = "cue";
     private static final String CRAVING_COL = "craving";
     private static final String RESPONSE_COL = "response";
@@ -67,7 +76,7 @@ public class DBClass extends SQLiteOpenHelper {
      * @param context
      */
     private DBClass(Context context) {
-        super(context, DATABASE_NAME, null, 1);
+        super(context, DATABASE_NAME, null, 3);
     }
 
     // TODO edit here on
@@ -89,10 +98,14 @@ public class DBClass extends SQLiteOpenHelper {
                 + UNAME_COL + " TEXT, "
                 + IDENTITY_COL + " TEXT, "
                 + HABIT_COL + " TEXT, "
-                + WHY_COL + " TEXT,  "
-                + CUE_COL + " TEXT,  "
-                + CRAVING_COL + " TEXT,  "
-                + RESPONSE_COL + " TEXT,  "
+                + WHY_COL + " TEXT, "
+                + FREQ_COL +" TEXT, "
+                + REMIND_COL + " INTEGER, " // 0 reminder off, 1 reminder on
+                + HR_COL + " INTEGER, "     // storing time for reminder
+                + MIN_COL + " INTEGER, "
+                + CUE_COL + " TEXT, "
+                + CRAVING_COL + " TEXT, "
+                + RESPONSE_COL + " TEXT, "
                 + REWARD_COL + " TEXT)";
 
         // scorecard table
@@ -118,10 +131,11 @@ public class DBClass extends SQLiteOpenHelper {
      */
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        // deleting entries in all tables that exist in schema old version
-        db.execSQL("DELETE FROM " + TABLE_USER_INFO);
-        db.execSQL("DELETE FROM " + TABLE_HABITS);
-        db.execSQL("DELETE FROM " + TABLE_SCORECARD);
+        // dropping all tables that exist in schema old version and recreate new empty ones
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER_INFO);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_HABITS);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORECARD);
+        onCreate(db);
     }
 
     /**
@@ -228,6 +242,150 @@ public class DBClass extends SQLiteOpenHelper {
             db.endTransaction();
         }
     }
+
+    /**
+     * get the name of a user given username
+     * @param username
+     * @return name
+     */
+    public String getName(String username){
+        // open the database for reading
+        SQLiteDatabase db = getReadableDatabase();
+
+        // run query and get cursor object
+        String query="SELECT "+NAME_COL+" FROM "+TABLE_USER_INFO;
+        Cursor cursor = db.rawQuery(query,null);
+
+        // getting name from cursor object (note: assuming it exists as user has been authenticted)
+        cursor.moveToFirst();
+        String name = cursor.getString(0);
+        cursor.close();
+        db.close();
+        return name;
+    }
+
+    /**
+     * method to add a new habit for specific user to database
+     * @param username
+     * @param h
+     */
+    public void addHabit(String username, Habit h){
+        // open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        // starting transaction
+        db.beginTransaction();
+
+        try { // adding row to table
+            // including user's entries as field values
+            ContentValues values = new ContentValues();
+            values.put(UNAME_COL, username);
+            values.put(IDENTITY_COL, h.identity);
+            values.put(HABIT_COL, h.hname);
+            values.put(WHY_COL, h.why);
+            values.put(FREQ_COL, h.freq);
+            values.put(REMIND_COL, h.reminder ? 1 : 0);
+            values.put(HR_COL, h.hr);
+            values.put(MIN_COL, h.min);
+            values.put(CUE_COL, h.cue);
+            values.put(CRAVING_COL, h.craving);
+            values.put(RESPONSE_COL, h.response);
+            values.put(REWARD_COL, h.reward);
+
+            // adding values to table
+            db.insertOrThrow(TABLE_HABITS, null, values);
+            db.setTransactionSuccessful();
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to add habit to database");
+        }
+        finally { // closing the database
+            db.endTransaction();
+        }
+    }
+
+    /**
+     * get habits related to a user
+     * @param username
+     * @return list of habits from database
+     */
+    public ArrayList<Habit> getHabits(String username){
+        // initialize list of habits =
+        ArrayList<Habit> habits = new ArrayList<Habit>();
+
+        // select * from habits table for entries of specific user
+        String ALL_ENTRIES_SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\'", TABLE_HABITS, UNAME_COL, username);
+
+        // open the database for reading
+        SQLiteDatabase db = getReadableDatabase();
+
+        // run query and get cursor object
+        Cursor cursor = db.rawQuery(ALL_ENTRIES_SELECT_QUERY, null);
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) {
+                do {
+                    // creating a habit with retrieved values
+                    Habit h = new Habit();
+                    h.identity = cursor.getString(cursor.getColumnIndex(IDENTITY_COL));
+                    h.hname = cursor.getString(cursor.getColumnIndex(HABIT_COL));
+                    h.why = cursor.getString(cursor.getColumnIndex(WHY_COL));
+                    h.freq = cursor.getString(cursor.getColumnIndex(FREQ_COL));
+                    h.reminder = cursor.getInt(cursor.getColumnIndex(REMIND_COL)) != 0;
+                    h.hr = cursor.getInt(cursor.getColumnIndex(HR_COL));
+                    h.min = cursor.getInt(cursor.getColumnIndex(MIN_COL));
+                    h.cue = cursor.getString(cursor.getColumnIndex(CUE_COL));
+                    h.craving = cursor.getString(cursor.getColumnIndex(CRAVING_COL));
+                    h.response = cursor.getString(cursor.getColumnIndex(RESPONSE_COL));
+                    h.reward = cursor.getString(cursor.getColumnIndex(REWARD_COL));
+                    habits.add(h);
+                } while(cursor.moveToNext());
+            }
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to get habits from database");
+        }
+        finally { // closing the cursor and the database
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        // returning a list of habits related to given user
+        return habits;
+    }
+
+    /**
+     * Method to delete habit by name
+     * @param username
+     * @param hname
+     */
+    public void deleteHabitByName(String username, String hname){
+        // open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        // execute delete query
+        String DELETE_QUERY =
+                String.format("DELETE FROM %s WHERE %s = \'%s\' AND %s = \'%s\'",
+                        TABLE_HABITS, UNAME_COL, username, HABIT_COL, hname);
+        db.execSQL(DELETE_QUERY);
+    }
+
+    // TODO how to add notif for habit added after login cuz setnotif is called at login
+
+    public void deleteNotifs(){
+        // get habits that have notifications
+    }
+
+
+    private void setNotif(Habit h){
+
+    }
+
+    private void deleteNotif(Habit h){
+
+    }
+
 
 //    // TODO old stuff from here on
 //    // we need this for the homepage, to extract user's preferred name from table

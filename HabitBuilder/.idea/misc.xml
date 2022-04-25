@@ -6,10 +6,13 @@
         <entry key="app/src/main/res/layout/activity_add.xml" value="0.36141304347826086" />
         <entry key="app/src/main/res/layout/activity_add_activity.xml" value="0.40972066999942347" />
         <entry key="app/src/main/res/layout/activity_add_habit.xml" value="0.24358974358974358" />
+        <entry key="app/src/main/res/layout/activity_habit_information.xml" value="0.27239583333333334" />
         <entry key="app/src/main/res/layout/activity_habits.xml" value="0.36141304347826086" />
         <entry key="app/src/main/res/layout/activity_home.xml" value="0.36186594202898553" />
         <entry key="app/src/main/res/layout/activity_identity.xml" value="0.36141304347826086" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2590391282813274" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20061518540269616" />
+        <entry key="app/src/main/res/layout/activity_notifications.xml" value="0.25833333333333336" />
         <entry key="app/src/main/res/layout/activity_principles.xml" value="0.36141304347826086" />
         <entry key="app/src/main/res/layout/activity_scorecard.xml" value="0.36141304347826086" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.36186594202898553" />

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Signup">
+    tools:context=".HabitInformation">
 
     <!--app header-->
     <LinearLayout
@@ -121,6 +121,50 @@
                 android:text="Implementation"
                 android:textColor="#F44336"
                 android:textSize="20sp" />
+
+            <!--commitment setting-->
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8sp"
+                android:text="Make a Commitment"
+                android:textColor="#9C27B0"
+                android:textSize="18sp" />
+            <EditText
+                android:id="@+id/freqTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:textSize="16sp"
+                android:hint="How often will you do it?"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="0dp">
+
+
+                <CheckBox
+                    android:id="@+id/reminderCB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".60"
+                    android:onClick="toggleRemind"
+                    android:text="Be reminded everday?"
+                    android:textColor="#888888"
+                    android:textSize="16sp" />
+
+                <Button
+                    android:id="@+id/timeBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="#656465"
+                    android:text="Pick Time"
+                    android:textSize="12sp" />
+            </LinearLayout>
 
             <!--cue setting-->
             <TextView
