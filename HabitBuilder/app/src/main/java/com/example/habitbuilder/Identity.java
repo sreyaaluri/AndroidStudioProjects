@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -19,6 +20,17 @@ public class Identity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_identity);
         DBClass db = DBClass.getDBInstance(this); // getting database instance
+
+        // setting listener on header label
+        TextView homeView = findViewById(R.id.headLbl);
+        homeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to home page
+                Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                startActivity(homeIntent);
+            }
+        });
 
         // setting listener on "Settings" button
         Button settingsBtn = findViewById(R.id.settingsBtn);

@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HabitBuilder">
         <activity
-            android:name=".Tracker"
+            android:name=".Scorecard"
             android:exported="false" />
         <activity
             android:name=".Identity"
@@ -23,7 +23,7 @@
             android:name=".HabitInformation"
             android:exported="false" />
         <activity
-            android:name=".Scorecard"
+            android:name=".ActivityTracker"
             android:exported="false" />
         <activity
             android:name=".Habits"

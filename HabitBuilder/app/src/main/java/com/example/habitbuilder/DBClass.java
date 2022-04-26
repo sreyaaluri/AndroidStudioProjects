@@ -5,13 +5,18 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.icu.text.SimpleDateFormat;
+import android.icu.util.TimeZone;
 import android.util.Base64;
 import android.util.Log;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.DateTimeException;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 public class DBClass extends SQLiteOpenHelper {
     // singleton instance of database to use across entire application
@@ -44,12 +49,16 @@ public class DBClass extends SQLiteOpenHelper {
     private static final String RESPONSE_COL = "response";
     private static final String REWARD_COL = "reward";
 
-    // variables for table and column names in Scorecard Table
+    // variables for table and column names in ActivityTracker Table
     private String TABLE_SCORECARD="Scorecard";
     // private static final String UNAME_COL = "username";
     private static final String DATETIME_COL = "datetime";
     private static final String ACTIVITY_COL = "activity";
     private static final String RATING_COL = "rating";
+
+    // date formater for Date
+    SimpleDateFormat sdf= new SimpleDateFormat("yyyy-MM-dd' 'HH:mm:ss");
+    SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd");
 
     /**
      * method to use the database instance outside DBclass across application
@@ -105,7 +114,7 @@ public class DBClass extends SQLiteOpenHelper {
                 + UNAME_COL + " TEXT, "
                 + DATETIME_COL + " TEXT, "
                 + ACTIVITY_COL + " TEXT, "
-                + RATING_COL + " INTEGER)"; // -1 - Bad, 0 - Neutral, 1 - good
+                + RATING_COL + " INTEGER)"; // 0 - Bad, 1 - Neutral, 2 - good
 
         // TODO add tracker table
 
@@ -362,157 +371,139 @@ public class DBClass extends SQLiteOpenHelper {
         // open the database for writing
         SQLiteDatabase db = getWritableDatabase();
 
-        // execute delete query
+        // delete query
         String DELETE_QUERY =
                 String.format("DELETE FROM %s WHERE %s = \'%s\' AND %s = \'%s\'",
                         TABLE_HABITS, UNAME_COL, username, HABIT_COL, hname);
-        db.execSQL(DELETE_QUERY);
-    }
 
-    // TODO how to add notif for habit added after login cuz setnotif is called at login
-
-    public void deleteNotifs(){
-        // get habits that have notifications
-    }
-
-
-    private void setNotif(Habit h){
-
-    }
-
-    private void deleteNotif(Habit h){
-
+        try { // deleting row from table
+            db.execSQL(DELETE_QUERY);
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to delete habit from database");
+        }
     }
 
 
-//    // TODO old stuff from here on
-//    // we need this for the homepage, to extract user's preferred name from table
-//    public String selectQuery(String fieldname){
-//        String fieldvalue;
-//        String query="SELECT "+fieldname+" FROM "+TABLE_USER_INFO;
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        Cursor cur=db.rawQuery(query,null); //Runs the provided SQL and returns a Cursor over the result set.
-//
-//        //  extract.moveToLast();
-//        cur.moveToFirst();
-//        String val="";
-//        while (cur.moveToNext()) {  //contains all rows. traversing
-//            // if (cur.getInt(1)) {
-//            String title = cur.getString(0);
-//            Log.d("Check cursor","====="+title);
-//            if(cur.getPosition()==cur.getCount()-1){  //getting last row.
-//                val=cur.getString(0);
-//            }
-//        }
-//        cur.close();
-//
-//        db.close();
-//        return val;
-//    }
-//
-//    // called to add a new note to table with diary entries
-//    public void addDiaryEntry(String username, DiaryEntry de) {
-//        // open the database for writing
-//        SQLiteDatabase db = getWritableDatabase();
-//
-//        // starting transaction
-//        db.beginTransaction();
-//        try { // adding row to table
-//            // including user's entries as field values
-//            ContentValues values = new ContentValues();
-//            values.put(UNAME_COL, username);
-//            values.put(DATE_COL, de.getDate());
-//            values.put(NOTES_COL, de.getNotes());
-//            values.put(EXERCISED_COL, de.getExercise());
-//            values.put(OUTSIDE_COL, de.getOutside());
-//            values.put(SOCIALIZED_COL, de.getSocialize());
-//            values.put(MEDITATED_COL, de.getMeditate());
-//            values.put(READ_COL, de.getRead());
-//
-//            // adding values to table
-//            db.insertOrThrow(TABLE_DIARY, null, values);
-//            db.setTransactionSuccessful();
-//        }
-//        catch (Exception e) { // printing error in logcat
-//            Log.d(ERROR_TAG, "Error while trying to add diary entry to database");
-//        }
-//        finally { // closing the database
-//            db.endTransaction();
-//        }
-//    }
-//
-//    //called to add wellness tracker data to tracker table
-//    public void addTrackerData(String username, String date, int mood, int anxiety, int medication, int medTime) {
-//        // open the database for writing
-//        SQLiteDatabase db = getWritableDatabase();
-//
-//        // starting transaction
-//        db.beginTransaction();
-//        try { // adding row to table
-//            // including user's entries as field values
-//            ContentValues values = new ContentValues();
-//            values.put(UNAME_COL, username);
-//            values.put(DATE_COL, date);
-//            values.put(MOOD_COL, mood);
-//            values.put(ANXIETY_COL, anxiety);
-//            values.put(MEDICATION_COL, medication);
-//            values.put(MEDICATION_TIME_COL, medTime);
-//
-//            // adding values to table
-//            db.insertOrThrow(TABLE_TRACKER, null, values);
-//            db.setTransactionSuccessful();
-//        }
-//        catch (Exception e) { // printing error in logcat
-//            Log.d(ERROR_TAG, "Error while trying to add tracker data to database");
-//        }
-//        finally { // closing the database
-//            db.endTransaction();
-//        }
-//    }
-//
-//    // called to retrieve notes of a specific user from diary table
-//    @SuppressLint("Range")
-//    public List<DiaryEntry> retrieveAllDiaryEntries(String username) {
-//        // initialize list of diary entries
-//        List<DiaryEntry> entries = new ArrayList<DiaryEntry>();
-//
-//        // select * from diary table for entries of specific user
-//        String ALL_ENTRIES_SELECT_QUERY =
-//                String.format("SELECT * FROM %s WHERE %s = \'%s\' ORDER BY %s DESC", TABLE_DIARY, UNAME_COL, username, DATE_COL);
-//
-//        // open the database for reading
-//        SQLiteDatabase db = getReadableDatabase();
-//
-//        // run query and get cursor object
-//        Cursor cursor = db.rawQuery(ALL_ENTRIES_SELECT_QUERY, null);
-//        try { // reading data from cursor
-//            if (cursor.moveToFirst()) {
-//                do {
-//                    // creating a dairy entry with retrieved values
-//                    DiaryEntry de = new DiaryEntry();
-//                    de.setDate(cursor.getString(cursor.getColumnIndex(DATE_COL)));
-//                    de.setNotes(cursor.getString(cursor.getColumnIndex(NOTES_COL)));
-//                    de.setExercise(cursor.getInt(cursor.getColumnIndex(EXERCISED_COL)));
-//                    de.setOutside(cursor.getInt(cursor.getColumnIndex(OUTSIDE_COL)));
-//                    de.setSocialize(cursor.getInt(cursor.getColumnIndex(SOCIALIZED_COL)));
-//                    de.setMeditate(cursor.getInt(cursor.getColumnIndex(MEDITATED_COL)));
-//                    de.setRead(cursor.getInt(cursor.getColumnIndex(READ_COL)));
-//                    entries.add(de);
-//                } while(cursor.moveToNext());
-//            }
-//        }
-//        catch (Exception e) { // printing error in logcat
-//            Log.d(ERROR_TAG, "Error while trying to get diary entry from database");
-//        }
-//        finally { // closing the cursor and the database
-//            if (cursor != null && !cursor.isClosed()) {
-//                cursor.close();
-//            }
-//        }
-//
-//        // returning a list of diary entries related to given user
-//        return entries;
-//    }
+    public ArrayList<Activity> getActivitiesByDate(String uname, Date date) {
+        // initialize list of activities
+        ArrayList<Activity> activities = new ArrayList<>();
+
+        // select * from activity table for entries of specific user
+        String ALL_ENTRIES_SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\' AND %s LIKE \'%s ORDER BY %s ASC",
+                        TABLE_SCORECARD, UNAME_COL, uname, DATETIME_COL, jdf.format(date)+"%\'", DATETIME_COL);
+
+        // open the database for reading
+        SQLiteDatabase db = getReadableDatabase();
+
+        // run query and get cursor object
+        Cursor cursor = db.rawQuery(ALL_ENTRIES_SELECT_QUERY, null);
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) {
+                do {
+                    // creating a habit with retrieved values
+                    Activity a = new Activity();
+                    a.dateText = cursor.getString(cursor.getColumnIndex(DATETIME_COL));
+                    a.name = cursor.getString(cursor.getColumnIndex(ACTIVITY_COL));
+                    a.rating = cursor.getInt(cursor.getColumnIndex(RATING_COL));
+                    activities.add(a);
+                } while(cursor.moveToNext());
+            }
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to get habits from database");
+        }
+        finally { // closing the cursor and the database
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        // returning a list of activities related to given user on specific date
+        return activities;
+    }
+
+    public Activity getActivity(String uname, Date date, String activityName){
+        // select row from activity table for specific user, date, and activity
+        String ALL_ENTRIES_SELECT_QUERY =
+                String.format("SELECT * FROM %s WHERE %s = \'%s\' AND %s = \'%s\' AND %s LIKE \'%s ORDER BY %s DESC",
+                        TABLE_SCORECARD, UNAME_COL, uname, ACTIVITY_COL, activityName, DATETIME_COL, jdf.format(date)+"%\'", DATETIME_COL);
+
+        // open the database for reading
+        SQLiteDatabase db = getReadableDatabase();
+
+        // activity to return
+        Activity a = new Activity();
+
+        // run query and get cursor object
+        Cursor cursor = db.rawQuery(ALL_ENTRIES_SELECT_QUERY, null);
+        try { // reading data from cursor
+            if (cursor.moveToFirst()) {
+                // returning the 1st activity found
+                a.dateText = cursor.getString(cursor.getColumnIndex(DATETIME_COL));
+                a.name = cursor.getString(cursor.getColumnIndex(ACTIVITY_COL));
+                a.rating = cursor.getInt(cursor.getColumnIndex(RATING_COL));
+            }
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to get habits from database");
+        }
+        finally { // closing the cursor and the database
+            if (cursor != null && !cursor.isClosed()) {
+                cursor.close();
+            }
+        }
+
+        // returning a list of activities related to given user on specific date
+        return a;
+    }
+
+    public void addActivity(String uname,  Date date, String activityName, int rating){
+        // open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        // starting transaction
+        db.beginTransaction();
+
+        try { // adding row to table
+            // including user's entries as field values
+            ContentValues values = new ContentValues();
+            values.put(UNAME_COL, uname);
+            values.put(DATETIME_COL, sdf.format(date));
+            values.put(ACTIVITY_COL, activityName);
+            values.put(RATING_COL, rating);
+
+            // adding values to table
+            db.insertOrThrow(TABLE_SCORECARD, null, values);
+            db.setTransactionSuccessful();
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to add habit to database");
+        }
+        finally { // closing the database
+            db.endTransaction();
+        }
+    }
+
+    public void updateActivity(String uname,  String prevActivityName, String dateTxt, String activityName, int rating) {
+        // open the database for writing
+        SQLiteDatabase db = getWritableDatabase();
+
+        // update query
+        String UPDATE_QUERY =
+                String.format("UPDATE %s SET %s = \'%s\', %s = \'%s\' " +
+                                "WHERE %s = \'%s\' AND %s = \'%s\' AND %s = \'%s\'",
+                        TABLE_SCORECARD, ACTIVITY_COL, activityName, RATING_COL, rating,
+                        UNAME_COL, uname, ACTIVITY_COL, prevActivityName, DATETIME_COL, dateTxt);
+
+        try { // updating row from table
+            db.execSQL(UPDATE_QUERY);
+        }
+        catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to update activity in database");
+        }
+    }
 
     /**
      * method to hash a password

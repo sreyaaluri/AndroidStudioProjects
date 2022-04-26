@@ -24,6 +24,16 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        // setting listener on header label
+        TextView homeView = findViewById(R.id.headLbl);
+        homeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to home page
+                Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                startActivity(homeIntent);
+            }
+        });
 
         // setting listener on "Principles" button
         Button principlesBtn = findViewById(R.id.principlesBtn);

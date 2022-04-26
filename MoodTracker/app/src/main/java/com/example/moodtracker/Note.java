@@ -4,7 +4,6 @@ import android.os.Bundle;
 
 import android.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +35,6 @@ public class Note extends Fragment {
      * @param note Parameter 2.
      * @return A new instance of fragment Note.
      */
-    // TODO: Rename and change types and number of parameters
     public static Note newInstance(String date, String note) {
         Note fragment = new Note();
         Bundle args = new Bundle();

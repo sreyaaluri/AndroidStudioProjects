@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -22,6 +23,17 @@ public class Habits extends AppCompatActivity {
         setContentView(R.layout.activity_habits);
         DBClass db = DBClass.getDBInstance(this); // getting database instance
 
+        // setting listener on header label
+        TextView homeView = findViewById(R.id.headLbl);
+        homeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to home page
+                Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                startActivity(homeIntent);
+            }
+        });
+
         // setting listener on "Settings" button
         Button settingsBtn = findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
@@ -30,6 +42,17 @@ public class Habits extends AppCompatActivity {
                 // take user to settings page
                 Intent nextIntent = new Intent(getApplicationContext(), Settings.class);
                 startActivity(nextIntent);
+            }
+        });
+
+        // adding click listener to add habit button
+        Button addHabitBtn = findViewById(R.id.newHabitBtn);
+        addHabitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent addHabitIntent = new Intent(getApplicationContext(), HabitInformation.class);
+                addHabitIntent.putExtra("PURPOSE", "new");
+                startActivity(addHabitIntent);
             }
         });
 
@@ -58,17 +81,6 @@ public class Habits extends AppCompatActivity {
                 deleteHabitIntent.putExtra("PURPOSE", "old");
                 deleteHabitIntent.putExtra("NAME", adapter.getItem(i).toString());
                 startActivity(deleteHabitIntent);
-            }
-        });
-
-        // adding click listener to add habit button
-        Button addHabitBtn = findViewById(R.id.newHabitBtn);
-        addHabitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent addHabitIntent = new Intent(getApplicationContext(), HabitInformation.class);
-                addHabitIntent.putExtra("PURPOSE", "new");
-                startActivity(addHabitIntent);
             }
         });
     }

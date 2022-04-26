@@ -4,11 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -65,24 +63,24 @@ public class Home extends AppCompatActivity {
             }
         });
 
+        // setting listener on "ActivityTracker" button
+        Button trackerBtn = findViewById(R.id.activityTrackerBtn);
+        trackerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to scorecard page
+                Intent nextIntent = new Intent(getApplicationContext(), ActivityTracker.class);
+                startActivity(nextIntent);
+            }
+        });
+
         // setting listener on "Scorecard" button
         Button scorecardBtn = findViewById(R.id.scorecardBtn);
         scorecardBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // take user to scorecard page
+                // take user to viewscorecard page
                 Intent nextIntent = new Intent(getApplicationContext(), Scorecard.class);
-                startActivity(nextIntent);
-            }
-        });
-
-        // setting listener on "Tracker" button
-        Button trackerBtn = findViewById(R.id.trackerBtn);
-        trackerBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // take user to settings page
-                Intent nextIntent = new Intent(getApplicationContext(), Tracker.class);
                 startActivity(nextIntent);
             }
         });

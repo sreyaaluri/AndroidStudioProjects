@@ -53,6 +53,17 @@ public class HabitInformation extends AppCompatActivity {
             }
         });
 
+        // setting listener on header label
+        TextView homeView = findViewById(R.id.headLbl);
+        homeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // take user to home page
+                Intent homeIntent = new Intent(getApplicationContext(), Home.class);
+                startActivity(homeIntent);
+            }
+        });
+
         // setting listener on "Settings" button
         Button settingsBtn = findViewById(R.id.settingsBtn);
         settingsBtn.setOnClickListener(new View.OnClickListener() {
