@@ -67,6 +67,7 @@ public class AddActivity extends AppCompatActivity {
         // display things based on purpose
         if(purpose.equals("old")){          // old activity selected -> delete
             // changing "Add" to "Update" everywhere
+            ((TextView) findViewById(R.id.headLbl)).setText("UPDATE ACTIVITY");
             ((Button) findViewById(R.id.addActivityBtn)).setText("UPDATE ACTIVITY");
 
             // get selected activity name

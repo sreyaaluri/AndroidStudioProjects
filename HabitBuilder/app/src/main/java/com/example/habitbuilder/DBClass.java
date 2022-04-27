@@ -492,8 +492,8 @@ public class DBClass extends SQLiteOpenHelper {
 
         // update query
         String UPDATE_QUERY =
-                String.format("UPDATE %s SET %s = \'%s\', %s = \'%s\' " +
-                                "WHERE %s = \'%s\' AND %s = \'%s\' AND %s = \'%s\'",
+                String.format("UPDATE %s SET %s = '%s', %s = '%s' " +
+                                "WHERE %s = '%s' AND %s = '%s' AND %s = '%s'",
                         TABLE_SCORECARD, ACTIVITY_COL, activityName, RATING_COL, rating,
                         UNAME_COL, uname, ACTIVITY_COL, prevActivityName, DATETIME_COL, dateTxt);
 
