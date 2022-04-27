@@ -12,31 +12,31 @@
         android:theme="@style/Theme.HabitBuilder">
         <activity
             android:name=".Scorecard"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Identity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".AddActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".HabitInformation"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".ActivityTracker"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Habits"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Settings"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Home"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Signup"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".Login"
             android:exported="true">

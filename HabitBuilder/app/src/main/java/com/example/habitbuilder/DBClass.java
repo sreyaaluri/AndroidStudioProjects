@@ -534,4 +534,22 @@ public class DBClass extends SQLiteOpenHelper {
         return md.digest(s.getBytes(StandardCharsets.UTF_8));
     }
 
+    // testing
+    public void testerData() {
+        String uname = "sa8un";
+        String date = "2022-04-26 14:00:00";
+        String name = "presentation";
+        int rating = 1;
+
+        String INSERT_QUERY =
+                String.format("INSERT INTO %s VALUES (\'%s\', \'%s\', \'%s\', %s)",
+                        TABLE_SCORECARD, uname, date, name, rating + "");
+
+        SQLiteDatabase db = getWritableDatabase();
+        try {
+            db.execSQL(INSERT_QUERY);
+        } catch (Exception e) { // printing error in logcat
+            Log.d(ERROR_TAG, "Error while trying to add tester data to database");
+        }
+    }
 }

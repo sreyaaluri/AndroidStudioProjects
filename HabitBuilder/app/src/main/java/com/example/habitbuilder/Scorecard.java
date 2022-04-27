@@ -9,6 +9,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -22,6 +23,8 @@ import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStreamWriter;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -36,6 +39,7 @@ public class Scorecard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_scorecard);
+        cal = Calendar.getInstance();
 
         // getting values from intent and shared preferences
         uname = getSharedPreferences("UserInfo", MODE_PRIVATE).getString("username", "No User");
@@ -91,17 +95,15 @@ public class Scorecard extends AppCompatActivity {
                     // clear previous scorecard
                     ((LinearLayout) findViewById(R.id.notesContainer)).removeAllViews();
                     // getting selected date
-                    Calendar selectedCal = Calendar.getInstance();
-                    selectedCal.set(year, month, dayOfMonth);
+                    cal.set(year, month, dayOfMonth);
                     // displaying scorecard from selected date
-                    displayScorecard(selectedCal.getTime());
+                    displayScorecard(cal.getTime());
                 }
                 else {
                     // setting focussed date on calendar to prev date
                     view.setDate(cal.getTimeInMillis());
-                    displayScorecard(cal.getTime());
                     // using toast to tell user that alarm needs to be in future
-                    Toast.makeText(getApplicationContext(), "Date needs to be in the past", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Data needs to be in the past", Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -133,37 +135,42 @@ public class Scorecard extends AppCompatActivity {
     }
 
     /**
-     * method to download habit info
+     * method to download scorecard info
      */
     private void writeFile() throws JSONException, FileNotFoundException {
+        //create a JSONObject for storing scorecard
+        JSONObject scorecardJSON = new JSONObject();
+        scorecardJSON.put("Date", cal.getTime());
+
+        // getting each activity and nesting it in scorecard
+        List<Activity> alist = db.getActivitiesByDate(uname, cal.getTime());
+        for(int i = 0; i < alist.size(); i++) {
+            Activity a = alist.get(i);
+            JSONObject activityJSON = new JSONObject();
+            activityJSON.put("Name:", a.name);
+            activityJSON.put("Rating:", (a.rating==1 ? "Neutral" : (a.rating==2 ? "Good" : "Bad")));
+            scorecardJSON.put("Activity_"+(i+1), activityJSON);
+        }
+
+        // creating a file to write to
+        String filename = "Scorecard_"+cal.getTimeInMillis();
+        String myDir = Environment.getExternalStorageDirectory() +"/Documents/"+filename+".txt"; //creating a file in the internal storage/Documents folder on phone.
+        Log.d("---PrintDir","====="+myDir);
+        File file = new File(myDir);    //creating a file object
+
+        // write to the file and store in internal storage
+        FileOutputStream fOut = new FileOutputStream(file, true); //create a file output stream for writing data to file
+        OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);  //converts character stream into byte stream
+        try {
+            myOutWriter.append(scorecardJSON.toString() + "\n");  //write JSONObject to file
+            myOutWriter.close();
+            fOut.close();
+        }
+        catch (Exception e){
+            e.printStackTrace();  //to handle exceptions and errors.
+        }
+
+        // show user toast saying downloaded
         Toast.makeText(getApplicationContext(), "Scorecard has been downloaded", Toast.LENGTH_LONG).show();
-//        String hname = ((EditText) findViewById(R.id.habitTxt)).getText().toString();
-//        String myDir = Environment.getExternalStorageDirectory() +"/Documents/"+hname+".txt"; //creating a file in the internal storage/Documents folder on phone.
-//        Log.d("---PrintDir","====="+myDir);
-//        File file = new File(myDir);    //creating a file object
-//        JSONObject habitJSON = new JSONObject();   //create a JSONObject
-//        habitJSON.put("Identity", ((EditText) findViewById(R.id.identityTxt)).getText().toString());
-//        habitJSON.put("HabitName", hname);
-//        habitJSON.put("Why", ((EditText) findViewById(R.id.connectionTxt)).getText().toString());
-//        habitJSON.put("Frequency", ((EditText) findViewById(R.id.freqTxt)).getText().toString());
-//        habitJSON.put("Reminder", ((CheckBox) findViewById(R.id.reminderCB)).isChecked() ? "on" : "off");
-//        habitJSON.put("Time", hr+":"+min);
-//        habitJSON.put("Cue", ((EditText) findViewById(R.id.cueTxt)).getText().toString());
-//        habitJSON.put("Craving", ((EditText) findViewById(R.id.cravingTxt)).getText().toString());
-//        habitJSON.put("Response", ((EditText) findViewById(R.id.responseTxt)).getText().toString());
-//        habitJSON.put("Reward", ((EditText) findViewById(R.id.rewardTxt)).getText().toString());
-//
-//        //Write to the file and store in internal storage
-//        FileOutputStream fOut = new FileOutputStream(file, true); //create a file output stream for writing data to file
-//        OutputStreamWriter myOutWriter = new OutputStreamWriter(fOut);  //converts character stream into byte stream
-//        try {
-//            myOutWriter.append(habitJSON.toString() + "\n");  //write JSONObject to file
-//            myOutWriter.close();
-//            fOut.close();
-//            Toast.makeText(getApplicationContext(), "Habit has been downloaded", Toast.LENGTH_LONG).show();
-//        }
-//        catch (Exception e){
-//            e.printStackTrace();  //to handle exceptions and errors.
-//        }
     }
 }

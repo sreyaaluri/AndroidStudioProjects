@@ -23,6 +23,9 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         DBClass db = DBClass.getDBInstance(this); // getting database instance
 
+//        // testing
+//        db.testerData();
+
         // setting listener on singup button
         Button signupBtn = findViewById(R.id.signupBtn);
         signupBtn.setOnClickListener(new View.OnClickListener() {
